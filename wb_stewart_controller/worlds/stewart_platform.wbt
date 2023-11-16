@@ -8,8 +8,8 @@ WorldInfo {
   lineScale 1
 }
 Viewpoint {
-  orientation -0.19521073563818545 -0.13934259495911483 0.970812242362888 4.221329084747076
-  position 3.1930186295495053 8.727022745218992 4.761842908026641
+  orientation -0.06147103664890293 -0.06733688055380409 0.9958348538641293 4.427336093291041
+  position 1.6599591487830307 8.959556221293786 3.367486404931377
   near 0.5
 }
 TexturedBackground {
@@ -441,7 +441,7 @@ DEF STEWART_PLATFORM Robot {
       }
       endPoint DEF LOWER_PISTON_5 Solid {
         translation -0.41411 1.54548 0.9
-        rotation 0.11982000993786239 -0.25695400986674594 0.958967049502688 3.9825900000000005
+        rotation 0.11982000993786238 -0.25695400986674594 0.958967049502688 -2.3005953071795857
         children [
           DEF UPPER_PISTON_SLIDER_5 SliderJoint {
             jointParameters JointParameters {
@@ -459,6 +459,10 @@ DEF STEWART_PLATFORM Robot {
               translation 0 0 1.7
               rotation 0 -1 0 1.5708
               children [
+                GPS {
+                  translation 0.3 0 0
+                  name "gps_piston_5"
+                }
                 USE TWO_CYLS_GROUP
                 USE UPPER_BALL_TRANS
                 DEF UPPER_BALL_JOINT_5 BallJoint {

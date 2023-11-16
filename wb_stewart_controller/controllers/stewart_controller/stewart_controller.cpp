@@ -10,6 +10,7 @@
 #include <webots/Robot.hpp>
 #include <webots/Motor.hpp>
 // All the webots classes are defined in the "webots" namespace
+#include <webots/GPS.hpp>
 
 #define TIME_STEP 64
 #define NUM_PISTONS 6
@@ -50,7 +51,8 @@ int main(int argc, char **argv) {
   Stewart * stewart_controller = new Stewart();
   // get the time step of the current world.
   int timeStep = (int)stewart_controller->getBasicTimeStep();
-
+  GPS * gps = new GPS("gps_piston_5");
+  gps->enable(100);
   // You should insert a getDevice-like function in order to get the
   // instance of a device of the robot. Something like:
   //  Motor *motor = robot->getMotor("motorname");
@@ -65,8 +67,9 @@ int main(int argc, char **argv) {
     //  double val = ds->getValue();
     
     // Process sensor data here.
-    std::cout << stewart_controller->get_force_feedback(1) << std::endl;
-    stewart_controller->set_piston_pos(5,0.4);
+    //std::cout << stewart_controller->get_force_feedback(1) << std::endl;
+    //stewart_controller->set_piston_pos(5,0.4);
+    std::cout << gps->getValues()[0] << " " << gps->getValues()[1] << " " << gps->getValues()[2] << std::endl;
     //std::cout << stewart_controller->getUrdf("") << std::endl;
     // Enter here functions to send actuator commands, like:
     //  motor->setPosition(10.0);
