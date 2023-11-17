@@ -62,7 +62,7 @@ include_directories(
 
 #instructions for car node
 
-add_executable(stewart_node src/stewart_node.cpp src/stewart_controller.cpp)
+add_executable(stewart_node src/stewart_node.cpp src/stewart_controller.cpp src/kinematics.cpp)
 
 target_link_libraries(stewart_node
         ${catkin_LIBRARIES}

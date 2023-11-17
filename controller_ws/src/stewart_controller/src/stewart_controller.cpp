@@ -23,7 +23,7 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     }
     try
     {
-        std:: cout << config_file << std::endl;
+        //std:: cout << config_file << std::endl;
         config_stewart = YAML::LoadFile(config_file);
     }
     catch(std::exception &e)
@@ -34,7 +34,7 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     A = Eigen::Map<Eigen::Matrix<double, 6, 3, Eigen::RowMajor>>(config_stewart["size"]["A"].as<std::vector<double>>().data());
     B = Eigen::Map<Eigen::Matrix<double, 6, 3, Eigen::RowMajor>>(config_stewart["size"]["B"].as<std::vector<double>>().data());
 
-    std::cout << A << std::endl;
+    //std::cout << A << std::endl;
 }
 
 double Stewart::get_force_feedback(int id)

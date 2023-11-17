@@ -18,7 +18,7 @@ class Stewart : public Robot{
         Stewart(int argc, char **argv, std::string node_name);
         double get_force_feedback(int id);
         void set_piston_pos(int id, double pos);
-        Eigen::VectorXd inverse_kinematics(Eigen::VectorXd setpoint);
+        Eigen::VectorXd inverse_kinematics(std::vector<double> setpoint);
 
     private:
         std::vector<Motor*> pistons_;

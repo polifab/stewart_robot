@@ -969,6 +969,30 @@ stewart_node/fast:
 	cd /home/fpo/side_projects/Stewart/controller_ws/build && $(MAKE) $(MAKESILENT) -f stewart_controller/CMakeFiles/stewart_node.dir/build.make stewart_controller/CMakeFiles/stewart_node.dir/build
 .PHONY : stewart_node/fast
 
+src/kinematics.o: src/kinematics.cpp.o
+.PHONY : src/kinematics.o
+
+# target to build an object file
+src/kinematics.cpp.o:
+	cd /home/fpo/side_projects/Stewart/controller_ws/build && $(MAKE) $(MAKESILENT) -f stewart_controller/CMakeFiles/stewart_node.dir/build.make stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o
+.PHONY : src/kinematics.cpp.o
+
+src/kinematics.i: src/kinematics.cpp.i
+.PHONY : src/kinematics.i
+
+# target to preprocess a source file
+src/kinematics.cpp.i:
+	cd /home/fpo/side_projects/Stewart/controller_ws/build && $(MAKE) $(MAKESILENT) -f stewart_controller/CMakeFiles/stewart_node.dir/build.make stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.i
+.PHONY : src/kinematics.cpp.i
+
+src/kinematics.s: src/kinematics.cpp.s
+.PHONY : src/kinematics.s
+
+# target to generate assembly for a file
+src/kinematics.cpp.s:
+	cd /home/fpo/side_projects/Stewart/controller_ws/build && $(MAKE) $(MAKESILENT) -f stewart_controller/CMakeFiles/stewart_node.dir/build.make stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.s
+.PHONY : src/kinematics.cpp.s
+
 src/stewart_controller.o: src/stewart_controller.cpp.o
 .PHONY : src/stewart_controller.o
 
@@ -1087,6 +1111,9 @@ help:
 	@echo "... tf_generate_messages_nodejs"
 	@echo "... tf_generate_messages_py"
 	@echo "... stewart_node"
+	@echo "... src/kinematics.o"
+	@echo "... src/kinematics.i"
+	@echo "... src/kinematics.s"
 	@echo "... src/stewart_controller.o"
 	@echo "... src/stewart_controller.i"
 	@echo "... src/stewart_controller.s"

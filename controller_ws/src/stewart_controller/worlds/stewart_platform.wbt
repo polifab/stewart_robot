@@ -8,8 +8,8 @@ WorldInfo {
   lineScale 1
 }
 Viewpoint {
-  orientation -0.20111628843003362 0.7788641563492749 0.5940731137515481 0.1664190873764848
-  position -9.060227523681906 -0.8022640959744922 3.6646807915725437
+  orientation -0.15806408628779137 0.8611630662445647 0.4831292973545129 0.4600424076588855
+  position -8.415843750087566 -1.6637887762849572 5.782114834578444
   near 0.5
 }
 TexturedBackground {
@@ -56,8 +56,8 @@ DEF STEWART_PLATFORM Robot {
             device [
               LinearMotor {
                 name "piston0"
-                minPosition -0.4
-                maxPosition 0.4
+                minPosition -3.3
+                maxPosition 3.3
                 maxForce 1000
               }
             ]
@@ -125,6 +125,18 @@ DEF STEWART_PLATFORM Robot {
                     translation 0.514172 0.235049 0.917719
                     rotation 0.7176690794221496 -0.12654500989810896 0.6847900794486231 2.65306
                     children [
+                      Gyro {
+                        name "upp_platform_ang_vel"
+                      }
+                      Accelerometer {
+                        name "upp_platform_acc"
+                      }
+                      InertialUnit {
+                        name "upp_platform_att"
+                      }
+                      GPS {
+                        name "upp_platform_pos"
+                      }
                       DEF UPPER_PLATFORM_SHAPE Shape {
                         appearance PBRAppearance {
                           baseColor 0.12 0.56 1
@@ -206,8 +218,8 @@ DEF STEWART_PLATFORM Robot {
             device [
               LinearMotor {
                 name "piston1"
-                minPosition -0.4
-                maxPosition 0.4
+                minPosition -3.3
+                maxPosition 3.3
                 maxForce 1000
               }
             ]
@@ -272,8 +284,8 @@ DEF STEWART_PLATFORM Robot {
             device [
               LinearMotor {
                 name "piston2"
-                minPosition -0.4
-                maxPosition 0.4
+                minPosition -3.3
+                maxPosition 3.3
                 maxForce 1000
               }
             ]
@@ -338,8 +350,8 @@ DEF STEWART_PLATFORM Robot {
             device [
               LinearMotor {
                 name "piston3"
-                minPosition -0.4
-                maxPosition 0.4
+                minPosition -3.3
+                maxPosition 3.3
                 maxForce 1000
               }
             ]
@@ -404,8 +416,8 @@ DEF STEWART_PLATFORM Robot {
             device [
               LinearMotor {
                 name "piston4"
-                minPosition -0.4
-                maxPosition 0.4
+                minPosition -3.3
+                maxPosition 3.3
                 maxForce 1000
               }
             ]
@@ -470,8 +482,8 @@ DEF STEWART_PLATFORM Robot {
             device [
               LinearMotor {
                 name "piston5"
-                minPosition -0.4
-                maxPosition 0.4
+                minPosition -3.3
+                maxPosition 3.3
                 maxForce 1000
               }
             ]

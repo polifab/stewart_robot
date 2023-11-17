@@ -2,4 +2,4 @@
 source_root_dir = '/home/fpo/side_projects/Stewart/controller_ws/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/home/fpo/side_projects/Stewart/controller_ws/devel;/opt/ros/noetic'.split(';') if '/home/fpo/side_projects/Stewart/controller_ws/devel;/opt/ros/noetic' != '' else []
+underlay_workspaces = '/opt/ros/noetic'.split(';') if '/opt/ros/noetic' != '' else []

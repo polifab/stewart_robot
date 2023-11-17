@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/kinematics.cpp" "stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o" "gcc" "stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o.d"
   "/home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/stewart_controller.cpp" "stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.o" "gcc" "stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.o.d"
   "/home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/stewart_node.cpp" "stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o" "gcc" "stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o.d"
   )

@@ -97,16 +97,32 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.s: cma
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.s"
 	cd /home/fpo/side_projects/Stewart/controller_ws/build/stewart_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/stewart_controller.cpp -o CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.s
 
+stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o: stewart_controller/CMakeFiles/stewart_node.dir/flags.make
+stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o: /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/kinematics.cpp
+stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o: stewart_controller/CMakeFiles/stewart_node.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/fpo/side_projects/Stewart/controller_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o"
+	cd /home/fpo/side_projects/Stewart/controller_ws/build/stewart_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o -MF CMakeFiles/stewart_node.dir/src/kinematics.cpp.o.d -o CMakeFiles/stewart_node.dir/src/kinematics.cpp.o -c /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/kinematics.cpp
+
+stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/stewart_node.dir/src/kinematics.cpp.i"
+	cd /home/fpo/side_projects/Stewart/controller_ws/build/stewart_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/kinematics.cpp > CMakeFiles/stewart_node.dir/src/kinematics.cpp.i
+
+stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/stewart_node.dir/src/kinematics.cpp.s"
+	cd /home/fpo/side_projects/Stewart/controller_ws/build/stewart_controller && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/kinematics.cpp -o CMakeFiles/stewart_node.dir/src/kinematics.cpp.s
+
 # Object files for target stewart_node
 stewart_node_OBJECTS = \
 "CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o" \
-"CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.o"
+"CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.o" \
+"CMakeFiles/stewart_node.dir/src/kinematics.cpp.o"
 
 # External object files for target stewart_node
 stewart_node_EXTERNAL_OBJECTS =
 
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.o
+/home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: stewart_controller/CMakeFiles/stewart_node.dir/src/kinematics.cpp.o
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: stewart_controller/CMakeFiles/stewart_node.dir/build.make
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /opt/ros/noetic/lib/libtf.so
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /opt/ros/noetic/lib/libtf2_ros.so
@@ -132,7 +148,7 @@ stewart_node_EXTERNAL_OBJECTS =
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.6.2
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: stewart_controller/CMakeFiles/stewart_node.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fpo/side_projects/Stewart/controller_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fpo/side_projects/Stewart/controller_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node"
 	cd /home/fpo/side_projects/Stewart/controller_ws/build/stewart_controller && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stewart_node.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
