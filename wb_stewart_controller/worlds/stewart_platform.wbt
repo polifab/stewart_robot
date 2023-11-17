@@ -503,5 +503,5 @@ DEF STEWART_PLATFORM Robot {
   physics Physics {
     density 250
   }
-  controller "stewart_controller"
+  controller "<extern>"
 }

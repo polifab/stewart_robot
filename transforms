@@ -2,17 +2,24 @@ world -> base1: 0.0 0.0 0.0
 
 base1 -> base2: 0.0 0.0 2.69
 
-base1 -> hinge0: -1.21 1.57 0.121
+base1 -> bottom_hinge0: -1.21 1.57 0.121
 
-base1 -> hinge1: -1.21 -1.57 0.121
+base1 -> bottom_hinge1: -1.21 -1.57 0.121
 
-base1 -> hinge2: -0.759 -1.83 0.121
+base1 -> bottom_hinge2: -0.759 -1.83 0.121
 
-base1 -> hinge3: 1.97 -0.26 0.121
+base1 -> bottom_hinge3: 1.97 -0.26 0.121
 
-base1 -> hinge4: 1.97 0.26 0.121
+base1 -> bottom_hinge4: 1.97 0.26 0.121
 
-base1 -> hinge5: -0.759 1.83 0.121
+base1 -> bottom_hinge5: -0.759 1.83 0.121
+
+base1 -> top_hinge0: -0.95772 0.14656 2.66545
+base1 -> top_hinge1: -0.957722 -0.14656 2.66545
+base1 -> top_hinge2: 0.351935 -0.90269 2.66545
+base1 -> top_hinge3: 0.605787 -0.756132 2.66545
+base1 -> top_hinge4: 0.605788 0.75613 2.66545
+base1 -> top_hinge5: 0.351935, 0.902  2.66545
 
 1.96834
 

@@ -1,0 +1,8 @@
+prefix=/home/fpo/side_projects/Stewart/controller_ws/devel
+
+Name: stewart_controller
+Description: Description of stewart_controller
+Version: 4.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs geometry_msgs sensor_msgs message_runtime tf
