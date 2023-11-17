@@ -18,10 +18,11 @@ class Stewart : public Robot{
         Stewart(int argc, char **argv, std::string node_name);
         double get_force_feedback(int id);
         void set_piston_pos(int id, double pos);
-        Eigen::VectorXd Stewart::inverse_kinematics(Eigen::VectorXd setpoint)
+        Eigen::VectorXd inverse_kinematics(Eigen::VectorXd setpoint);
 
     private:
         std::vector<Motor*> pistons_;
         Eigen::MatrixXd B;
         Eigen::MatrixXd A;
+        YAML::Node config_stewart;
 };

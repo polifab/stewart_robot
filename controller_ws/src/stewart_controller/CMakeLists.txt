@@ -6,7 +6,7 @@ add_definitions(${GCC_COMPILE_FLAGS})
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs geometry_msgs sensor_msgs message_generation tf)
-
+find_package(yaml-cpp REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -57,6 +57,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${YAML_CPP_INCLUDE_DIRS}
 )
 
 #instructions for car node
@@ -66,4 +67,5 @@ add_executable(stewart_node src/stewart_node.cpp src/stewart_controller.cpp)
 target_link_libraries(stewart_node
         ${catkin_LIBRARIES}
         ${LIBRARIES}
+        ${YAML_CPP_LIBRARIES}
 )

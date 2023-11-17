@@ -1407,7 +1407,39 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_controller.cpp.o: /ho
   /usr/include/Eigen/src/Eigenvalues/RealQZ.h \
   /usr/include/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /usr/include/Eigen/src/Eigenvalues/RealQZ.h \
-  /usr/include/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+  /usr/include/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  /usr/include/yaml-cpp/yaml.h \
+  /usr/include/yaml-cpp/parser.h \
+  /usr/include/yaml-cpp/dll.h \
+  /usr/include/yaml-cpp/noncopyable.h \
+  /usr/include/yaml-cpp/emitter.h \
+  /usr/include/yaml-cpp/binary.h \
+  /usr/include/yaml-cpp/emitterdef.h \
+  /usr/include/yaml-cpp/emittermanip.h \
+  /usr/include/yaml-cpp/null.h \
+  /usr/include/yaml-cpp/ostream_wrapper.h \
+  /usr/include/yaml-cpp/emitterstyle.h \
+  /usr/include/yaml-cpp/stlemitter.h \
+  /usr/include/yaml-cpp/exceptions.h \
+  /usr/include/yaml-cpp/mark.h \
+  /usr/include/yaml-cpp/traits.h \
+  /usr/include/yaml-cpp/node/node.h \
+  /usr/include/yaml-cpp/node/detail/bool_type.h \
+  /usr/include/yaml-cpp/node/detail/iterator_fwd.h \
+  /usr/include/yaml-cpp/node/ptr.h \
+  /usr/include/yaml-cpp/node/type.h \
+  /usr/include/yaml-cpp/node/impl.h \
+  /usr/include/yaml-cpp/node/iterator.h \
+  /usr/include/yaml-cpp/node/detail/iterator.h \
+  /usr/include/yaml-cpp/node/detail/node_iterator.h \
+  /usr/include/yaml-cpp/node/detail/memory.h \
+  /usr/include/yaml-cpp/node/detail/node.h \
+  /usr/include/yaml-cpp/node/detail/node_ref.h \
+  /usr/include/yaml-cpp/node/detail/node_data.h \
+  /usr/include/yaml-cpp/node/convert.h \
+  /usr/include/yaml-cpp/node/detail/impl.h \
+  /usr/include/yaml-cpp/node/parse.h \
+  /usr/include/yaml-cpp/node/emit.h
 
 stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/stewart_node.cpp \
   /usr/include/stdc-predef.h \
@@ -2815,10 +2847,72 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
   /usr/include/Eigen/src/Eigenvalues/RealQZ.h \
   /usr/include/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /usr/include/Eigen/src/Eigenvalues/RealQZ.h \
-  /usr/include/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h
+  /usr/include/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  /usr/include/yaml-cpp/yaml.h \
+  /usr/include/yaml-cpp/parser.h \
+  /usr/include/yaml-cpp/dll.h \
+  /usr/include/yaml-cpp/noncopyable.h \
+  /usr/include/yaml-cpp/emitter.h \
+  /usr/include/yaml-cpp/binary.h \
+  /usr/include/yaml-cpp/emitterdef.h \
+  /usr/include/yaml-cpp/emittermanip.h \
+  /usr/include/yaml-cpp/null.h \
+  /usr/include/yaml-cpp/ostream_wrapper.h \
+  /usr/include/yaml-cpp/emitterstyle.h \
+  /usr/include/yaml-cpp/stlemitter.h \
+  /usr/include/yaml-cpp/exceptions.h \
+  /usr/include/yaml-cpp/mark.h \
+  /usr/include/yaml-cpp/traits.h \
+  /usr/include/yaml-cpp/node/node.h \
+  /usr/include/yaml-cpp/node/detail/bool_type.h \
+  /usr/include/yaml-cpp/node/detail/iterator_fwd.h \
+  /usr/include/yaml-cpp/node/ptr.h \
+  /usr/include/yaml-cpp/node/type.h \
+  /usr/include/yaml-cpp/node/impl.h \
+  /usr/include/yaml-cpp/node/iterator.h \
+  /usr/include/yaml-cpp/node/detail/iterator.h \
+  /usr/include/yaml-cpp/node/detail/node_iterator.h \
+  /usr/include/yaml-cpp/node/detail/memory.h \
+  /usr/include/yaml-cpp/node/detail/node.h \
+  /usr/include/yaml-cpp/node/detail/node_ref.h \
+  /usr/include/yaml-cpp/node/detail/node_data.h \
+  /usr/include/yaml-cpp/node/convert.h \
+  /usr/include/yaml-cpp/node/detail/impl.h \
+  /usr/include/yaml-cpp/node/parse.h \
+  /usr/include/yaml-cpp/node/emit.h
 
 
 /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/src/stewart_node.cpp:
+
+/usr/include/yaml-cpp/node/emit.h:
+
+/usr/include/yaml-cpp/node/convert.h:
+
+/usr/include/yaml-cpp/node/detail/node_data.h:
+
+/usr/include/yaml-cpp/node/detail/iterator.h:
+
+/usr/include/yaml-cpp/node/type.h:
+
+/usr/include/yaml-cpp/node/ptr.h:
+
+/usr/include/yaml-cpp/node/node.h:
+
+/usr/include/yaml-cpp/mark.h:
+
+/usr/include/yaml-cpp/emitterstyle.h:
+
+/usr/include/yaml-cpp/ostream_wrapper.h:
+
+/usr/include/yaml-cpp/null.h:
+
+/usr/include/yaml-cpp/emitterdef.h:
+
+/usr/include/yaml-cpp/noncopyable.h:
+
+/usr/include/yaml-cpp/node/detail/node.h:
+
+/usr/include/yaml-cpp/parser.h:
 
 /usr/include/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h:
 
@@ -3080,6 +3174,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/type_traits/detail/has_binary_operator.hpp:
 
+/usr/include/yaml-cpp/node/detail/memory.h:
+
 /usr/include/boost/range/algorithm/equal.hpp:
 
 /usr/include/Eigen/src/Core/PlainObjectBase.h:
@@ -3227,6 +3323,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/boost/mpl/limits/vector.hpp:
 
 /usr/include/boost/date_time/gregorian/greg_weekday.hpp:
+
+/usr/include/yaml-cpp/node/detail/node_ref.h:
 
 /usr/include/boost/config/helper_macros.hpp:
 
@@ -3406,6 +3504,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/preprocessor/tuple/elem.hpp:
 
+/usr/include/yaml-cpp/node/detail/bool_type.h:
+
 /usr/include/boost/mpl/deref.hpp:
 
 /usr/include/boost/mpl/list.hpp:
@@ -3441,6 +3541,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/c++/9/bits/stl_algobase.h:
 
 /usr/include/boost/mpl/aux_/has_tag.hpp:
+
+/usr/include/yaml-cpp/dll.h:
 
 /opt/ros/noetic/include/ros/time.h:
 
@@ -4140,9 +4242,13 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/date_time/posix_time/posix_time_types.hpp:
 
+/usr/include/yaml-cpp/traits.h:
+
 /usr/include/Eigen/src/Core/Fuzzy.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
+
+/usr/include/yaml-cpp/emittermanip.h:
 
 /usr/include/boost/predef/library/c/gnu.h:
 
@@ -4187,6 +4293,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/Eigen/src/Core/Dot.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/yaml-cpp/node/detail/node_iterator.h:
 
 /usr/include/boost/type_traits/conditional.hpp:
 
@@ -4271,6 +4379,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/Eigen/src/QR/ColPivHouseholderQR.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
+
+/usr/include/yaml-cpp/emitter.h:
 
 /usr/include/c++/9/bits/exception_defines.h:
 
@@ -4524,6 +4634,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/system/detail/generic_category.hpp:
 
+/usr/include/yaml-cpp/binary.h:
+
 /usr/include/boost/predef/language/objc.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
@@ -4541,6 +4653,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /home/fpo/side_projects/Stewart/controller_ws/src/stewart_controller/include/stewart_controller.hpp:
 
 /usr/include/boost/function/function_base.hpp:
+
+/usr/include/yaml-cpp/node/iterator.h:
 
 /opt/ros/noetic/include/ros/builtin_message_traits.h:
 
@@ -4666,6 +4780,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/predef/architecture/x86/32.h:
 
+/usr/include/yaml-cpp/node/detail/iterator_fwd.h:
+
 /usr/include/c++/9/map:
 
 /usr/include/boost/mpl/O1_size.hpp:
@@ -4757,6 +4873,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/boost/core/ref.hpp:
 
 /opt/ros/noetic/include/ros/wall_timer_options.h:
+
+/usr/include/yaml-cpp/node/impl.h:
 
 /usr/include/boost/mpl/iterator_range.hpp:
 
@@ -4866,6 +4984,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/core/alloc_construct.hpp:
 
+/usr/include/yaml-cpp/node/detail/impl.h:
+
 /usr/include/boost/predef/os/macos.h:
 
 /opt/ros/noetic/include/ros/exception.h:
@@ -4907,6 +5027,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/boost/system/detail/config.hpp:
 
 /usr/include/boost/date_time/posix_time/posix_time_duration.hpp:
+
+/usr/include/yaml-cpp/stlemitter.h:
 
 /usr/include/log4cxx/level.h:
 
@@ -5051,6 +5173,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/boost/smart_ptr/detail/local_sp_deleter.hpp:
 
 /usr/include/boost/make_shared.hpp:
+
+/usr/include/yaml-cpp/exceptions.h:
 
 /usr/include/boost/smart_ptr/make_shared_object.hpp:
 
@@ -5450,6 +5574,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 
 /usr/include/boost/predef/architecture/mips.h:
 
+/usr/include/yaml-cpp/yaml.h:
+
 /usr/include/boost/ratio/detail/mpl/abs.hpp:
 
 /usr/include/boost/predef/architecture/ppc.h:
@@ -5591,6 +5717,8 @@ stewart_controller/CMakeFiles/stewart_node.dir/src/stewart_node.cpp.o: /home/fpo
 /usr/include/boost/mpl/assert.hpp:
 
 /opt/ros/noetic/include/ros/advertise_service_options.h:
+
+/usr/include/yaml-cpp/node/parse.h:
 
 /usr/include/boost/lexical_cast/detail/converter_lexical_streams.hpp:
 

@@ -14,17 +14,27 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     std::string config_file;
     try
     {
-        nodeHandle_.getParam("config_file", config_file)
+        if(!nodeHandle_.getParam("config_file", config_file)) {throw std::runtime_error("Could not retrieve ROS config_file param");}
     }
-    catch(const std::exception& e)
+    catch(const std::runtime_error e)
     {
-        std::cerr << e.what() << '\n';
+        ROS_ERROR(e.what());
+        exit(EXIT_FAILURE);
     }
-    
-    if (!nodeHandle_.getParam("imu_topic", imu_topic_));
+    try
+    {
+        std:: cout << config_file << std::endl;
+        config_stewart = YAML::LoadFile(config_file);
+    }
+    catch(std::exception &e)
+    {
+        ROS_ERROR(e.what());
+        exit(EXIT_FAILURE);
+    }
+    A = Eigen::Map<Eigen::Matrix<double, 6, 3, Eigen::RowMajor>>(config_stewart["size"]["A"].as<std::vector<double>>().data());
+    B = Eigen::Map<Eigen::Matrix<double, 6, 3, Eigen::RowMajor>>(config_stewart["size"]["B"].as<std::vector<double>>().data());
 
-    config_transforms_ = YAML::LoadFile(config_path_);
-
+    std::cout << A << std::endl;
 }
 
 double Stewart::get_force_feedback(int id)

@@ -557,6 +557,9 @@ tf_DIR:PATH=/opt/ros/noetic/share/tf/cmake
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/noetic/share/xmlrpcpp/cmake
 
+//The directory containing a CMake configuration file for yaml-cpp.
+yaml-cpp_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/yaml-cpp
+
 
 ########################
 # INTERNAL cache entries

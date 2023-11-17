@@ -130,6 +130,7 @@ stewart_node_EXTERNAL_OBJECTS =
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: /usr/lib/x86_64-linux-gnu/libyaml-cpp.so.0.6.2
 /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node: stewart_controller/CMakeFiles/stewart_node.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/fpo/side_projects/Stewart/controller_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /home/fpo/side_projects/Stewart/controller_ws/devel/lib/stewart_controller/stewart_node"
 	cd /home/fpo/side_projects/Stewart/controller_ws/build/stewart_controller && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/stewart_node.dir/link.txt --verbose=$(VERBOSE)

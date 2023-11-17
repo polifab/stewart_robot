@@ -29,15 +29,15 @@ int main(int argc, char **argv) {
         // Process sensor data here.
         //std::cout << stewart_controller->get_force_feedback(1) << std::endl;
         //stewart_controller->set_piston_pos(5,0.4); 
-        std::cout << std::endl;
-        std::cout << "------------------------------------------------------------------------------------------" << std::endl;
-        std::cout << "gps_piston_0: " << gps0->getValues()[0] << " " << gps0->getValues()[1] << " " << gps0->getValues()[2] << std::endl;
-        std::cout << "gps_piston_1: " << gps1->getValues()[0] << " " << gps1->getValues()[1] << " " << gps1->getValues()[2] << std::endl;
-        std::cout << "gps_piston_2: " << gps2->getValues()[0] << " " << gps2->getValues()[1] << " " << gps2->getValues()[2] << std::endl;
-        std::cout << "gps_piston_3: " << gps3->getValues()[0] << " " << gps3->getValues()[1] << " " << gps3->getValues()[2] << std::endl;
-        std::cout << "gps_piston_4: " << gps4->getValues()[0] << " " << gps4->getValues()[1] << " " << gps4->getValues()[2] << std::endl;
-        std::cout << "gps_piston_05: " << gps5->getValues()[0] << " " << gps5->getValues()[1] << " " << gps5->getValues()[2] << std::endl;
-        std::cout << "------------------------------------------------------------------------------------------" << std::endl;
+        // std::cout << std::endl;
+        // std::cout << "------------------------------------------------------------------------------------------" << std::endl;
+        // std::cout << "gps_piston_0: " << gps0->getValues()[0] << " " << gps0->getValues()[1] << " " << gps0->getValues()[2] << std::endl;
+        // std::cout << "gps_piston_1: " << gps1->getValues()[0] << " " << gps1->getValues()[1] << " " << gps1->getValues()[2] << std::endl;
+        // std::cout << "gps_piston_2: " << gps2->getValues()[0] << " " << gps2->getValues()[1] << " " << gps2->getValues()[2] << std::endl;
+        // std::cout << "gps_piston_3: " << gps3->getValues()[0] << " " << gps3->getValues()[1] << " " << gps3->getValues()[2] << std::endl;
+        // std::cout << "gps_piston_4: " << gps4->getValues()[0] << " " << gps4->getValues()[1] << " " << gps4->getValues()[2] << std::endl;
+        // std::cout << "gps_piston_05: " << gps5->getValues()[0] << " " << gps5->getValues()[1] << " " << gps5->getValues()[2] << std::endl;
+        // std::cout << "------------------------------------------------------------------------------------------" << std::endl;
 
         //std::cout << stewart_controller->getUrdf("") << std::endl;
         // Enter here functions to send actuator commands, like:
