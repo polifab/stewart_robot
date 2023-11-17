@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
     GPS * gps_upp_plat = new GPS("upp_platform_pos");
     gps_upp_plat->enable(100);
 
-    GPS * att_upp_plat = new GPS("upp_platform_att");
+    InertialUnit * att_upp_plat = new InertialUnit("upp_platform_att");
     att_upp_plat->enable(100);
 
     GPS * ang_vel_upp_plat = new GPS("upp_platform_ang_vel");
@@ -34,9 +34,11 @@ int main(int argc, char **argv) {
     gps4->enable(100);
     GPS * gps5 = new GPS("gps_piston_5");
     gps5->enable(100);
+
     std::vector<double> setpoint = {0,0,2.2,20*3.14/180,0,0};
 
     Eigen::VectorXd ls = stewart_controller->inverse_kinematics(setpoint);
+    geometry_msgs::Pose base_pose;
     while (stewart_controller->step(timeStep) != -1) {
         // Read the sensors:
         // Enter here functions to read sensor data, like:
@@ -47,23 +49,27 @@ int main(int argc, char **argv) {
         //stewart_controller->set_piston_pos(5,0.4); 
         // std::cout << std::endl;
         // std::cout << "------------------------------------------------------------------------------------------" << std::endl;
-        std::cout << "base_pos: " << gps_upp_plat->getValues()[0] << " " << gps_upp_plat->getValues()[1] << " " << gps_upp_plat->getValues()[2] << std::endl;
+        base_pose.position.x = gps_upp_plat->getValues()[0];
+        base_pose.position.y = gps_upp_plat->getValues()[1];
+        base_pose.position.z = gps_upp_plat->getValues()[2];
+        base_pose.orientation.x = att_upp_plat->getQuaternion()[0];
+        base_pose.orientation.y = att_upp_plat->getQuaternion()[1];
+        base_pose.orientation.z = att_upp_plat->getQuaternion()[2];
+        base_pose.orientation.w = att_upp_plat->getQuaternion()[3];
+
+        stewart_controller->pose_pub.publish(base_pose);
+
         // std::cout << "gps_piston_1: " << gps1->getValues()[0] << " " << gps1->getValues()[1] << " " << gps1->getValues()[2] << std::endl;
         // std::cout << "gps_piston_2: " << gps2->getValues()[0] << " " << gps2->getValues()[1] << " " << gps2->getValues()[2] << std::endl;
         // std::cout << "gps_piston_3: " << gps3->getValues()[0] << " " << gps3->getValues()[1] << " " << gps3->getValues()[2] << std::endl;
         // std::cout << "gps_piston_4: " << gps4->getValues()[0] << " " << gps4->getValues()[1] << " " << gps4->getValues()[2] << std::endl;
         // std::cout << "gps_piston_05: " << gps5->getValues()[0] << " " << gps5->getValues()[1] << " " << gps5->getValues()[2] << std::endl;
         // std::cout << "------------------------------------------------------------------------------------------" << std::endl;
-        stewart_controller->set_piston_pos(0, (2.92 - ls(0)));
-        stewart_controller->set_piston_pos(1, (2.92 - ls(1)));
-        stewart_controller->set_piston_pos(2, (2.92 - ls(2)));
-        stewart_controller->set_piston_pos(3, (2.92 - ls(3)));
-        stewart_controller->set_piston_pos(4, (2.92 - ls(4)));
-        stewart_controller->set_piston_pos(5, (2.92 - ls(5)));
-        std::cout << "iteration..." << std::endl;
+        stewart_controller->reach_setpoint();
         //std::cout << stewart_controller->getUrdf("") << std::endl;
         // Enter here functions to send actuator commands, like:
         //  motor->setPosition(10.0);
+        ros::spinOnce();
     };
 
     // Enter here exit cleanup code.

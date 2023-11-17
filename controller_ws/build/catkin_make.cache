@@ -1,2 +1,0 @@
-stewart_controller
--DCATKIN_DEVEL_PREFIX=/home/fpo/side_projects/Stewart/controller_ws/devel -DCMAKE_INSTALL_PREFIX=/home/fpo/side_projects/Stewart/controller_ws/install -G Unix Makefiles
