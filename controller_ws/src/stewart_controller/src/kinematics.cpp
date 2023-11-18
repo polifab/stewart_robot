@@ -41,11 +41,9 @@ MatrixXd Stewart::inverse_jacobian(VectorXd base_pose)
 
 MatrixXd Stewart::inv_J_1(MatrixXd n, VectorXd orientation)
 {
-    std::cout << "son J_1" << std::endl;
 
     MatrixXd inv_J_1 = MatrixXd::Zero(6,6);
     inv_J_1.topLeftCorner(6,3) = n;
-    std::cout << "son J_1" << std::endl;
 
     Matrix3d m;
     MatrixXd buffer = MatrixXd::Zero(6,3);
@@ -53,7 +51,6 @@ MatrixXd Stewart::inv_J_1(MatrixXd n, VectorXd orientation)
     m = AngleAxisd(orientation(0), Vector3d::UnitX())
         * AngleAxisd(orientation(1), Vector3d::UnitY())
         * AngleAxisd(orientation(2), Vector3d::UnitZ());
-    std::cout << "son J_1" << std::endl;
 
     for(int i = 0; i < NUM_PISTONS; i++){
         Vector3d a_iP(A(i,0), A(i,1), A(i,2));
@@ -63,30 +60,23 @@ MatrixXd Stewart::inv_J_1(MatrixXd n, VectorXd orientation)
         buffer.row(i) = cross_product;
 
     }
-    std::cout << "son J_1 " << inv_J_1.rightCols(3) << std::endl;
-
     inv_J_1.rightCols(3) = buffer;
-    std::cout << "son J_1" << std::endl;
 
     return inv_J_1;
 }
 
 MatrixXd Stewart::inv_J_2(VectorXd orientation)
 {
-    std::cout << "son J_2" << std::endl;
 
     MatrixXd inv_J_2 = MatrixXd::Zero(6,6);
     inv_J_2.topLeftCorner(3,3) = Eigen::Matrix3d::Identity();
-    std::cout << "son J_2" << std::endl;
 
     double phi   = orientation(0);
     double theta = orientation(1);
-    std::cout << "son J_2" << std::endl;
 
-    inv_J_2.bottomRightCorner(3,3) << 0, std::cos(phi), std::sin(phi)*std::cos(theta),
+    inv_J_2.bottomRightCorner(3,3) << 0, std::cos(phi),  std::sin(phi)*std::cos(theta),
                                       0, std::sin(phi), -std::cos(phi)*std::sin(theta),
                                       0,             0,                std::cos(theta);
-    std::cout << "son J_2" << std::endl;
 
     return inv_J_2;
 }

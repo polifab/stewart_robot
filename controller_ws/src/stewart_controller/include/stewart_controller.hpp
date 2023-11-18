@@ -10,6 +10,8 @@
 
 #include <ros/ros.h>
 #include <geometry_msgs/Pose.h>
+#include <geometry_msgs/Twist.h>
+
 #include <Eigen/Dense>
 #include <yaml-cpp/yaml.h>
 
@@ -25,7 +27,8 @@ class Stewart : public Robot{
         void reach_setpoint();
         VectorXd trapezoidal_trajectory(std::vector<double> qi, std::vector<double> qf, double q_dot_c, double tf, double time);
         MatrixXd inverse_jacobian(VectorXd base_pose);
-
+        void set_piston_vel(int id, double vel);
+        VectorXd setpoint_vel;
         ros::Publisher pose_pub;
 
     private:
@@ -34,10 +37,12 @@ class Stewart : public Robot{
         MatrixXd A;
         YAML::Node config_stewart;
         ros::Subscriber setpoint_sub;
-        
+        ros::Subscriber setpoint_vel_sub;
+
         VectorXd setpoint;
         MatrixXd inv_J_1(MatrixXd n, VectorXd orientation);
         MatrixXd inv_J_2(VectorXd orientation);
         void setpoint_callback(const geometry_msgs::Pose& msg);
+        void setpoint_vel_callback(const geometry_msgs::Twist& msg);
 
 };

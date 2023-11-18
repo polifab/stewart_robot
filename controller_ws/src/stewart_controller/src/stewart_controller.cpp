@@ -36,10 +36,12 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     B = Eigen::Map<Eigen::Matrix<double, 6, 3, Eigen::RowMajor>>(config_stewart["size"]["B"].as<std::vector<double>>().data());
 
     setpoint_sub = nodeHandle_.subscribe("pose_setpoint", 1, &Stewart::setpoint_callback, this);
+    setpoint_vel_sub = nodeHandle_.subscribe("vel_setpoint", 1, &Stewart::setpoint_vel_callback, this);
+
     pose_pub = nodeHandle_.advertise<geometry_msgs::Pose>("pose_base",1);
     setpoint = Eigen::VectorXd::Zero(6);
     setpoint(2) = 2.2;
-
+    setpoint_vel = Eigen::VectorXd::Zero(6);
     //std::cout << A << std::endl;
 }
 
@@ -68,6 +70,24 @@ void Stewart::setpoint_callback(const geometry_msgs::Pose& msg)
 
     std::cout << "callback" << std::endl;
 }
+
+void Stewart::setpoint_vel_callback(const geometry_msgs::Twist& msg)
+{
+    setpoint_vel(0) = msg.linear.x;
+    setpoint_vel(1) = msg.linear.y;
+    setpoint_vel(2) = msg.linear.z;
+    setpoint_vel(3) = msg.angular.x;
+    setpoint_vel(4) = msg.angular.y;
+    setpoint_vel(5) = msg.angular.z;
+}
+
+
+void Stewart::set_piston_vel(int id, double vel)
+{
+    pistons_.at(id)->setPosition(std::numeric_limits<double>::infinity());
+    pistons_.at(id)->setVelocity(vel);
+}
+
 
 void Stewart::reach_setpoint()
 {
