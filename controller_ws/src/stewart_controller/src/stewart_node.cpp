@@ -1,6 +1,7 @@
 #include <stewart_controller.hpp>
 
 using namespace webots;
+using namespace Eigen;
 
 int main(int argc, char **argv) {
     // create the Robot instance.
@@ -35,9 +36,20 @@ int main(int argc, char **argv) {
     GPS * gps5 = new GPS("gps_piston_5");
     gps5->enable(100);
 
-    std::vector<double> setpoint = {0,0,2.2,20*3.14/180,0,0};
+    std::cout << "son qui" << std::endl;
+    Eigen::VectorXd q_dot(6);
+    q_dot << 0, 0.5, 0.0, 0, 0, 0;
+    std::cout << "son qui" << std::endl;
 
-    Eigen::VectorXd ls = stewart_controller->inverse_kinematics(setpoint);
+    Eigen::VectorXd base_pose_eig(6);
+    base_pose_eig << 0, 0, 2.2, 0, 0, 0;
+    std::cout << "son qui" << std::endl;
+
+
+    std::cout << stewart_controller->inverse_jacobian(base_pose_eig)*q_dot << std::endl;
+    std::cout << "son qui" << std::endl;
+
+    // Eigen::VectorXd ls = stewart_controller->inverse_kinematics(setpoint);
     geometry_msgs::Pose base_pose;
     while (stewart_controller->step(timeStep) != -1) {
         // Read the sensors:

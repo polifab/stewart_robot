@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(stewart_controller)
-SET(GCC_COMPILE_FLAGS "-Wall -fexceptions -Wextra -std=c++14  -pedantic")
+SET(GCC_COMPILE_FLAGS "-Wall -fexceptions -Wextra -std=c++17  -pedantic")
 add_definitions(${GCC_COMPILE_FLAGS})
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
