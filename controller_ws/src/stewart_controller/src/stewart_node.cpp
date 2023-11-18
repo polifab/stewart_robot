@@ -59,18 +59,38 @@ int main(int argc, char **argv) {
         base_pose.orientation.y = att_upp_plat->getQuaternion()[1];
         base_pose.orientation.z = att_upp_plat->getQuaternion()[2];
         base_pose.orientation.w = att_upp_plat->getQuaternion()[3];
-
         stewart_controller->pose_pub.publish(base_pose);
 
         Eigen::Quaterniond q(base_pose.orientation.w, base_pose.orientation.x, base_pose.orientation.y, base_pose.orientation.z);
+        q.normalize();
+        std::cout << "W: " << q.w() << std::endl;
+
         auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
-        Eigen::VectorXd base_pose_eig(6);
-        base_pose_eig << base_pose.position.x, base_pose.position.y, base_pose.position.z, euler.x(), euler.y(), euler.z();
+        q = AngleAxisd(euler.x(), Vector3d::UnitX())
+            * AngleAxisd(euler.y(), Vector3d::UnitY())
+            * AngleAxisd(euler.z(), Vector3d::UnitZ());
+        std::cout << "W: " << q.w() << std::endl;
+
+        // m = AngleAxisd(setpoint(3), Vector3d::UnitX())
+        //     * AngleAxisd(setpoint(4), Vector3d::UnitY())
+        //     * AngleAxisd(setpoint(5), Vector3d::UnitZ());
+        Eigen::VectorXd base_pose_eig(7);
+        if(std::isnan(base_pose.position.x)) base_pose.position.x = 0;
+        if(std::isnan(base_pose.position.y)) base_pose.position.y = 0;
+        if(std::isnan(base_pose.position.z)) base_pose.position.z = 0;
+
+        base_pose_eig << base_pose.position.x, base_pose.position.y, base_pose.position.z, q.w(), q.x(), q.y(), q.z();
+
+        // std::cout << "Base pose: " << base_pose_eig << std::endl;
+        std::cout << "son qui" << std::endl;
+        std::cout << "Jacobian: " << stewart_controller->inverse_jacobian(base_pose_eig) << std::endl;
 
         joints_vel = stewart_controller->inverse_jacobian(base_pose_eig)*stewart_controller->setpoint_vel;
+        std::cout << "son qui" << std::endl;
+
         std::cout << "Jacobian: " << stewart_controller->inverse_jacobian(base_pose_eig) << std::endl;
-        std::cout << "Setpoint: " << stewart_controller->setpoint_vel << std::endl;
-        std::cout << "joints vel: " << joints_vel << std::endl;
+        // std::cout << "Setpoint: " << stewart_controller->setpoint_vel << std::endl;
+        // std::cout << "joints vel: " << joints_vel << std::endl;
 
         for(int i = 0; i < NUM_PISTONS; i++){
             stewart_controller->set_piston_vel(i, joints_vel(i));

@@ -39,9 +39,12 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     setpoint_vel_sub = nodeHandle_.subscribe("vel_setpoint", 1, &Stewart::setpoint_vel_callback, this);
 
     pose_pub = nodeHandle_.advertise<geometry_msgs::Pose>("pose_base",1);
-    setpoint = Eigen::VectorXd::Zero(6);
+    setpoint = Eigen::VectorXd::Zero(7);
     setpoint(2) = 2.2;
-    setpoint_vel = Eigen::VectorXd::Zero(6);
+    setpoint(3) = 1;
+    setpoint_vel = Eigen::VectorXd::Zero(7);
+    setpoint_vel(3) = 1;
+
     //std::cout << A << std::endl;
 }
 

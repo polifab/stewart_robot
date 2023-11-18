@@ -40,8 +40,8 @@ class Stewart : public Robot{
         ros::Subscriber setpoint_vel_sub;
 
         VectorXd setpoint;
-        MatrixXd inv_J_1(MatrixXd n, VectorXd orientation);
-        MatrixXd inv_J_2(VectorXd orientation);
+        MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
+        MatrixXd inv_J_2(Quaterniond q);
         void setpoint_callback(const geometry_msgs::Pose& msg);
         void setpoint_vel_callback(const geometry_msgs::Twist& msg);
 
