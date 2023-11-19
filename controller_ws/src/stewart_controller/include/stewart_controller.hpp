@@ -5,6 +5,9 @@
 // All the webots classes are defined in the "webots" namespace
 #include <webots/GPS.hpp>
 #include <webots/InertialUnit.hpp>
+#include <webots/Gyro.hpp>
+#include <webots/Accelerometer.hpp>
+
 
 #include <macros.hpp>
 
@@ -28,6 +31,9 @@ class Stewart : public Robot{
         VectorXd trapezoidal_trajectory(std::vector<double> qi, std::vector<double> qf, double q_dot_c, double tf, double time);
         MatrixXd inverse_jacobian(VectorXd base_pose);
         void set_piston_vel(int id, double vel);
+        Eigen::VectorXd get_base_pose();
+        Eigen::Matrix4d skew_matrix(Vector3d v);
+
         VectorXd setpoint_vel;
         ros::Publisher pose_pub;
 
@@ -39,7 +45,16 @@ class Stewart : public Robot{
         ros::Subscriber setpoint_sub;
         ros::Subscriber setpoint_vel_sub;
 
+        GPS * gps_upp_plat;
+        InertialUnit * att_upp_plat;
+        Gyro * ang_vel_upp_plat;
+        Accelerometer * acc_upp_plat;
+
+        void enable_devices();
+
         VectorXd setpoint;
+        VectorXd base_pose;
+
         MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
         MatrixXd inv_J_2(Quaterniond q);
         void setpoint_callback(const geometry_msgs::Pose& msg);
