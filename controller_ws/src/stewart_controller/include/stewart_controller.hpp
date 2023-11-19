@@ -55,6 +55,7 @@ class Stewart : public Robot{
         MatrixXd B;
         MatrixXd A;
         YAML::Node config_stewart;
+        ros::Publisher pose_cmd_pub;
         ros::Subscriber setpoint_sub;
         ros::Subscriber setpoint_vel_sub;
 

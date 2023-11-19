@@ -45,6 +45,7 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
 
     pose_pub = nodeHandle_.advertise<geometry_msgs::Pose>("pose_base",1);
     pose_vel_pub = nodeHandle_.advertise<geometry_msgs::Twist>("pose_vel",1);
+    pose_cmd_pub = nodeHandle_.advertise<geometry_msgs::Twist>("cmd_vel",1);
 
     base_pose_ = VectorXd::Zero(7);
     base_pose_(3) = 1;
@@ -210,7 +211,7 @@ void Stewart::set_target_vel()
 
     joints_vel = inverse_jacobian(pose)*w_new;
     for(int i = 0; i < NUM_PISTONS; i++){
-        set_piston_vel(i, -joints_vel(i));
+        set_piston_vel(i, joints_vel(i));
     }
 
 }
@@ -225,12 +226,8 @@ void Stewart::set_target_vel(Eigen::VectorXd target)
     VectorXd pose = get_base_pose();
     get_base_vel();
 
-
-    std::cout << "Piston pos: " << pistons_pos_.at(0)->getValue() << std::endl;
     Eigen::Matrix4d m_w = skew_matrix(velocity.tail(3));
-
     Eigen::VectorXd q_dot = (m_w*pose.tail(4));
-
     Eigen::VectorXd w_new(7);
     w_new << velocity(0), velocity(1), velocity(2), q_dot(0), q_dot(1), q_dot(2), q_dot(3);
 
@@ -244,9 +241,9 @@ void Stewart::set_target_vel(Eigen::VectorXd target)
 double Stewart::trapezoidal_target(double qi, double qf, double time, bool angular = false)
 {
 
-    double ang_coeff = 0.5;
-    double max_speed = 0.3;
+    double ang_coeff = 0.2;
 
+    double max_speed = 0.05;
     double q_diff = qf - qi;
 
     bool singularity = false;
@@ -261,7 +258,6 @@ double Stewart::trapezoidal_target(double qi, double qf, double time, bool angul
         max_speed = std::sqrt(ang_coeff*std::abs(q_diff));
     }
     double target = 0;    
-
     if(q_diff > 0){
         if(time < t_c1){
             target = ang_coeff*time;
@@ -285,6 +281,8 @@ double Stewart::trapezoidal_target(double qi, double qf, double time, bool angul
     } else {
         target = 0;
     }
+    std::cout << "Q_f " << qf << " Q_i: " << qi << " t_f " << t_f << " Target: " << target << std::endl; 
+
     return target;
 }
 
@@ -296,7 +294,15 @@ bool Stewart::trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time)
         target(i) = trapezoidal_target(qi(i), qf(i), time);
     }
     set_target_vel(target);
+    geometry_msgs::Twist cmd_vel;
+    cmd_vel.linear.x = target(0);
+    cmd_vel.linear.y = target(1);
+    cmd_vel.linear.z = target(2);
+    cmd_vel.angular.x = target(3);
+    cmd_vel.angular.y = target(4);
+    cmd_vel.angular.z = target(5);
 
+    pose_cmd_pub.publish(cmd_vel);
     std::cout << "Target: " << target << " Qf: " << qf << "Qi: " << qi <<std::endl;
 }
 
