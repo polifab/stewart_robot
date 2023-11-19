@@ -42,10 +42,10 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     setpoint = Eigen::VectorXd::Zero(7);
     setpoint(2) = 2.2;
     setpoint(3) = 1;
-    setpoint_vel = Eigen::VectorXd::Zero(7);
-    setpoint_vel(3) = 1;
+    setpoint_vel = Eigen::VectorXd::Zero(6);
+    //setpoint_vel(3) = 1;
 
-    //std::cout << A << std::endl;
+    ////std::cout << A << std::endl;
 }
 
 double Stewart::get_force_feedback(int id)
@@ -71,7 +71,7 @@ void Stewart::setpoint_callback(const geometry_msgs::Pose& msg)
     setpoint(4) = euler.y();
     setpoint(5) = euler.z();
 
-    std::cout << "callback" << std::endl;
+    //std::cout << "callback" << std::endl;
 }
 
 void Stewart::setpoint_vel_callback(const geometry_msgs::Twist& msg)
@@ -98,7 +98,7 @@ void Stewart::reach_setpoint()
     auto [joints_pos, n] = inverse_kinematics(setpoint);
     for(int i = 0; i < NUM_PISTONS; i++){
         set_piston_pos(i, 2.92 - joints_pos(i));
-        // std::cout << "Reaching setpoint.." << std::endl;
+        // //std::cout << "Reaching setpoint.." << std::endl;
     }
 }
 

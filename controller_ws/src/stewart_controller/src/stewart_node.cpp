@@ -85,7 +85,25 @@ int main(int argc, char **argv) {
         std::cout << "son qui" << std::endl;
         std::cout << "Jacobian: " << stewart_controller->inverse_jacobian(base_pose_eig) << std::endl;
 
-        joints_vel = stewart_controller->inverse_jacobian(base_pose_eig)*stewart_controller->setpoint_vel;
+
+        Eigen::Matrix4d m_w;
+        Eigen::VectorXd w = stewart_controller->setpoint_vel;
+        m_w << 0, -w(3), -w(4), -w(5),
+               w(3),  0,  w(5), -w(4),
+               w(4), -w(5), 0, w(3),
+               w(5), w(4), -w(3), 0;
+
+        Eigen::VectorXd q_vec(4);
+        q_vec << q.w(), q.x(), q.y(), q.z();
+        std::cout << "Pre new mult" << std::endl;
+        Eigen::VectorXd q_dot = (m_w*q_vec)*0.5;
+        std::cout << "Pre new mult" << std::endl;
+
+        Eigen::VectorXd w_new(7);
+        w_new << w(0), w(1), w(2), q_dot(0), q_dot(1), q_dot(2), q_dot(3);
+        std::cout << "Pre new mult: " << w_new.rows() << ", " << w_new.cols() << std::endl;
+
+        joints_vel = stewart_controller->inverse_jacobian(base_pose_eig)*w_new;
         std::cout << "son qui" << std::endl;
 
         std::cout << "Jacobian: " << stewart_controller->inverse_jacobian(base_pose_eig) << std::endl;

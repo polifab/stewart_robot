@@ -15,7 +15,7 @@ std::tuple<VectorXd, MatrixXd> Stewart::inverse_kinematics(VectorXd setpoint)
 
     Quaterniond q(setpoint(3), setpoint(4), setpoint(5), setpoint(6));
     Matrix3d m = q.toRotationMatrix();
-    std::cout<< "INVERSE M: " << m << std::endl;
+    //std::cout<< "INVERSE M: " << m << std::endl;
     // m = AngleAxisd(setpoint(3), Vector3d::UnitX())
     //     * AngleAxisd(setpoint(4), Vector3d::UnitY())
     //     * AngleAxisd(setpoint(5), Vector3d::UnitZ());
@@ -23,24 +23,24 @@ std::tuple<VectorXd, MatrixXd> Stewart::inverse_kinematics(VectorXd setpoint)
     for(int i = 0; i < NUM_PISTONS; i++){
         Vector3d a_iP(A(i,0), A(i,1), A(i,2));
         Vector3d b_iP(B(i,0), B(i,1), B(i,2));
-        std::cout<< "INVERSE aip: " << a_iP << std::endl;
+        //std::cout<< "INVERSE aip: " << a_iP << std::endl;
 
         Vector3d product = m * a_iP;
-    std::cout<< "INVERSE product: " << product << std::endl;
+    //std::cout<< "INVERSE product: " << product << std::endl;
 
         
         a_i = x + product;
-        std::cout << "INVERSE x " << x << std::endl;
-    std::cout<< "INVERSE a_i: " << a_i << std::endl;
+        //std::cout << "INVERSE x " << x << std::endl;
+    //std::cout<< "INVERSE a_i: " << a_i << std::endl;
 
         L_i = a_i - b_iP;
-    std::cout<< "INVERSE L_i: " << L_i << std::endl;
+    //std::cout<< "INVERSE L_i: " << L_i << std::endl;
 
         l(i) = L_i.norm();
         n.row(i) = L_i/l(i);
     }
-    std::cout << "INVERSE l " << l << std::endl;
-    std::cout << "INVERSE n " << n << std::endl;
+    //std::cout << "INVERSE l " << l << std::endl;
+    //std::cout << "INVERSE n " << n << std::endl;
 
     return {l, n};
 }
@@ -48,10 +48,10 @@ std::tuple<VectorXd, MatrixXd> Stewart::inverse_kinematics(VectorXd setpoint)
 
 MatrixXd Stewart::inverse_jacobian(VectorXd base_pose)
 {
-    std::cout << "son qui inverse " << base_pose << std::endl;
+    //std::cout << "son qui inverse " << base_pose << std::endl;
 
     auto [l, n] = inverse_kinematics(base_pose);
-    std::cout << "son qui inverse" << std::endl;
+    //std::cout << "son qui inverse" << std::endl;
 
     return inv_J_1(n, Quaterniond(base_pose(3), base_pose(4), base_pose(5), base_pose(6)))*inv_J_2(Quaterniond(base_pose(3), base_pose(4), base_pose(5), base_pose(6)));
 }
@@ -66,22 +66,22 @@ MatrixXd Stewart::inv_J_1(MatrixXd n, Quaterniond q)
     std:: cout << "M: " << m << std::endl;
 
     MatrixXd buffer = MatrixXd::Zero(6,3);
-    // std::cout << "Orientation: " << orientation << std::endl;
-    std::cout << "son qui J1!" << std::endl;
+    // //std::cout << "Orientation: " << orientation << std::endl;
+    //std::cout << "son qui J1!" << std::endl;
     for(int i = 0; i < NUM_PISTONS; i++){
         Vector3d a_iP(A(i,0), A(i,1), A(i,2));
-        std::cout << "son qui J1 for 1!" << std::endl;
+        //std::cout << "son qui J1 for 1!" << std::endl;
         Vector3d n_i(n(i,0), n(i,1), n(i,2));
-        std::cout << "son qui J1 for 2!" << std::endl;
+        //std::cout << "son qui J1 for 2!" << std::endl;
         Vector3d product = m * a_iP;
-        std::cout << "son qui J1 for 3!" << std::endl;
+        //std::cout << "son qui J1 for 3!" << std::endl;
         Vector3d cross_product = product.cross(n_i.transpose());
-        std::cout << "son qui J1 for 4!" << std::endl;
+        //std::cout << "son qui J1 for 4!" << std::endl;
         buffer.row(i) = cross_product;
     }
     inv_J_1.rightCols(3) = buffer;
 
-    std::cout << "Inv J 1: " << inv_J_1 << std::endl;
+    //std::cout << "Inv J 1: " << inv_J_1 << std::endl;
     return inv_J_1;
 }
 
@@ -90,7 +90,7 @@ MatrixXd Stewart::inv_J_2(Quaterniond q)
 
     MatrixXd inv_J_2 = MatrixXd::Zero(6,7);
     inv_J_2.topLeftCorner(3,3) = Eigen::Matrix3d::Identity();
-    std::cout << "son qui J2 " << q.w() << " " << q.x() << " " << q.y() << " " << q.z() << std::endl;
+    //std::cout << "son qui J2 " << q.w() << " " << q.x() << " " << q.y() << " " << q.z() << std::endl;
     // double phi   = orientation(0);
     // double theta = orientation(1);
     // inv_J_2.bottomRightCorner(3,3) << 0, std::cos(phi),  std::sin(phi)*std::sin(theta),
@@ -101,8 +101,8 @@ MatrixXd Stewart::inv_J_2(Quaterniond q)
                                       -q.y(),  q.z(),  q.w(), -q.x(),
                                       -q.z(), -q.y(),  q.x(),  q.w();
 
-    // std::cout << "Inv J 2: " << inv_J_2.determinant() << std::endl;
-    std::cout << "Inv J 2: " << inv_J_2 << std::endl;
+    // //std::cout << "Inv J 2: " << inv_J_2.determinant() << std::endl;
+    //std::cout << "Inv J 2: " << inv_J_2 << std::endl;
 
     return inv_J_2;
 }
