@@ -16,14 +16,25 @@ int main(int argc, char **argv) {
     Eigen::VectorXd qf;
     double time;
     bool init = false;
+    int counter = 0;
     while (stewart_controller->step(timeStep) != -1) {
+        if(counter < 1000){
+            counter += 1;
+            stewart_controller->get_base_pose();
+            stewart_controller->get_base_vel();
+            continue;
+        }
         //stewart_controller->set_target_vel();
         if(init == false){
-           qi = stewart_controller->get_base_pose();
-           qf = stewart_controller->get_base_pose();
-           qf(0) = qf(0) + 0.5;
-           time = stewart_controller->getTime();
-           init = true;
+            qi = stewart_controller->get_base_pose();
+
+            Eigen::Quaterniond q(qi(3), qi(4), qi(5), qi(6));
+            auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
+            qi.tail(4) << euler.x(), euler.y(), euler.z(), 0;
+            qf = stewart_controller->get_base_pose();
+            qf.tail(4)  << 0.4, 0.0, 0.0, 0;
+            time = stewart_controller->getTime();
+            init = true;
         }
         stewart_controller->trapezoidal_trajectory(qi, qf, stewart_controller->getTime() - time);
         stewart_controller->get_base_pose();

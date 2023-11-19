@@ -39,6 +39,7 @@ class Stewart : public Robot{
         void set_target_vel(Eigen::VectorXd target);
         VectorXd get_base_pose();
         VectorXd get_base_vel();
+        double trapezoidal_target(double qi, double qf, double time, bool angular);
 
         Eigen::Matrix4d skew_matrix(Vector3d v);
 

@@ -241,78 +241,63 @@ void Stewart::set_target_vel(Eigen::VectorXd target)
 
 }
 
-double trapezoidal_target(double qi, double qf, double time, bool angular = false)
+double Stewart::trapezoidal_target(double qi, double qf, double time, bool angular = false)
 {
 
-    double ang_coeff = 0.15;
+    double ang_coeff = 0.5;
     double max_speed = 0.3;
 
-    VectorXd q_diff = qf - qi;
+    double q_diff = qf - qi;
 
     bool singularity = false;
     double t_f = (std::abs(q_diff) + (std::pow(max_speed,2))/ang_coeff)/max_speed;
     double t_c1 = max_speed/ang_coeff;
     double t_c2 = t_f - max_speed/ang_coeff;
-    std::cout << "TIME: " << time << "t_f: " << t_f << std::endl;
     if(t_c1 > t_f/2.0) singularity = true;
     if(singularity){
-        t_f = 2*std::abs(q_diff)/std::sqrt(ang_coeff*std::abs(qf(0)));
+        t_f = 2*std::abs(q_diff)/std::sqrt(ang_coeff*std::abs(qf));
         t_c1 = t_f/2;
         t_c2 = t_f/2;
         max_speed = std::sqrt(ang_coeff*std::abs(q_diff));
     }
-    VectorXd target = VectorXd::Zero(6);    
+    double target = 0;    
 
-    if(qf(0) > 0){
+    if(q_diff > 0){
         if(time < t_c1){
-            target(0) = ang_coeff*time;
+            target = ang_coeff*time;
         } else if (time >= t_c1 && time <= t_c2){
-            target(0) = max_speed;
+            target = max_speed;
         } else if (time <= t_f) {
-            target(0) = max_speed - ang_coeff*(time-t_c2);
+            target = max_speed - ang_coeff*(time-t_c2);
         } else {
-            return 0;
+            target = 0;
         }
-        return target;
+    } else if(q_diff < 0) {
+        if(time < t_c1){
+            target = -ang_coeff*time;
+        } else if (time >= t_c1 && time <= t_c2){
+            target = -max_speed;
+        } else if (time <= t_f) {
+            target = -max_speed + ang_coeff*(time-t_c2);
+        } else {
+            target = 0;
+        }
+    } else {
+        target = 0;
     }
-
+    return target;
 }
 
 bool Stewart::trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time)
 {
-
-    double ang_coeff = 0.03;
-    double max_speed = 1.5;
-
-    VectorXd q_diff = qf - qi;
-
-    bool singularity = false;
-    double t_f = (std::abs(qf(0)) + (std::pow(max_speed,2))/ang_coeff)/max_speed;
-    double t_c1 = max_speed/ang_coeff;
-    double t_c2 = t_f - max_speed/ang_coeff;
-    std::cout << "TIME: " << time << "t_f: " << t_f << std::endl;
-    if(t_c1 > t_f/2.0) singularity = true;
-    if(singularity){
-        t_f = 2*std::abs(qf(0))/std::sqrt(ang_coeff*std::abs(qf(0)));
-        t_c1 = t_f/2;
-        t_c2 = t_f/2;
-        max_speed = std::sqrt(ang_coeff*std::abs(qf(0)));
-    }
     VectorXd target = VectorXd::Zero(6);
-    if(qf(0) > 0){
-        if(time < t_c1){
-            target(0) = ang_coeff*time;
-        } else if (time >= t_c1 && time <= t_c2){
-            target(0) = max_speed;
-        } else if (time <= t_f) {
-            target(0) = max_speed - ang_coeff*(time-t_c2);
-        } else {
-            return true;
-        }
-        std::cout << "target: " << target << std::endl;
 
-        set_target_vel(target);
+    for(int i=0; i < NUM_PISTONS; i++){
+        target(i) = trapezoidal_target(qi(i), qf(i), time);
     }
+    set_target_vel(target);
+
+    std::cout << "Target: " << target << " Qf: " << qf << "Qi: " << qi <<std::endl;
 }
 
 
