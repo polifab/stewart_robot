@@ -54,10 +54,13 @@ DEF STEWART_PLATFORM Robot {
               axis 0 0 -1
             }
             device [
+              PositionSensor {
+                name "piston0_pos"
+              }
               LinearMotor {
                 name "piston0"
-                minPosition -3.3
-                maxPosition 3.3
+                minPosition -0.4
+                maxPosition 0.4
                 maxForce 1000
               }
             ]
@@ -216,10 +219,13 @@ DEF STEWART_PLATFORM Robot {
               axis 0 0 -1
             }
             device [
+              PositionSensor {
+                name "piston1_pos"
+              }
               LinearMotor {
                 name "piston1"
-                minPosition -3.3
-                maxPosition 3.3
+                minPosition -0.4
+                maxPosition 0.4
                 maxForce 1000
               }
             ]
@@ -282,10 +288,13 @@ DEF STEWART_PLATFORM Robot {
               axis 0 0 -1
             }
             device [
+              PositionSensor {
+                name "piston2_pos"
+              }
               LinearMotor {
                 name "piston2"
-                minPosition -3.3
-                maxPosition 3.3
+                minPosition -0.4
+                maxPosition 0.4
                 maxForce 1000
               }
             ]
@@ -348,10 +357,13 @@ DEF STEWART_PLATFORM Robot {
               axis 0 0 -1
             }
             device [
+              PositionSensor {
+                name "piston3_pos"
+              }
               LinearMotor {
                 name "piston3"
-                minPosition -3.3
-                maxPosition 3.3
+                minPosition -0.4
+                maxPosition 0.4
                 maxForce 1000
               }
             ]
@@ -414,10 +426,13 @@ DEF STEWART_PLATFORM Robot {
               axis 0 0 -1
             }
             device [
+              PositionSensor {
+                name "piston4_pos"
+              }
               LinearMotor {
                 name "piston4"
-                minPosition -3.3
-                maxPosition 3.3
+                minPosition -0.4
+                maxPosition 0.4
                 maxForce 1000
               }
             ]
@@ -480,10 +495,13 @@ DEF STEWART_PLATFORM Robot {
               axis 0 0 -1
             }
             device [
+              PositionSensor {
+                name "piston5_pos"
+              }
               LinearMotor {
                 name "piston5"
-                minPosition -3.3
-                maxPosition 3.3
+                minPosition -0.4
+                maxPosition 0.4
                 maxForce 1000
               }
             ]

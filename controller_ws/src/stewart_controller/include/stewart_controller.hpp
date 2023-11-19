@@ -18,6 +18,8 @@
 #include <Eigen/Dense>
 #include <yaml-cpp/yaml.h>
 
+#include <webots/PositionSensor.hpp>
+
 using namespace webots;
 using namespace Eigen;
 
@@ -28,17 +30,27 @@ class Stewart : public Robot{
         void set_piston_pos(int id, double pos);
         std::tuple<VectorXd, MatrixXd> inverse_kinematics(VectorXd setpoint);
         void reach_setpoint();
-        VectorXd trapezoidal_trajectory(std::vector<double> qi, std::vector<double> qf, double q_dot_c, double tf, double time);
+        bool trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time);
+
         MatrixXd inverse_jacobian(VectorXd base_pose);
         void set_piston_vel(int id, double vel);
-        Eigen::VectorXd get_base_pose();
+
+        void set_target_vel();
+        void set_target_vel(Eigen::VectorXd target);
+        VectorXd get_base_pose();
+        VectorXd get_base_vel();
+
         Eigen::Matrix4d skew_matrix(Vector3d v);
+
 
         VectorXd setpoint_vel;
         ros::Publisher pose_pub;
+        ros::Publisher pose_vel_pub;
 
     private:
         std::vector<Motor*> pistons_;
+        std::vector<PositionSensor*> pistons_pos_;
+
         MatrixXd B;
         MatrixXd A;
         YAML::Node config_stewart;
@@ -52,8 +64,9 @@ class Stewart : public Robot{
 
         void enable_devices();
 
-        VectorXd setpoint;
-        VectorXd base_pose;
+        VectorXd setpoint_;
+        VectorXd base_pose_;
+        VectorXd base_vel_;
 
         MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
         MatrixXd inv_J_2(Quaterniond q);

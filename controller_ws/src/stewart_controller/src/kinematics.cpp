@@ -42,9 +42,7 @@ MatrixXd Stewart::inv_J_1(MatrixXd n, Quaterniond q)
 
     MatrixXd inv_J_1 = MatrixXd::Zero(6,6);
     inv_J_1.topLeftCorner(6,3) = n;
-    std:: cout << "N: " << n << std::endl;
     Matrix3d m = q.toRotationMatrix();
-    std:: cout << "M: " << m << std::endl;
 
     MatrixXd buffer = MatrixXd::Zero(6,3);
     for(int i = 0; i < NUM_PISTONS; i++){
@@ -83,19 +81,3 @@ Matrix3d R_from_quat(Quaterniond q){
 
     return m;
 }
-// VectorXd Stewart::trapezoidal_trajectory(std::vector<double> qi, std::vector<double> qf, double q_dot_c, double tf, double time)
-// {
-
-//     VectorXd qi_eig(6);
-//     qi_eig << qi.at(0), qi.at(1), qi.at(2), qi.at(3), qi.at(4), qi.at(5);
-//     VectorXd qf_eig(6);
-//     qf_eig << qf.at(0), qf.at(1), qf.at(2), qf.at(3), qf.at(4), qf.at(5);
-//     double norm_q = (qf_eig - qi_eig).norm();
-//     double q_ddot_c = std::pow(q_dot_c,2) / (norm_q + q_dot_c*tf);
-//     double t_c = tf/2 - std::sqrt(((std::pow(tf,2))*q_ddot_c - 4*norm_q)/q_ddot_c);
-
-//     VectorXd qs(6);
-//     if(time <= t_c){
-         
-//     }
-// }
