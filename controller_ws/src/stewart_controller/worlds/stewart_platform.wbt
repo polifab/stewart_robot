@@ -59,6 +59,7 @@ DEF STEWART_PLATFORM Robot {
               }
               LinearMotor {
                 name "piston0"
+                controlPID 20 1 0.01
                 minPosition -0.4
                 maxPosition 0.4
                 maxForce 1000
@@ -224,6 +225,7 @@ DEF STEWART_PLATFORM Robot {
               }
               LinearMotor {
                 name "piston1"
+                controlPID 20 1 0.01
                 minPosition -0.4
                 maxPosition 0.4
                 maxForce 1000
@@ -293,6 +295,7 @@ DEF STEWART_PLATFORM Robot {
               }
               LinearMotor {
                 name "piston2"
+                controlPID 20 1 0.01
                 minPosition -0.4
                 maxPosition 0.4
                 maxForce 1000
@@ -362,6 +365,7 @@ DEF STEWART_PLATFORM Robot {
               }
               LinearMotor {
                 name "piston3"
+                controlPID 20 1 0.01
                 minPosition -0.4
                 maxPosition 0.4
                 maxForce 1000
@@ -431,6 +435,7 @@ DEF STEWART_PLATFORM Robot {
               }
               LinearMotor {
                 name "piston4"
+                controlPID 20 1 0.01
                 minPosition -0.4
                 maxPosition 0.4
                 maxForce 1000
@@ -500,6 +505,7 @@ DEF STEWART_PLATFORM Robot {
               }
               LinearMotor {
                 name "piston5"
+                controlPID 20 1 0.01
                 minPosition -0.4
                 maxPosition 0.4
                 maxForce 1000

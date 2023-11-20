@@ -1,20 +1,23 @@
 <?xml version="1.0"?>
 <launch>
   <!-- start Webots -->
-  <arg name="no_gui" default="false," doc="Start Webots with minimal GUI"/>
-  <include file="$(find stewart_controller)/launch/webots.launch">
-    <arg name="mode" value="realtime"/>
-    <arg name="no_gui" value="$(arg no_gui)"/>
-    <arg name="world" value="$(find stewart_controller)/worlds/stewart_platform.wbt"/>
-  </include>
+    <arg name="no_gui" default="false," doc="Start Webots with minimal GUI"/>
+    <include file="$(find stewart_controller)/launch/webots.launch">
+        <arg name="mode" value="realtime"/>
+        <arg name="no_gui" value="$(arg no_gui)"/>
+        <arg name="world" value="$(find stewart_controller)/worlds/stewart_platform.wbt"/>
+    </include>
 
-  <arg name="auto_close" default="false" doc="Startup mode"/>
-  <node name="stewart_controller_node" pkg="stewart_controller" type="stewart_node" required="$(arg auto_close)" output="screen">
-    <param name="config_file" value="$(find stewart_controller)/config/stewart.yaml"/>
-  </node>
-  <!-- <node name="joy_node" pkg="joy" type="joy_node" output="screen">
-  </node>
-  
-  <include file="$(find joy_teleop)/launch/example.launch"/> -->
+    <arg name="auto_close" default="false" doc="Startup mode"/>
+    <node name="stewart_controller_node" pkg="stewart_controller" type="stewart_node" required="$(arg auto_close)" output="screen">
+        <param name="config_file" value="$(find stewart_controller)/config/stewart.yaml"/>
+        <param name="mode" value="1"/> <!-- 1 - Trapezoid, 2 - Twist, 3 - Pose -->
+        <param name="trapz_acc" value="0.05">
+        <param name="trapz_max_vel" value="0.05">
+    </node>
+
+    <node pkg="joy" name="joystick" type="joy_node" ns="stewart_controller_node">
+            <param name="autorepeat_rate" value="20"/>
+    </node>
 
 </launch>

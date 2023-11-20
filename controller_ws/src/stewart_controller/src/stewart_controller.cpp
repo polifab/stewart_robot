@@ -3,6 +3,12 @@
 using namespace webots;
 using namespace Eigen;
 
+using namespace std::chrono_literals;
+using std::chrono::high_resolution_clock;
+using std::chrono::milliseconds;
+using std::chrono::duration;
+using std::chrono::duration_cast;
+
 Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
 {
 
@@ -17,16 +23,9 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
 
     ros::init(argc, argv, node_name);
     ros::NodeHandle nodeHandle_("~");
+    retrieve_params(nodeHandle_);
+
     std::string config_file;
-    try
-    {
-        if(!nodeHandle_.getParam("config_file", config_file)) {throw std::runtime_error("Could not retrieve ROS config_file param");}
-    }
-    catch(const std::runtime_error e)
-    {
-        ROS_ERROR(e.what());
-        exit(EXIT_FAILURE);
-    }
     try
     {
         //std:: cout << config_file << std::endl;
@@ -39,24 +38,62 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     }
     A = Map<Matrix<double, 6, 3, RowMajor>>(config_stewart["size"]["A"].as<std::vector<double>>().data());
     B = Map<Matrix<double, 6, 3, RowMajor>>(config_stewart["size"]["B"].as<std::vector<double>>().data());
+}
 
-    setpoint_sub = nodeHandle_.subscribe("pose_setpoint", 1, &Stewart::setpoint_callback, this);
-    setpoint_vel_sub = nodeHandle_.subscribe("vel_setpoint", 1, &Stewart::setpoint_vel_callback, this);
-
-    pose_pub = nodeHandle_.advertise<geometry_msgs::Pose>("pose_base",1);
-    pose_vel_pub = nodeHandle_.advertise<geometry_msgs::Twist>("pose_vel",1);
-    pose_cmd_pub = nodeHandle_.advertise<geometry_msgs::Twist>("cmd_vel",1);
-
+void Stewart::init_vectors()
+{   
     base_pose_ = VectorXd::Zero(7);
     base_pose_(3) = 1;
     setpoint_ = VectorXd::Zero(7);
-    setpoint_(2) = 2.2;
+    setpoint_(2) = BASE_Z;
     setpoint_(3) = 1;
     setpoint_vel = VectorXd::Zero(6);
     base_vel_ = VectorXd::Zero(6);
-    //setpoint_vel(3) = 1;
+    target_ = VectorXd::Zero(6);
+    target_(2) = BASE_Z;
+    setpoint_trapz_ = VectorXd::Zero(7);
+}
 
-    ////std::cout << A << std::endl;
+
+void Stewart::init_pubs_subs(ros::NodeHandle & nodeHandle_)
+{
+    setpoint_sub_       = nodeHandle_.subscribe("pose_setpoint", 1, &Stewart::setpoint_callback, this);
+    trapz_setpoint_sub_ = nodeHandle_.subscribe("pose_trapz_setpoint", 1, &Stewart::setpoint_trapz_callback, this);
+    setpoint_vel_sub_   = nodeHandle_.subscribe("vel_setpoint", 1, &Stewart::setpoint_vel_callback, this);
+
+    joy_sub_            = nodeHandle_.subscribe("joy", 1, &Stewart::joy_callback, this);
+
+    change_acc_sub_     = nodeHandle_.subscribe("trapezoid_accel", 1, &Stewart::change_acc_callback, this);
+    change_vel_sub_     = nodeHandle_.subscribe("trapezoid_max_vel", 1, &Stewart::change_vel_callback, this);
+    change_mod_sub_     = nodeHandle_.subscribe("mode", 1, &Stewart::change_mod_callback, this);
+
+    pose_pub_           = nodeHandle_.advertise<geometry_msgs::Pose>("pose_base",1);
+    pose_vel_pub_       = nodeHandle_.advertise<geometry_msgs::Twist>("pose_vel",1);
+    pose_cmd_pub_       = nodeHandle_.advertise<geometry_msgs::Twist>("cmd_vel",1);
+}
+
+
+void Stewart::retrieve_params(ros::NodeHandle & nodeHandle_)
+{
+
+    try
+    {
+        if(!nodeHandle_.getParam("config_file", config_file_)) {throw std::runtime_error("Could not retrieve ROS config_file param");}
+        if(!nodeHandle_.getParam("mode", mode_)) {throw std::runtime_error("Could not retrieve ROS mode param");}
+        if(!nodeHandle_.getParam("trapz_acc", trapz_acc_)) {throw std::runtime_error("Could not retrieve ROS trapz_acc param");}
+        if(!nodeHandle_.getParam("trapz_max_vel", trapz_max_vel_)) {throw std::runtime_error("Could not retrieve ROS trapz_max_vel param");}
+    }
+    catch(const std::runtime_error e)
+    {
+        ROS_ERROR(e.what());
+        exit(EXIT_FAILURE);
+    }
+
+
+}
+
+int Stewart::get_mode(){
+    return mode_;
 }
 
 double Stewart::get_force_feedback(int id)
@@ -68,6 +105,33 @@ void Stewart::set_piston_pos(int id, double pos)
 {
     pistons_.at(id)->setPosition(pos);
 }
+
+void Stewart::change_acc_callback(const std_msgs::Float32& msg)
+{
+    trapz_acc_ = msg.data;
+}
+
+void Stewart::change_vel_callback(const std_msgs::Float32& msg)
+{
+    trapz_max_vel_ = msg.data;
+}
+
+void Stewart::change_mod_callback(const std_msgs::Int32& msg)
+{
+    mode_ = msg.data;
+}
+
+void Stewart::joy_callback(const sensor_msgs::Joy& msg)
+{
+    setpoint_vel(0) = msg.axes[1]/1.0;
+    setpoint_vel(1) = msg.axes[0]/1.0;
+    setpoint_vel(2) = msg.axes[7]/2.0;
+    setpoint_vel(3) = msg.axes[4]/1.0;
+    setpoint_vel(4) = msg.axes[3]/1.0;
+    setpoint_vel(5) = msg.axes[6]/2.0;
+    //std::cout << "callback" << std::endl;
+}
+
 
 void Stewart::setpoint_callback(const geometry_msgs::Pose& msg)
 {
@@ -82,6 +146,22 @@ void Stewart::setpoint_callback(const geometry_msgs::Pose& msg)
     setpoint_(4) = euler.y();
     setpoint_(5) = euler.z();
 
+    //std::cout << "callback" << std::endl;
+}
+
+void Stewart::setpoint_trapz_callback(const geometry_msgs::Pose& msg)
+{
+    setpoint_trapz_(0) = msg.position.x;
+    setpoint_trapz_(1) = msg.position.y;
+    setpoint_trapz_(2) = msg.position.z;
+
+    Quaterniond q(msg.orientation.w, msg.orientation.x, msg.orientation.y, msg.orientation.z);
+    auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
+
+    setpoint_trapz_(3) = euler.x();
+    setpoint_trapz_(4) = euler.y();
+    setpoint_trapz_(5) = euler.z();
+    init_trapz_ = true;
     //std::cout << "callback" << std::endl;
 }
 
@@ -105,8 +185,20 @@ void Stewart::set_piston_vel(int id, double vel)
 
 void Stewart::reach_setpoint()
 {
-    
+
+    get_base_pose();
+    get_base_vel();
+
     auto [joints_pos, n] = inverse_kinematics(setpoint_);
+    for(int i = 0; i < NUM_PISTONS; i++){
+        set_piston_pos(i, 2.92 - joints_pos(i));
+    }
+}
+
+void Stewart::reach_setpoint(VectorXd setpoint)
+{
+    
+    auto [joints_pos, n] = inverse_kinematics(setpoint);
     for(int i = 0; i < NUM_PISTONS; i++){
         set_piston_pos(i, 2.92 - joints_pos(i));
     }
@@ -144,7 +236,7 @@ VectorXd Stewart::get_base_pose()
     base_pose_(5) = q.y();
     base_pose_(6) = q.z();
 
-    pose_pub.publish(pose_msg);
+    pose_vel_pub_.publish(pose_msg);
     return base_pose_;
 }
 
@@ -161,7 +253,7 @@ VectorXd Stewart::get_base_vel()
     base_vel_(5) = twist_msg.angular.z = ang_vel_upp_plat->getValues()[2];
 
 
-    pose_vel_pub.publish(twist_msg);
+    pose_vel_pub_.publish(twist_msg);
     return base_pose_;
 
 }
@@ -196,11 +288,10 @@ void Stewart::set_target_vel()
 
     Eigen::VectorXd joints_vel(6);
 
-    VectorXd velocity = setpoint_vel;
-
+    VectorXd velocity = -setpoint_vel;
+    velocity(3) = -velocity(3);
     VectorXd pose = get_base_pose();
     get_base_vel();
-
 
     Eigen::Matrix4d m_w = skew_matrix(velocity.tail(3));
 
@@ -211,6 +302,11 @@ void Stewart::set_target_vel()
 
     joints_vel = inverse_jacobian(pose)*w_new;
     for(int i = 0; i < NUM_PISTONS; i++){
+        if(pistons_pos_[i]->getValue() > 0.38 && joints_vel(i) > 0){
+            joints_vel(i) = 0;
+        } else if(pistons_pos_[i]->getValue() < -0.38 && joints_vel(i) < 0) {
+            joints_vel(i) = 0;
+        }
         set_piston_vel(i, joints_vel(i));
     }
 
@@ -233,7 +329,7 @@ void Stewart::set_target_vel(Eigen::VectorXd target)
 
     joints_vel = inverse_jacobian(pose)*w_new;
     for(int i = 0; i < NUM_PISTONS; i++){
-        set_piston_vel(i, -joints_vel(i));
+        set_piston_vel(i, joints_vel(i));
     }
 
 }
@@ -241,11 +337,14 @@ void Stewart::set_target_vel(Eigen::VectorXd target)
 double Stewart::trapezoidal_target(double qi, double qf, double time, bool angular = false)
 {
 
-    double ang_coeff = 0.2;
+    double ang_coeff = trapz_acc_;
 
-    double max_speed = 0.05;
+    double max_speed = trapz_max_vel_;
     double q_diff = qf - qi;
 
+    if(std::abs(q_diff) < 0.01){
+        q_diff = 0;
+    }
     bool singularity = false;
     double t_f = (std::abs(q_diff) + (std::pow(max_speed,2))/ang_coeff)/max_speed;
     double t_c1 = max_speed/ang_coeff;
@@ -281,32 +380,68 @@ double Stewart::trapezoidal_target(double qi, double qf, double time, bool angul
     } else {
         target = 0;
     }
-    std::cout << "Q_f " << qf << " Q_i: " << qi << " t_f " << t_f << " Target: " << target << std::endl; 
 
     return target;
 }
 
-bool Stewart::trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time)
+VectorXd Stewart::convert_6d_to_7d(VectorXd euler_pos)
 {
-    VectorXd target = VectorXd::Zero(6);
-
-    for(int i=0; i < NUM_PISTONS; i++){
-        target(i) = trapezoidal_target(qi(i), qf(i), time);
-    }
-    set_target_vel(target);
-    geometry_msgs::Twist cmd_vel;
-    cmd_vel.linear.x = target(0);
-    cmd_vel.linear.y = target(1);
-    cmd_vel.linear.z = target(2);
-    cmd_vel.angular.x = target(3);
-    cmd_vel.angular.y = target(4);
-    cmd_vel.angular.z = target(5);
-
-    pose_cmd_pub.publish(cmd_vel);
-    std::cout << "Target: " << target << " Qf: " << qf << "Qi: " << qi <<std::endl;
+    Quaterniond q = AngleAxisd(euler_pos(3), Vector3d::UnitX())
+        * AngleAxisd(euler_pos(4), Vector3d::UnitY())
+        * AngleAxisd(euler_pos(5), Vector3d::UnitZ());
+    VectorXd quat_vec(7);
+    quat_vec << euler_pos(0), euler_pos(1), euler_pos(2), q.w(), q.x(), q.y(), q.z();
+    return quat_vec;
 }
 
+bool Stewart::trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time)
+{
+    VectorXd velocities = VectorXd::Zero(6);
+    VectorXd target = qi;
 
+    for(int i=0; i < NUM_PISTONS; i++){
+        velocities(i) = trapezoidal_target(qi(i), qf(i), time);
+        target_(i) = target_(i) + velocities(i)*0.004;
+    }
+
+    reach_setpoint(convert_6d_to_7d(target_));
+    geometry_msgs::Twist cmd_vel;
+    cmd_vel.linear.x = target_(0);
+    cmd_vel.linear.y = target_(1);
+    cmd_vel.linear.z = target_(2);
+    cmd_vel.angular.x = target_(3)*180/3.14;
+    cmd_vel.angular.y = target_(4)*180/3.14;
+    cmd_vel.angular.z = target_(5)*180/3.14;
+
+    pose_cmd_pub_.publish(cmd_vel);
+    old_time_ = time;
+}
+
+void Stewart::reach_setpoint_trapz()
+{
+        std::cout << "setpoint trapz " << setpoint_trapz_ << std::endl;
+
+        if(init_trapz_){ // check to identify initial time and base pose
+            qi_ = get_base_pose();
+
+            Eigen::Quaterniond q(qi_(3), qi_(4), qi_(5), qi_(6));
+            q.normalize();
+            auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
+            if(std::abs(euler.x()) >= 3.14158) euler.x() = 0;
+            if(std::abs(euler.y()) >= 3.14158) euler.y() = 0;
+            if(std::abs(euler.z()) >= 3.14158) euler.z() = 0;
+            qi_.tail(4) << euler.x(), euler.y(), euler.z(), 0;
+            // start = std::chrono::high_resolution_clock::now();
+            time_ = getTime();
+            init_trapz_ = false;
+            trapz_initialization = true; // first time initialization
+        }
+        if(trapz_initialization){
+            trapezoidal_trajectory(qi_, setpoint_trapz_, getTime() - time_);
+        }
+        get_base_pose();
+        get_base_vel();
+}
 // void Stewart::set_piston_pos(WbDeviceTag tag_motor, WbDeviceTag tag_sensor, double target, int delay) {
 //   const double DELTA = 0.001;  // max tolerated difference
 //   wb_motor_set_position(tag_motor, target);
