@@ -32,16 +32,24 @@ class Stewart : public Robot{
         void reach_setpoint();
         void reach_setpoint(VectorXd setpoint);
 
+        VectorXd forward_kinematics(VectorXd pose_guess, VectorXd joint_pos);
+
+        VectorXd get_joints_pos();
+        VectorXd get_base_pose();
+        VectorXd get_base_vel();
+
+        void set_base_pose();
         bool trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time);
         void reach_setpoint_trapz();
+        void estimate_base_pose();
 
         MatrixXd inverse_jacobian(VectorXd base_pose);
+
         void set_piston_vel(int id, double vel);
 
         void set_target_vel();
         void set_target_vel(Eigen::VectorXd target);
-        VectorXd get_base_pose();
-        VectorXd get_base_vel();
+
         double trapezoidal_target(double qi, double qf, double time, bool angular);
 
         Eigen::Matrix4d skew_matrix(Vector3d v);
@@ -73,6 +81,8 @@ class Stewart : public Robot{
         VectorXd setpoint_;
         VectorXd setpoint_trapz_;
         VectorXd base_pose_;
+        VectorXd base_pose_gt_;
+
         VectorXd base_vel_;
         VectorXd qi_, qf_;
         VectorXd target_;

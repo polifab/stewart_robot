@@ -81,3 +81,14 @@ Matrix3d R_from_quat(Quaterniond q){
 
     return m;
 }
+
+VectorXd Stewart::forward_kinematics(VectorXd pose_guess, VectorXd joint_pos)
+{
+    MatrixXd jacobian = MatrixXd::Zero(7,6);
+    for(int i = 0; i < N_ITERATIONS; i++){
+        auto [l, n] = inverse_kinematics(pose_guess);
+        jacobian = inverse_jacobian(pose_guess).completeOrthogonalDecomposition().pseudoInverse();
+        pose_guess = pose_guess - jacobian*((l - joint_pos));
+    }
+    return pose_guess;
+}

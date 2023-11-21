@@ -16,7 +16,7 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
         pistons_.push_back(this->getMotor("piston" + std::to_string(i)));
         pistons_pos_.push_back(new PositionSensor("piston" + std::to_string(i) + "_pos"));
         pistons_.at(i)->enableForceFeedback(100);
-        pistons_pos_.at(i)->enable(10);
+        pistons_pos_.at(i)->enable(4);
     }
 
     enable_devices();
@@ -44,7 +44,12 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
 
 void Stewart::init_vectors()
 {   
+    base_pose_gt_ = VectorXd::Zero(7);
+    base_pose_gt_(2) = 2.72657;
+    base_pose_gt_(3) = 1;
+
     base_pose_ = VectorXd::Zero(7);
+    base_pose_(2) = 2.72657;
     base_pose_(3) = 1;
     setpoint_ = VectorXd::Zero(7);
     setpoint_(2) = BASE_Z;
@@ -208,35 +213,35 @@ VectorXd Stewart::get_base_pose()
 
     geometry_msgs::Pose pose_msg;
 
-    base_pose_(0) = pose_msg.position.x    = gps_upp_plat->getValues()[0];
-    base_pose_(1) = pose_msg.position.y    = gps_upp_plat->getValues()[1];
-    base_pose_(2) = pose_msg.position.z    = gps_upp_plat->getValues()[2];
-    base_pose_(4) = pose_msg.orientation.x = att_upp_plat->getQuaternion()[0];
-    base_pose_(5) = pose_msg.orientation.y = att_upp_plat->getQuaternion()[1];
-    base_pose_(6) = pose_msg.orientation.z = att_upp_plat->getQuaternion()[2];
-    base_pose_(3) = pose_msg.orientation.w = att_upp_plat->getQuaternion()[3];
-    if(std::isnan(base_pose_(0))) base_pose_(0) = 0;
-    if(std::isnan(base_pose_(1))) base_pose_(1) = 0;
-    if(std::isnan(base_pose_(2))) base_pose_(2) = 0;
-    if(std::isnan(base_pose_(3))) base_pose_(3) = 1;
-    if(std::isnan(base_pose_(4))) base_pose_(4) = 0;
-    if(std::isnan(base_pose_(5))) base_pose_(5) = 0;
-    if(std::isnan(base_pose_(6))) base_pose_(6) = 0;
+    base_pose_gt_(0) = pose_msg.position.x    = gps_upp_plat->getValues()[0];
+    base_pose_gt_(1) = pose_msg.position.y    = gps_upp_plat->getValues()[1];
+    base_pose_gt_(2) = pose_msg.position.z    = gps_upp_plat->getValues()[2];
+    base_pose_gt_(4) = pose_msg.orientation.x = att_upp_plat->getQuaternion()[0];
+    base_pose_gt_(5) = pose_msg.orientation.y = att_upp_plat->getQuaternion()[1];
+    base_pose_gt_(6) = pose_msg.orientation.z = att_upp_plat->getQuaternion()[2];
+    base_pose_gt_(3) = pose_msg.orientation.w = att_upp_plat->getQuaternion()[3];
+    if(std::isnan(base_pose_gt_(0))) base_pose_gt_(0) = 0;
+    if(std::isnan(base_pose_gt_(1))) base_pose_gt_(1) = 0;
+    if(std::isnan(base_pose_gt_(2))) base_pose_gt_(2) = 0;
+    if(std::isnan(base_pose_gt_(3))) base_pose_gt_(3) = 1;
+    if(std::isnan(base_pose_gt_(4))) base_pose_gt_(4) = 0;
+    if(std::isnan(base_pose_gt_(5))) base_pose_gt_(5) = 0;
+    if(std::isnan(base_pose_gt_(6))) base_pose_gt_(6) = 0;
 
-    Eigen::Quaterniond q(base_pose_(3), base_pose_(4), base_pose_(5), base_pose_(6));
+    Eigen::Quaterniond q(base_pose_gt_(3), base_pose_gt_(4), base_pose_gt_(5), base_pose_gt_(6));
     q.normalize();
     auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);
     q = AngleAxisd(euler.x(), Vector3d::UnitX())
         * AngleAxisd(euler.y(), Vector3d::UnitY())
         * AngleAxisd(euler.z(), Vector3d::UnitZ());
 
-    base_pose_(3) = q.w();
-    base_pose_(4) = q.x();
-    base_pose_(5) = q.y();
-    base_pose_(6) = q.z();
+    base_pose_gt_(3) = q.w();
+    base_pose_gt_(4) = q.x();
+    base_pose_gt_(5) = q.y();
+    base_pose_gt_(6) = q.z();
 
     pose_pub_.publish(pose_msg);
-    return base_pose_;
+    return base_pose_gt_;
 }
 
 VectorXd Stewart::get_base_vel()
@@ -253,7 +258,7 @@ VectorXd Stewart::get_base_vel()
 
 
     pose_vel_pub_.publish(twist_msg);
-    return base_pose_;
+    return base_vel_;
 
 }
 
@@ -284,31 +289,19 @@ Eigen::Matrix4d Stewart::skew_matrix(Vector3d v)
 
 void Stewart::set_target_vel()
 {
-    
     Eigen::VectorXd joints_vel(6);
     
-
     VectorXd velocity = -setpoint_vel;
-    
-
-    // velocity(5) = -velocity(5);
-    // velocity(4) = -velocity(4);
-    VectorXd pose = get_base_pose();
+    VectorXd pose = get_base_pose();  
     get_base_vel();
-    
 
     Eigen::Matrix4d m_w = skew_matrix(velocity.tail(3));
-    
-
     Eigen::VectorXd q_dot = (m_w*pose.tail(4));
     
-
     Eigen::VectorXd w_new(7);
     w_new << velocity(0), velocity(1), velocity(2), q_dot(0), q_dot(1), q_dot(2), q_dot(3);
     
-
-    joints_vel = inverse_jacobian(pose)*w_new;
-    
+    joints_vel = inverse_jacobian(pose)*w_new;   
 
     for(int i = 0; i < NUM_PISTONS; i++){
         if(pistons_pos_[i]->getValue() > 0.38 && joints_vel(i) > 0){
@@ -322,6 +315,14 @@ void Stewart::set_target_vel()
 
 }
 
+void Stewart::estimate_base_pose()
+{
+    std::cout << "Estimate base pose" << std::endl;
+    base_pose_ = forward_kinematics(base_pose_, get_joints_pos());
+    std::cout << "Estimate base pose" << std::endl;
+
+}
+
 void Stewart::set_target_vel(Eigen::VectorXd target)
 {
 
@@ -329,9 +330,12 @@ void Stewart::set_target_vel(Eigen::VectorXd target)
 
     VectorXd velocity = target;
 
-    VectorXd pose = get_base_pose();
+    // VectorXd pose = get_base_pose();
+    VectorXd pose = base_pose_;
+    get_base_pose();
     get_base_vel();
 
+    
     Eigen::Matrix4d m_w = skew_matrix(velocity.tail(3));
     Eigen::VectorXd q_dot = (m_w*pose.tail(4));
     Eigen::VectorXd w_new(7);
@@ -451,16 +455,12 @@ void Stewart::reach_setpoint_trapz()
         get_base_pose();
         get_base_vel();
 }
-// void Stewart::set_piston_pos(WbDeviceTag tag_motor, WbDeviceTag tag_sensor, double target, int delay) {
-//   const double DELTA = 0.001;  // max tolerated difference
-//   wb_motor_set_position(tag_motor, target);
-//   wb_position_sensor_enable(tag_sensor, TIME_STEP);
-//   double effective;  // effective position
-//   do {
-//     if (wb_robot_step(TIME_STEP) == -1)
-//       break;
-//     delay -= TIME_STEP;
-//     effective = wb_position_sensor_get_value(tag_sensor);
-//   } while (fabs(target - effective) > DELTA && delay > 0);
-//   wb_position_sensor_disable(tag_sensor);
-// }
+
+VectorXd Stewart::get_joints_pos()
+{
+    VectorXd joints_pos = VectorXd::Zero(6);
+    for(int i = 0; i < NUM_PISTONS; i++){
+        joints_pos[i] = 2.92 - pistons_pos_[i]->getValue();
+    }
+    return joints_pos;
+}

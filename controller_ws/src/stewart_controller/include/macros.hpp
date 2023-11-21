@@ -4,3 +4,5 @@
 #define NUM_PISTONS 6
 
 #define BASE_Z 2.7
+
+#define N_ITERATIONS 20
