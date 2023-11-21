@@ -12,16 +12,15 @@ int main(int argc, char **argv) {
     int mode;
     while (stewart_controller->step(timeStep) != -1) {
         mode = stewart_controller->get_mode();
-        switch(mode) {
-            case 1: //Trapezoidal Trajectory
+        std::cout << "Mode: " << mode << std::endl;
+            if(mode == 1){
                 stewart_controller->reach_setpoint_trapz();
-            case 2: //Twist command
+            }
+            else if(mode == 2){
                 stewart_controller->set_target_vel();
-            case 3: // Reach pose in minimal time using IK
+            } else {
                 stewart_controller->reach_setpoint();
-            default: // Option not in the list -> Use simplest case
-                stewart_controller->reach_setpoint();
-        }
+            }
         ros::spinOnce();
     };
 

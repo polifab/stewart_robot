@@ -28,8 +28,7 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     std::string config_file;
     try
     {
-        //std:: cout << config_file << std::endl;
-        config_stewart = YAML::LoadFile(config_file);
+        config_stewart = YAML::LoadFile(config_file_);
     }
     catch(std::exception &e)
     {
@@ -38,6 +37,9 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
     }
     A = Map<Matrix<double, 6, 3, RowMajor>>(config_stewart["size"]["A"].as<std::vector<double>>().data());
     B = Map<Matrix<double, 6, 3, RowMajor>>(config_stewart["size"]["B"].as<std::vector<double>>().data());
+    init_vectors();
+    init_pubs_subs(nodeHandle_);
+
 }
 
 void Stewart::init_vectors()
@@ -125,11 +127,10 @@ void Stewart::joy_callback(const sensor_msgs::Joy& msg)
 {
     setpoint_vel(0) = msg.axes[1]/1.0;
     setpoint_vel(1) = msg.axes[0]/1.0;
-    setpoint_vel(2) = msg.axes[7]/2.0;
-    setpoint_vel(3) = msg.axes[4]/1.0;
+    setpoint_vel(2) = msg.axes[5]/2.0;
+    setpoint_vel(3) = msg.axes[2]/1.0;
     setpoint_vel(4) = msg.axes[3]/1.0;
-    setpoint_vel(5) = msg.axes[6]/2.0;
-    //std::cout << "callback" << std::endl;
+    setpoint_vel(5) = -msg.axes[4]/2.0;
 }
 
 
@@ -146,7 +147,6 @@ void Stewart::setpoint_callback(const geometry_msgs::Pose& msg)
     setpoint_(4) = euler.y();
     setpoint_(5) = euler.z();
 
-    //std::cout << "callback" << std::endl;
 }
 
 void Stewart::setpoint_trapz_callback(const geometry_msgs::Pose& msg)
@@ -162,7 +162,6 @@ void Stewart::setpoint_trapz_callback(const geometry_msgs::Pose& msg)
     setpoint_trapz_(4) = euler.y();
     setpoint_trapz_(5) = euler.z();
     init_trapz_ = true;
-    //std::cout << "callback" << std::endl;
 }
 
 void Stewart::setpoint_vel_callback(const geometry_msgs::Twist& msg)
@@ -236,7 +235,7 @@ VectorXd Stewart::get_base_pose()
     base_pose_(5) = q.y();
     base_pose_(6) = q.z();
 
-    pose_vel_pub_.publish(pose_msg);
+    pose_pub_.publish(pose_msg);
     return base_pose_;
 }
 
@@ -285,28 +284,39 @@ Eigen::Matrix4d Stewart::skew_matrix(Vector3d v)
 
 void Stewart::set_target_vel()
 {
-
+    
     Eigen::VectorXd joints_vel(6);
+    
 
     VectorXd velocity = -setpoint_vel;
-    velocity(3) = -velocity(3);
+    
+
+    // velocity(5) = -velocity(5);
+    // velocity(4) = -velocity(4);
     VectorXd pose = get_base_pose();
     get_base_vel();
+    
 
     Eigen::Matrix4d m_w = skew_matrix(velocity.tail(3));
+    
 
     Eigen::VectorXd q_dot = (m_w*pose.tail(4));
+    
 
     Eigen::VectorXd w_new(7);
     w_new << velocity(0), velocity(1), velocity(2), q_dot(0), q_dot(1), q_dot(2), q_dot(3);
+    
 
     joints_vel = inverse_jacobian(pose)*w_new;
+    
+
     for(int i = 0; i < NUM_PISTONS; i++){
         if(pistons_pos_[i]->getValue() > 0.38 && joints_vel(i) > 0){
             joints_vel(i) = 0;
         } else if(pistons_pos_[i]->getValue() < -0.38 && joints_vel(i) < 0) {
             joints_vel(i) = 0;
         }
+
         set_piston_vel(i, joints_vel(i));
     }
 
@@ -419,7 +429,6 @@ bool Stewart::trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time)
 
 void Stewart::reach_setpoint_trapz()
 {
-        std::cout << "setpoint trapz " << setpoint_trapz_ << std::endl;
 
         if(init_trapz_){ // check to identify initial time and base pose
             qi_ = get_base_pose();
