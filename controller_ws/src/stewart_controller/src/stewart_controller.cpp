@@ -59,6 +59,7 @@ void Stewart::init_vectors()
     target_ = VectorXd::Zero(6);
     target_(2) = BASE_Z;
     setpoint_trapz_ = VectorXd::Zero(7);
+
 }
 
 

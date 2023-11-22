@@ -1,3 +1,10 @@
+/***********************************************************************************************************************************
+ * This file contains the Kinematics methods of the Stewart Class.
+ * The convention followed in this code is the one of:
+ * "Kinematic and dynamic analysis of Stewart platform-based machine tool structures" by Khalifa Harib and Krishnaswamy Srinivasan.
+ * The main difference here is the representation of the state angular position. To avoid singularities in the Jacobian I preferred
+ * using quaternion representation instead of rotating the world frame.
+************************************************************************************************************************************/
 
 #include <stewart_controller.hpp>
 

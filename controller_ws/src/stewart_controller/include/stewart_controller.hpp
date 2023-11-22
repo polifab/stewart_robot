@@ -30,11 +30,62 @@ class Stewart : public Robot{
         Stewart(int argc, char **argv, std::string node_name);
         double get_force_feedback(int id);
         void set_piston_pos(int id, double pos);
+
+
+        /**
+         * @brief Method for computing the inverse kinematics
+         * of the defined Stewart Platform
+         * 
+         * @param setpoint a 7D vector containg desired position (x,y,z)
+         * and orientation quaternion (w,x,y,z)
+         * @return std::tuple<VectorXd, MatrixXd> a tuple containing a (NUM_PISTONS)D
+         * vector containing the joints length and a matrix (NUM_PISTONSx3)D 
+         * containing the direction vectors of the pistons (needed for the jacobian computation)
+         */
         std::tuple<VectorXd, MatrixXd> inverse_kinematics(VectorXd setpoint);
+        
+        /**
+         * @brief Method for computing the forward kinematics
+         * of the defined Stewart Platform using Newton-Raphson algorithm 
+         * 
+         * @param pose_guess a 7D vector containing an initial guess of the E-E pose
+         * @param joint_pos a (NUM_PISTONS)D vector containing the configuration of the Joints
+         * @return VectorXd a 7D vector containing the E-E pose estimatio
+         */
+        VectorXd forward_kinematics(VectorXd pose_guess, VectorXd joint_pos);
+
+
+        /**
+         * @brief Method for computing the inverse jacobian
+         * matrix (map from E-E linear and angular velocities
+         *  to Joints Velocities)
+         * 
+         * @param base_pose a 7D vector containing the E-E pose 
+         * @return MatrixXd a 6x7 matrix 
+         */
+        MatrixXd inverse_jacobian(VectorXd base_pose);
+
+        /**
+         * @brief routine to reach a desired setpoint
+         * using a trapezoidal velocity trajectory
+         * 
+         */
+        void reach_setpoint_trapz();
+
+        /**
+         * @brief routine to reach a setpoint
+         * using inverse kinematics
+         * 
+         */
         void reach_setpoint();
+        
+        /**
+         * @brief routine to reach a setpoint
+         * using inverse kinematics
+         * @param setpoint 7D vector desired setpoint
+         */
         void reach_setpoint(VectorXd setpoint);
 
-        VectorXd forward_kinematics(VectorXd pose_guess, VectorXd joint_pos);
 
         VectorXd get_joints_pos();
         VectorXd get_base_pose();
@@ -42,17 +93,14 @@ class Stewart : public Robot{
 
         void set_base_pose();
         bool trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time);
-        void reach_setpoint_trapz();
         void estimate_base_pose();
 
-        MatrixXd inverse_jacobian(VectorXd base_pose);
 
         void set_piston_vel(int id, double vel);
 
         void set_target_vel();
         void set_target_vel(Eigen::VectorXd target);
 
-        double trapezoidal_target(double qi, double qf, double time, bool angular);
 
         Eigen::Matrix4d skew_matrix(Vector3d v);
 
@@ -121,6 +169,7 @@ class Stewart : public Robot{
 
         MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
         MatrixXd inv_J_2(Quaterniond q);
+        double trapezoidal_target(double qi, double qf, double time, bool angular);
 
         // ROS related methods
         void retrieve_params(ros::NodeHandle & nodeHandle_);

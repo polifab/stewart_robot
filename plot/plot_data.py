@@ -136,7 +136,6 @@ def read_rosbag():
     fig.suptitle("Orientation Trapezoidal Trajectories")
     axs[0].set_title("Attitude")
 
-    # axs[0].plot(time_poses, poses[1:,3], 'b',label="w")
     axs[0].plot(time_poses, poses[1:,4], 'b',label="x")
     axs[0].plot(time_poses, poses[1:,5], 'g',label="y")
     axs[0].plot(time_poses, poses[1:,6], 'r',label="z")
@@ -144,7 +143,6 @@ def read_rosbag():
     axs[0].plot(time_traj, trajectories[1:,4], color="#3366cc", linestyle='-.', label="plan x")
     axs[0].plot(time_traj, trajectories[1:,5], color="#339933", linestyle='-.', label="plan y")
     axs[0].plot(time_traj, trajectories[1:,6], color="#ff5050", linestyle='-.', label="plan z")
-    # axs[0].plot(time_traj, new_traj[1:,6], color="#ff5050", linestyle='-.', label="plan z")
 
     axs[0].plot(time_poses, setpoint_att[1:,1], color="#003366", linestyle='dashed', label="setpoint_x")
     axs[0].plot(time_poses, setpoint_att[1:,2], color="#003300", linestyle='dashed', label="setpoint_y")
@@ -166,9 +164,6 @@ def read_rosbag():
     axs[1].set(xlabel='s')
 
     plt.show()
-
-
-    print("------------")
 
 
 if __name__ == '__main__':
