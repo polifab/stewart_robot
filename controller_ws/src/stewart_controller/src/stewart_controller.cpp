@@ -45,11 +45,11 @@ Stewart::Stewart(int argc, char **argv, std::string node_name) : Robot()
 void Stewart::init_vectors()
 {   
     base_pose_gt_ = VectorXd::Zero(7);
-    base_pose_gt_(2) = 2.72657;
+    base_pose_gt_(2) = 2.733406;
     base_pose_gt_(3) = 1;
 
     base_pose_ = VectorXd::Zero(7);
-    base_pose_(2) = 2.72657;
+    base_pose_(2) = 2.733406;
     base_pose_(3) = 1;
     setpoint_ = VectorXd::Zero(7);
     setpoint_(2) = BASE_Z;
@@ -74,9 +74,9 @@ void Stewart::init_pubs_subs(ros::NodeHandle & nodeHandle_)
     change_vel_sub_     = nodeHandle_.subscribe("trapezoid_max_vel", 1, &Stewart::change_vel_callback, this);
     change_mod_sub_     = nodeHandle_.subscribe("mode", 1, &Stewart::change_mod_callback, this);
 
-    pose_pub_           = nodeHandle_.advertise<geometry_msgs::Pose>("pose_base",1);
-    pose_vel_pub_       = nodeHandle_.advertise<geometry_msgs::Twist>("pose_vel",1);
-    pose_cmd_pub_       = nodeHandle_.advertise<geometry_msgs::Twist>("cmd_vel",1);
+    pose_pub_           = nodeHandle_.advertise<geometry_msgs::PoseStamped>("pose_base",1);
+    pose_vel_pub_       = nodeHandle_.advertise<geometry_msgs::TwistStamped>("pose_vel",1);
+    pose_cmd_pub_       = nodeHandle_.advertise<geometry_msgs::PoseStamped>("cmd_pos",1);
 }
 
 
@@ -130,12 +130,12 @@ void Stewart::change_mod_callback(const std_msgs::Int32& msg)
 
 void Stewart::joy_callback(const sensor_msgs::Joy& msg)
 {
-    setpoint_vel(0) = msg.axes[1]/1.0;
-    setpoint_vel(1) = msg.axes[0]/1.0;
-    setpoint_vel(2) = msg.axes[5]/2.0;
-    setpoint_vel(3) = msg.axes[2]/1.0;
-    setpoint_vel(4) = msg.axes[3]/1.0;
-    setpoint_vel(5) = -msg.axes[4]/2.0;
+    setpoint_vel(0) = msg.axes[1]/0.5;
+    setpoint_vel(1) = msg.axes[0]/0.5;
+    setpoint_vel(2) = msg.axes[5]/1.0;
+    setpoint_vel(3) = msg.axes[2]/0.5;
+    setpoint_vel(4) = msg.axes[3]/0.5;
+    setpoint_vel(5) = -msg.axes[4]/1.0;
 }
 
 
@@ -211,15 +211,17 @@ void Stewart::reach_setpoint(VectorXd setpoint)
 VectorXd Stewart::get_base_pose()
 {
 
-    geometry_msgs::Pose pose_msg;
+    geometry_msgs::PoseStamped pose_msg;
 
-    base_pose_gt_(0) = pose_msg.position.x    = gps_upp_plat->getValues()[0];
-    base_pose_gt_(1) = pose_msg.position.y    = gps_upp_plat->getValues()[1];
-    base_pose_gt_(2) = pose_msg.position.z    = gps_upp_plat->getValues()[2];
-    base_pose_gt_(4) = pose_msg.orientation.x = att_upp_plat->getQuaternion()[0];
-    base_pose_gt_(5) = pose_msg.orientation.y = att_upp_plat->getQuaternion()[1];
-    base_pose_gt_(6) = pose_msg.orientation.z = att_upp_plat->getQuaternion()[2];
-    base_pose_gt_(3) = pose_msg.orientation.w = att_upp_plat->getQuaternion()[3];
+    pose_msg.header.stamp = ros::Time::now();
+
+    base_pose_gt_(0) = pose_msg.pose.position.x    = gps_upp_plat->getValues()[0];
+    base_pose_gt_(1) = pose_msg.pose.position.y    = gps_upp_plat->getValues()[1];
+    base_pose_gt_(2) = pose_msg.pose.position.z    = gps_upp_plat->getValues()[2];
+    base_pose_gt_(4) = pose_msg.pose.orientation.x = att_upp_plat->getQuaternion()[0];
+    base_pose_gt_(5) = pose_msg.pose.orientation.y = att_upp_plat->getQuaternion()[1];
+    base_pose_gt_(6) = pose_msg.pose.orientation.z = att_upp_plat->getQuaternion()[2];
+    base_pose_gt_(3) = pose_msg.pose.orientation.w = att_upp_plat->getQuaternion()[3];
     if(std::isnan(base_pose_gt_(0))) base_pose_gt_(0) = 0;
     if(std::isnan(base_pose_gt_(1))) base_pose_gt_(1) = 0;
     if(std::isnan(base_pose_gt_(2))) base_pose_gt_(2) = 0;
@@ -247,14 +249,16 @@ VectorXd Stewart::get_base_pose()
 VectorXd Stewart::get_base_vel()
 {
 
-    geometry_msgs::Twist twist_msg;
+    geometry_msgs::TwistStamped twist_msg;
 
-    base_vel_(0) = twist_msg.linear.x  = gps_upp_plat->getSpeedVector()[0];
-    base_vel_(1) = twist_msg.linear.y  = gps_upp_plat->getSpeedVector()[1];
-    base_vel_(2) = twist_msg.linear.z  = gps_upp_plat->getSpeedVector()[2];
-    base_vel_(3) = twist_msg.angular.x = ang_vel_upp_plat->getValues()[0];
-    base_vel_(4) = twist_msg.angular.y = ang_vel_upp_plat->getValues()[1];
-    base_vel_(5) = twist_msg.angular.z = ang_vel_upp_plat->getValues()[2];
+    twist_msg.header.stamp = ros::Time::now();
+
+    base_vel_(0) = twist_msg.twist.linear.x  = gps_upp_plat->getSpeedVector()[0];
+    base_vel_(1) = twist_msg.twist.linear.y  = gps_upp_plat->getSpeedVector()[1];
+    base_vel_(2) = twist_msg.twist.linear.z  = gps_upp_plat->getSpeedVector()[2];
+    base_vel_(3) = twist_msg.twist.angular.x = ang_vel_upp_plat->getValues()[0];
+    base_vel_(4) = twist_msg.twist.angular.y = ang_vel_upp_plat->getValues()[1];
+    base_vel_(5) = twist_msg.twist.angular.z = ang_vel_upp_plat->getValues()[2];
 
 
     pose_vel_pub_.publish(twist_msg);
@@ -354,6 +358,10 @@ double Stewart::trapezoidal_target(double qi, double qf, double time, bool angul
     double ang_coeff = trapz_acc_;
 
     double max_speed = trapz_max_vel_;
+    if(angular){
+        ang_coeff = ang_coeff / 2.0;
+        max_speed = max_speed / 2.0;
+    }
     double q_diff = qf - qi;
 
     if(std::abs(q_diff) < 0.01){
@@ -411,23 +419,31 @@ VectorXd Stewart::convert_6d_to_7d(VectorXd euler_pos)
 bool Stewart::trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time)
 {
     VectorXd velocities = VectorXd::Zero(6);
-    VectorXd target = qi;
+    VectorXd target_quat(7);
 
-    for(int i=0; i < NUM_PISTONS; i++){
-        velocities(i) = trapezoidal_target(qi(i), qf(i), time);
+    for(int i=0; i < 6; i++){
+        if(i < 3)
+            velocities(i) = trapezoidal_target(qi(i), qf(i), time);
+        else
+            velocities(i) = trapezoidal_target(qi(i), qf(i), time, true); // control the angular speeds
         target_(i) = target_(i) + velocities(i)*0.004;
     }
 
-    reach_setpoint(convert_6d_to_7d(target_));
-    geometry_msgs::Twist cmd_vel;
-    cmd_vel.linear.x = target_(0);
-    cmd_vel.linear.y = target_(1);
-    cmd_vel.linear.z = target_(2);
-    cmd_vel.angular.x = target_(3)*180/3.14;
-    cmd_vel.angular.y = target_(4)*180/3.14;
-    cmd_vel.angular.z = target_(5)*180/3.14;
+    target_quat = convert_6d_to_7d(target_);
+    reach_setpoint(target_quat);
+    geometry_msgs::PoseStamped cmd_pos;
 
-    pose_cmd_pub_.publish(cmd_vel);
+    cmd_pos.header.stamp = ros::Time::now();
+
+    cmd_pos.pose.position.x = target_quat(0);
+    cmd_pos.pose.position.y = target_quat(1);
+    cmd_pos.pose.position.z = target_quat(2);
+    cmd_pos.pose.orientation.w = target_quat(3);
+    cmd_pos.pose.orientation.x = target_quat(4);
+    cmd_pos.pose.orientation.y = target_quat(5);
+    cmd_pos.pose.orientation.z = target_quat(6);
+
+    pose_cmd_pub_.publish(cmd_pos);
     old_time_ = time;
 }
 
@@ -436,7 +452,7 @@ void Stewart::reach_setpoint_trapz()
 
         if(init_trapz_){ // check to identify initial time and base pose
             qi_ = get_base_pose();
-
+            std::cout << "Qi " << qi_ << std::endl;
             Eigen::Quaterniond q(qi_(3), qi_(4), qi_(5), qi_(6));
             q.normalize();
             auto euler = q.toRotationMatrix().eulerAngles(0, 1, 2);

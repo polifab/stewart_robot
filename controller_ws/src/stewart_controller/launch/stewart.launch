@@ -11,9 +11,9 @@
     <arg name="auto_close" default="false" doc="Startup mode"/>
     <node name="stewart_controller_node" pkg="stewart_controller" type="stewart_node" required="$(arg auto_close)" output="screen">
         <param name="config_file" value="$(find stewart_controller)/config/stewart.yaml"/>
-        <param name="mode" value="2"/> <!-- 1 - Trapezoid, 2 - Twist, 3 - Pose -->
-        <param name="trapz_acc" value="0.05"/>
-        <param name="trapz_max_vel" value="0.05"/>
+        <param name="mode" value="1"/> <!-- 1 - Trapezoid, 2 - Twist, 3 - Pose -->
+        <param name="trapz_acc" value="0.7"/>
+        <param name="trapz_max_vel" value="0.3"/>
     </node>
 
     <node pkg="joy" name="joystick" type="joy_node" ns="stewart_controller_node">

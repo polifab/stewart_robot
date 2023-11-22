@@ -11,8 +11,10 @@
 #include <macros.hpp>
 
 #include <ros/ros.h>
-#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/Twist.h>
+#include <geometry_msgs/TwistStamped.h>
+
 #include <sensor_msgs/Joy.h>
 #include <std_msgs/Int32.h>
 #include <std_msgs/Float32.h>
@@ -115,6 +117,7 @@ class Stewart : public Robot{
         // Kinematics related methods
         void init_vectors();
         VectorXd convert_6d_to_7d(VectorXd euler_pos);
+        VectorXd convert_7d_to_6d(VectorXd quat_pos);
 
         MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
         MatrixXd inv_J_2(Quaterniond q);
