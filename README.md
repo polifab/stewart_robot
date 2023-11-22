@@ -15,6 +15,10 @@ This project contains a C++ Webots Controller for a Stewart Platform world, star
 - Configurable robot parameters through YAML configuration file
 - Docker image available for fast deployment
 
+
+https://github.com/polifab/stewart_robot/assets/44433528/75b642dc-ef45-40a8-b2dc-cf183063b803
+
+
 ## Dependencies
 
 The project depends on:
