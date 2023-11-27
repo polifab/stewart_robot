@@ -126,6 +126,7 @@ void Stewart::change_vel_callback(const std_msgs::Float32& msg)
 
 void Stewart::change_mod_callback(const std_msgs::Int32& msg)
 {
+    std::cout << "New mode is: " << msg.data << std::endl;
     mode_ = msg.data;
 }
 
@@ -322,10 +323,8 @@ void Stewart::set_target_vel()
 
 void Stewart::estimate_base_pose()
 {
-    std::cout << "Estimate base pose" << std::endl;
     base_pose_ = forward_kinematics(base_pose_, get_joints_pos());
     std::cout << "Estimate base pose" << std::endl;
-
 }
 
 void Stewart::set_target_vel(Eigen::VectorXd target)

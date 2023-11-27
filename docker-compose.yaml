@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  stewart_image:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: stewart_image
+    image: stewart_image:latest
+    volumes:
+      - ./:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/.Xauthority:/root/.Xauthority
+    network_mode: host
+    privileged: true
+    container_name: stewart_container
+    environment:
+      DISPLAY: $DISPLAY
+      NAMESPACE: $NAMESPACE
+    command:
+      bash -c "/workspace/scripts/build.sh && /workspace/scripts/launch.sh"
+    tty: true

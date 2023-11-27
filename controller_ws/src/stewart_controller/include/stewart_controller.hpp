@@ -24,13 +24,40 @@
 
 using namespace webots;
 using namespace Eigen;
-
-class Stewart : public Robot{
+/**
+ * @brief Stewart Controller Class
+ * This class takes care of interfacing with Webots control API
+ * and implementing kinematics and trajectory plan for the
+ * Stewart Platform
+ */
+class Stewart : public Robot {
     public:
+        /**
+         * @brief Construct a new Stewart object
+         * It initializes the ROS node, the Webots Interface,
+         * reads the YAML config file, ROS params and
+         * initialise the attributes needed for the project
+         * @param argc number of strings pointed by argv
+         * @param argv argument vector
+         * @param node_name name of ROS node
+         */
         Stewart(int argc, char **argv, std::string node_name);
-        double get_force_feedback(int id);
-        void set_piston_pos(int id, double pos);
 
+        /**
+         * @brief Get the force feedback object
+         * 
+         * @param id ID of the motor
+         * @return double Force feedback from Motor #ID
+         */
+        double get_force_feedback(int id);
+
+        /**
+         * @brief Set the piston extension
+         * 
+         * @param id ID of the motor
+         * @param pos Desired position
+         */
+        void set_piston_pos(int id, double pos);
 
         /**
          * @brief Method for computing the inverse kinematics
@@ -38,8 +65,8 @@ class Stewart : public Robot{
          * 
          * @param setpoint a 7D vector containg desired position (x,y,z)
          * and orientation quaternion (w,x,y,z)
-         * @return std::tuple<VectorXd, MatrixXd> a tuple containing a (NUM_PISTONS)D
-         * vector containing the joints length and a matrix (NUM_PISTONSx3)D 
+         * @return std::tuple<VectorXd, MatrixXd> a tuple containing a (`#NUM_PISTONS`)D
+         * vector containing the joints length and a matrix (`#NUM_PISTONS`x3)D 
          * containing the direction vectors of the pistons (needed for the jacobian computation)
          */
         std::tuple<VectorXd, MatrixXd> inverse_kinematics(VectorXd setpoint);
@@ -53,7 +80,6 @@ class Stewart : public Robot{
          * @return VectorXd a 7D vector containing the E-E pose estimatio
          */
         VectorXd forward_kinematics(VectorXd pose_guess, VectorXd joint_pos);
-
 
         /**
          * @brief Method for computing the inverse jacobian
@@ -86,26 +112,70 @@ class Stewart : public Robot{
          */
         void reach_setpoint(VectorXd setpoint);
 
-
+        /**
+         * @brief Get the joints position
+         * 
+         * @return VectorXd (NUM_PISTON)D vector 
+         * containing the joints position
+         */
         VectorXd get_joints_pos();
+        
+        /**
+         * @brief Get the movng base pose groundtruth pose
+         * 
+         * @return VectorXd 7D vector containing
+         * moving base position and attitude
+         */
         VectorXd get_base_pose();
+
+        /**
+         * @brief Get the moving base groundtruth velocity
+         * 
+         * @return VectorXd 6D vector containing
+         * moving base linear and angular velocity
+         */
         VectorXd get_base_vel();
 
-        void set_base_pose();
-        bool trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time);
+        /**
+         * @brief Routine to get estimation of base pose
+         * position using Forward Kinematics
+         * 
+         */
         void estimate_base_pose();
 
-
+        /**
+         * @brief Set the piston #ID velocity
+         * 
+         * @param id ID of the motor
+         * @param vel Desired velocity of motor #ID
+         */
         void set_piston_vel(int id, double vel);
 
+        /**
+         * @brief Routine to set the velocity
+         * of the moving base to the desired setpoint
+         * velocity (modified by ROS callback)
+         */
         void set_target_vel();
+
+        /**
+         * @brief Routine to set the velocity
+         * of the moving base to the desired setpoint
+         * velocity (parameter)
+         * @param target 6D vector containing
+         * desired moving base velocity
+         */
         void set_target_vel(Eigen::VectorXd target);
 
-
-        Eigen::Matrix4d skew_matrix(Vector3d v);
-
+        /**
+         * @brief Get the actual controlling mode
+         * 
+         * @return int 1 Trapezoidal
+         * 2 Twist
+         * 3 Position using IK
+         * 4 FK estimation
+         */
         int get_mode();
-        VectorXd setpoint_vel;
 
     private:
 
@@ -132,6 +202,7 @@ class Stewart : public Robot{
         VectorXd setpoint_trapz_;
         VectorXd base_pose_;
         VectorXd base_pose_gt_;
+        VectorXd setpoint_vel;
 
         VectorXd base_vel_;
         VectorXd qi_, qf_;
@@ -170,6 +241,9 @@ class Stewart : public Robot{
         MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
         MatrixXd inv_J_2(Quaterniond q);
         double trapezoidal_target(double qi, double qf, double time, bool angular);
+        Eigen::Matrix4d skew_matrix(Vector3d v);
+
+        bool trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time);
 
         // ROS related methods
         void retrieve_params(ros::NodeHandle & nodeHandle_);

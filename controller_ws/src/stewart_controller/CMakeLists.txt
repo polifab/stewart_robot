@@ -8,7 +8,6 @@ add_definitions(${GCC_COMPILE_FLAGS})
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs geometry_msgs sensor_msgs message_generation tf)
 find_package(yaml-cpp REQUIRED)
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
 
 link_directories($ENV{WEBOTS_HOME}/lib/controller)
 file(GLOB C_SOURCES *.c)
