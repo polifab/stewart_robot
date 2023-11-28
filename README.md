@@ -61,12 +61,12 @@ A Webots GUI showing the Stewart Platform should appear and the robot is by defa
 ## Configuration
 
 A YAML file describing the geometry of the robot is available in:
-- Stewart/controller_ws/src/stewart_controller/config/stewart.yaml
+- stewart_robot/controller_ws/src/stewart_controller/config/stewart.yaml
 
 It contains two matrices, A and B. The A matrix describes the attachment points of the joints on the base platform in world coordinate frame. The B matrix describes the attachment points of the joints to the moving platform in a solidal reference frame centered on the centroid of the cylinder which describes the moving platform.
 
 A ROS launch file is also provided to automatise the launching of all the nodes in:
-- Stewart/controller_ws/src/stewart_controller/launch/stewart.launch
+- stewart_robot/controller_ws/src/stewart_controller/launch/stewart.launch
 
 It contains some parameters which are useful to the user:
 ```
