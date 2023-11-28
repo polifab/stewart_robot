@@ -28,7 +28,7 @@ The project depends on:
 
 Open a BASH shell in the location of the base directory of the project and then:
 
-```
+```bash
 source /opt/ros/noetic/setup.bash
 cd controller_ws
 catkin_make
@@ -38,7 +38,7 @@ catkin_make
 
 Open a BASH shell in the location of the base directory of the project and then:
 
-```
+```bash
 source /opt/ros/noetic/setup.bash
 source controller_ws/devel/setup.bash
 roslaunch stewart_controller stewart.launch
@@ -49,11 +49,12 @@ A Webots GUI showing the Stewart Platform should appear and the robot is by defa
 
 Docker simplifies the deployment, handling all the dependencies and virtualizing the environment.
 Open a BASH shell in the location of the base directory of the project and then:
+```bash
+docker-compose build # if newer docker compose version, use "docker compose build"
+xhost + # disable access control for docker to connect to display
+docker-compose up # if newer docker compose version, use "docker compose up"
 ```
-source /opt/ros/noetic/setup.bash
-cd controller_ws
-catkin_make
-```
+
 A Webots GUI showing the Stewart Platform should appear and the robot is by default set on mode 1.
 
 ## Configuration
@@ -80,7 +81,7 @@ All the parameters can also be changed from ROS topics.
 ## Example of usage
 
 After that the program has been correctly launched, if you have ROS installed natively on your system, simply open a BASH shell and type:
-```
+```bash
 source /opt/ros/noetic/setup.bash
 rostopic pub /stewart_controller_node/pose_trapz_setpoint geometry_msgs/Pose "position:
   x: 0.19136
@@ -95,14 +96,14 @@ orientation:
 Since the robot starts in mode 1, this command will move the platform from the initial coordinates to the new required ones using the trapezoidal trajectory with the properties specified in the launch file.
 To change mode:
 
-```
+```bash
 rostopic pub /stewart_controller_node/mode std_msgs/Int32 "data: <desired_mode>"
 ```
 
 In mode 2 the program will automatically detect and the parse the input from a joystick and it will be possible to command the twist of the platform using the analog controllers and the arrows.
 
 If ROS is not natively installed and you are using Docker, it is sufficient to open a new BASH shell and type:
-```
+```bash
 docker exec -it stewart_platform_container bash
 ```
 This will open a BASH shell inside the Docker container where it will be possible to execute the steps showed before.
