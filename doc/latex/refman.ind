@@ -1,0 +1,273 @@
+\begin{theindex}
+
+  \item {/home/fpo/side\_projects/Stewart/controller\_ws/src/stewart\_controller/include/macros.hpp}, 
+		\hyperpage{27}
+  \item {/home/fpo/side\_projects/Stewart/controller\_ws/src/stewart\_controller/include/stewart\_controller.hpp}, 
+		\hyperpage{28}
+
+  \indexspace
+
+  \item {A}
+    \subitem {Stewart}, \hyperpage{20}
+  \item {acc\_upp\_plat}
+    \subitem {Stewart}, \hyperpage{20}
+  \item {ang\_vel\_upp\_plat}
+    \subitem {Stewart}, \hyperpage{21}
+  \item {att\_upp\_plat}
+    \subitem {Stewart}, \hyperpage{21}
+
+  \indexspace
+
+  \item {B}
+    \subitem {Stewart}, \hyperpage{21}
+  \item {base\_pose\_}
+    \subitem {Stewart}, \hyperpage{21}
+  \item {base\_pose\_gt\_}
+    \subitem {Stewart}, \hyperpage{21}
+  \item {base\_vel\_}
+    \subitem {Stewart}, \hyperpage{21}
+  \item {BASE\_Z}
+    \subitem {macros.hpp}, \hyperpage{27}
+
+  \indexspace
+
+  \item {change\_acc\_callback}
+    \subitem {Stewart}, \hyperpage{11}
+  \item {change\_acc\_sub\_}
+    \subitem {Stewart}, \hyperpage{22}
+  \item {change\_mod\_callback}
+    \subitem {Stewart}, \hyperpage{11}
+  \item {change\_mod\_sub\_}
+    \subitem {Stewart}, \hyperpage{22}
+  \item {change\_vel\_callback}
+    \subitem {Stewart}, \hyperpage{11}
+  \item {change\_vel\_sub\_}
+    \subitem {Stewart}, \hyperpage{22}
+  \item {config\_file\_}
+    \subitem {Stewart}, \hyperpage{22}
+  \item {config\_stewart}
+    \subitem {Stewart}, \hyperpage{22}
+  \item {convert\_6d\_to\_7d}
+    \subitem {Stewart}, \hyperpage{11}
+  \item {convert\_7d\_to\_6d}
+    \subitem {Stewart}, \hyperpage{12}
+
+  \indexspace
+
+  \item {enable\_devices}
+    \subitem {Stewart}, \hyperpage{12}
+  \item {estimate\_base\_pose}
+    \subitem {Stewart}, \hyperpage{12}
+
+  \indexspace
+
+  \item {forward\_kinematics}
+    \subitem {Stewart}, \hyperpage{12}
+
+  \indexspace
+
+  \item {get\_base\_pose}
+    \subitem {Stewart}, \hyperpage{13}
+  \item {get\_base\_vel}
+    \subitem {Stewart}, \hyperpage{13}
+  \item {get\_force\_feedback}
+    \subitem {Stewart}, \hyperpage{13}
+  \item {get\_joints\_pos}
+    \subitem {Stewart}, \hyperpage{14}
+  \item {get\_mode}
+    \subitem {Stewart}, \hyperpage{14}
+  \item {gps\_upp\_plat}
+    \subitem {Stewart}, \hyperpage{22}
+
+  \indexspace
+
+  \item {init\_pubs\_subs}
+    \subitem {Stewart}, \hyperpage{14}
+  \item {init\_trapz\_}
+    \subitem {Stewart}, \hyperpage{23}
+  \item {init\_vectors}
+    \subitem {Stewart}, \hyperpage{14}
+  \item {inv\_J\_1}
+    \subitem {Stewart}, \hyperpage{15}
+  \item {inv\_J\_2}
+    \subitem {Stewart}, \hyperpage{15}
+  \item {inverse\_jacobian}
+    \subitem {Stewart}, \hyperpage{15}
+  \item {inverse\_kinematics}
+    \subitem {Stewart}, \hyperpage{16}
+
+  \indexspace
+
+  \item {joy\_callback}
+    \subitem {Stewart}, \hyperpage{16}
+  \item {joy\_sub\_}
+    \subitem {Stewart}, \hyperpage{23}
+
+  \indexspace
+
+  \item {macros.hpp}
+    \subitem {BASE\_Z}, \hyperpage{27}
+    \subitem {NUM\_PISTONS}, \hyperpage{28}
+  \item {mode\_}
+    \subitem {Stewart}, \hyperpage{23}
+
+  \indexspace
+
+  \item {N\_ITERATIONS}
+    \subitem {stewart\_controller.hpp}, \hyperpage{29}
+  \item {NUM\_PISTONS}
+    \subitem {macros.hpp}, \hyperpage{28}
+
+  \indexspace
+
+  \item {old\_time\_}
+    \subitem {Stewart}, \hyperpage{23}
+
+  \indexspace
+
+  \item {pistons\_}
+    \subitem {Stewart}, \hyperpage{23}
+  \item {pistons\_pos\_}
+    \subitem {Stewart}, \hyperpage{23}
+  \item {pose\_cmd\_pub\_}
+    \subitem {Stewart}, \hyperpage{24}
+  \item {pose\_pub\_}
+    \subitem {Stewart}, \hyperpage{24}
+  \item {pose\_vel\_pub\_}
+    \subitem {Stewart}, \hyperpage{24}
+
+  \indexspace
+
+  \item {qf\_}
+    \subitem {Stewart}, \hyperpage{24}
+  \item {qi\_}
+    \subitem {Stewart}, \hyperpage{24}
+
+  \indexspace
+
+  \item {reach\_setpoint}
+    \subitem {Stewart}, \hyperpage{16}
+  \item {reach\_setpoint\_trapz}
+    \subitem {Stewart}, \hyperpage{17}
+  \item {retrieve\_params}
+    \subitem {Stewart}, \hyperpage{17}
+
+  \indexspace
+
+  \item {set\_piston\_pos}
+    \subitem {Stewart}, \hyperpage{17}
+  \item {set\_piston\_vel}
+    \subitem {Stewart}, \hyperpage{18}
+  \item {set\_target\_vel}
+    \subitem {Stewart}, \hyperpage{18}
+  \item {setpoint\_}
+    \subitem {Stewart}, \hyperpage{24}
+  \item {setpoint\_callback}
+    \subitem {Stewart}, \hyperpage{18}
+  \item {setpoint\_sub\_}
+    \subitem {Stewart}, \hyperpage{25}
+  \item {setpoint\_trapz\_}
+    \subitem {Stewart}, \hyperpage{25}
+  \item {setpoint\_trapz\_callback}
+    \subitem {Stewart}, \hyperpage{19}
+  \item {setpoint\_vel}
+    \subitem {Stewart}, \hyperpage{25}
+  \item {setpoint\_vel\_callback}
+    \subitem {Stewart}, \hyperpage{19}
+  \item {setpoint\_vel\_sub\_}
+    \subitem {Stewart}, \hyperpage{25}
+  \item {skew\_matrix}
+    \subitem {Stewart}, \hyperpage{19}
+  \item {Stewart}, \hyperpage{7}
+    \subitem {A}, \hyperpage{20}
+    \subitem {acc\_upp\_plat}, \hyperpage{20}
+    \subitem {ang\_vel\_upp\_plat}, \hyperpage{21}
+    \subitem {att\_upp\_plat}, \hyperpage{21}
+    \subitem {B}, \hyperpage{21}
+    \subitem {base\_pose\_}, \hyperpage{21}
+    \subitem {base\_pose\_gt\_}, \hyperpage{21}
+    \subitem {base\_vel\_}, \hyperpage{21}
+    \subitem {change\_acc\_callback}, \hyperpage{11}
+    \subitem {change\_acc\_sub\_}, \hyperpage{22}
+    \subitem {change\_mod\_callback}, \hyperpage{11}
+    \subitem {change\_mod\_sub\_}, \hyperpage{22}
+    \subitem {change\_vel\_callback}, \hyperpage{11}
+    \subitem {change\_vel\_sub\_}, \hyperpage{22}
+    \subitem {config\_file\_}, \hyperpage{22}
+    \subitem {config\_stewart}, \hyperpage{22}
+    \subitem {convert\_6d\_to\_7d}, \hyperpage{11}
+    \subitem {convert\_7d\_to\_6d}, \hyperpage{12}
+    \subitem {enable\_devices}, \hyperpage{12}
+    \subitem {estimate\_base\_pose}, \hyperpage{12}
+    \subitem {forward\_kinematics}, \hyperpage{12}
+    \subitem {get\_base\_pose}, \hyperpage{13}
+    \subitem {get\_base\_vel}, \hyperpage{13}
+    \subitem {get\_force\_feedback}, \hyperpage{13}
+    \subitem {get\_joints\_pos}, \hyperpage{14}
+    \subitem {get\_mode}, \hyperpage{14}
+    \subitem {gps\_upp\_plat}, \hyperpage{22}
+    \subitem {init\_pubs\_subs}, \hyperpage{14}
+    \subitem {init\_trapz\_}, \hyperpage{23}
+    \subitem {init\_vectors}, \hyperpage{14}
+    \subitem {inv\_J\_1}, \hyperpage{15}
+    \subitem {inv\_J\_2}, \hyperpage{15}
+    \subitem {inverse\_jacobian}, \hyperpage{15}
+    \subitem {inverse\_kinematics}, \hyperpage{16}
+    \subitem {joy\_callback}, \hyperpage{16}
+    \subitem {joy\_sub\_}, \hyperpage{23}
+    \subitem {mode\_}, \hyperpage{23}
+    \subitem {old\_time\_}, \hyperpage{23}
+    \subitem {pistons\_}, \hyperpage{23}
+    \subitem {pistons\_pos\_}, \hyperpage{23}
+    \subitem {pose\_cmd\_pub\_}, \hyperpage{24}
+    \subitem {pose\_pub\_}, \hyperpage{24}
+    \subitem {pose\_vel\_pub\_}, \hyperpage{24}
+    \subitem {qf\_}, \hyperpage{24}
+    \subitem {qi\_}, \hyperpage{24}
+    \subitem {reach\_setpoint}, \hyperpage{16}
+    \subitem {reach\_setpoint\_trapz}, \hyperpage{17}
+    \subitem {retrieve\_params}, \hyperpage{17}
+    \subitem {set\_piston\_pos}, \hyperpage{17}
+    \subitem {set\_piston\_vel}, \hyperpage{18}
+    \subitem {set\_target\_vel}, \hyperpage{18}
+    \subitem {setpoint\_}, \hyperpage{24}
+    \subitem {setpoint\_callback}, \hyperpage{18}
+    \subitem {setpoint\_sub\_}, \hyperpage{25}
+    \subitem {setpoint\_trapz\_}, \hyperpage{25}
+    \subitem {setpoint\_trapz\_callback}, \hyperpage{19}
+    \subitem {setpoint\_vel}, \hyperpage{25}
+    \subitem {setpoint\_vel\_callback}, \hyperpage{19}
+    \subitem {setpoint\_vel\_sub\_}, \hyperpage{25}
+    \subitem {skew\_matrix}, \hyperpage{19}
+    \subitem {Stewart}, \hyperpage{10}
+    \subitem {target\_}, \hyperpage{25}
+    \subitem {time\_}, \hyperpage{25}
+    \subitem {trapezoidal\_target}, \hyperpage{19}
+    \subitem {trapezoidal\_trajectory}, \hyperpage{20}
+    \subitem {trapz\_acc\_}, \hyperpage{26}
+    \subitem {trapz\_initialization}, \hyperpage{26}
+    \subitem {trapz\_max\_vel\_}, \hyperpage{26}
+    \subitem {trapz\_setpoint\_sub\_}, \hyperpage{26}
+  \item {stewart\_controller.hpp}
+    \subitem {N\_ITERATIONS}, \hyperpage{29}
+
+  \indexspace
+
+  \item {target\_}
+    \subitem {Stewart}, \hyperpage{25}
+  \item {time\_}
+    \subitem {Stewart}, \hyperpage{25}
+  \item {trapezoidal\_target}
+    \subitem {Stewart}, \hyperpage{19}
+  \item {trapezoidal\_trajectory}
+    \subitem {Stewart}, \hyperpage{20}
+  \item {trapz\_acc\_}
+    \subitem {Stewart}, \hyperpage{26}
+  \item {trapz\_initialization}
+    \subitem {Stewart}, \hyperpage{26}
+  \item {trapz\_max\_vel\_}
+    \subitem {Stewart}, \hyperpage{26}
+  \item {trapz\_setpoint\_sub\_}
+    \subitem {Stewart}, \hyperpage{26}
+
+\end{theindex}

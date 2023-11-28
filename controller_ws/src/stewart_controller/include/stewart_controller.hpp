@@ -28,7 +28,10 @@ using namespace Eigen;
  * @brief Stewart Controller Class
  * This class takes care of interfacing with Webots control API
  * and implementing kinematics and trajectory plan for the
- * Stewart Platform
+ * Stewart Platform. Kinematics are implemented according to
+ * "Kinematic and dynamic analysis of Stewart platform-based machine tool structures"
+ * by Khalifa Harib and Krishnaswamy Srinivasan [1]
+ * @author Fabio Polisano
  */
 class Stewart : public Robot {
     public:
@@ -231,31 +234,150 @@ class Stewart : public Robot {
         ros::Subscriber change_mod_sub_;
 
         // Webots related methods
+        /**
+         * @brief Routine to enable Webots sensors
+         * 
+         */
         void enable_devices();
 
         // Kinematics related methods
+        /**
+         * @brief Routine to initialize Eigen Vectors
+         * 
+         */
         void init_vectors();
+
+        /**
+         * @brief Method to convert a 6D position + euler orientation
+         * vector into a 7D position + quaternion orientation
+         * vector
+         * 
+         * @param euler_pos 6D position + euler orientation vector
+         * @return VectorXd 7D position + quaternion orientation vector
+         */
         VectorXd convert_6d_to_7d(VectorXd euler_pos);
+
+        /**
+         * @brief Method to convert a 7D position + quaternion orientation
+         * vector into a 6D position + euler orientation
+         * vector
+         * 
+         * @param quat_pos 7D position + quaternion orientation vector
+         * @return VectorXd 6D position + euler orientation vector
+         */
         VectorXd convert_7d_to_6d(VectorXd quat_pos);
 
+        /**
+         * @brief method to compute J_1^{-1} according to [1]
+         * 
+         * @param n 6x3 Matrix containing the direction vectors of tje joints
+         * @param q quaternion containing actual orientation of the moving base
+         * @return MatrixXd J_1^-{1}
+         */
         MatrixXd inv_J_1(MatrixXd n, Quaterniond q);
+
+        /**
+         * @brief method to compute J_2^{-1} according to [1]
+         * 
+         * @param q quaternion containing actual orientation of the moving base
+         * @return MatrixXd J_2^-{1}
+         */
         MatrixXd inv_J_2(Quaterniond q);
+
+        /**
+         * @brief Method to compute geometrically the trapezoidal
+         * velocity trajectory.
+         * 
+         * @param qi initial pose of the moving base
+         * @param qf desired final pose of the moving base
+         * @param time time since the movement started
+         * @param angular if the function is computing the trajectory
+         * for angular variable
+         * @return double target velocity
+         */
         double trapezoidal_target(double qi, double qf, double time, bool angular);
+
+        /**
+         * @brief Method to compute the skew matrix from a 3D vector
+         * 
+         * @param v 3D Vector
+         * @return Eigen::Matrix4d Skew Matrix of v
+         */
         Eigen::Matrix4d skew_matrix(Vector3d v);
 
+        /**
+         * @brief Method that takes care of integrating the desired velocities
+         * and set target position in trapezoidal velocity trajectory control
+         * 
+         * @param qi initial pose
+         * @param qf final pose
+         * @param time time since the operation started
+         * @return true 
+         * @return false 
+         */
         bool trapezoidal_trajectory(VectorXd qi, VectorXd qf, double time);
 
         // ROS related methods
+        /**
+         * @brief Routine to retrieve roslaunch params
+         * 
+         * @param nodeHandle_ 
+         */
         void retrieve_params(ros::NodeHandle & nodeHandle_);
+        /**
+         * @brief routine to initialise ROS publisher and subcribers
+         * 
+         * @param nodeHandle_ 
+         */
         void init_pubs_subs(ros::NodeHandle & nodeHandle_);
 
+        /**
+         * @brief Joystick callback
+         * 
+         * @param msg 
+         */
         void joy_callback(const sensor_msgs::Joy& msg);
+
+        /**
+         * @brief Pose setpoint callback (for IK pose control)
+         * 
+         * @param msg 
+         */
         void setpoint_callback(const geometry_msgs::Pose& msg);
+
+        /**
+         * @brief Pose setpoint callback (for trapezoidal velocity pose control)
+         * 
+         * @param msg 
+         */
         void setpoint_trapz_callback(const geometry_msgs::Pose& msg);
+
+        /**
+         * @brief Twist setpoint callback (for twist control)
+         * 
+         * @param msg 
+         */
         void setpoint_vel_callback(const geometry_msgs::Twist& msg);
 
+        /**
+         * @brief Callback to change acc value in trapezoidal control
+         * 
+         * @param msg 
+         */
         void change_acc_callback(const std_msgs::Float32& msg);
+
+        /**
+         * @brief Callback to change vel value in trapezoidal control
+         * 
+         * @param msg 
+         */
         void change_vel_callback(const std_msgs::Float32& msg);
+
+        /**
+         * @brief Callback to change mode value
+         * 
+         * @param msg 
+         */
         void change_mod_callback(const std_msgs::Int32& msg);
 
 };

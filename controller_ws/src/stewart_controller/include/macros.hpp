@@ -1,13 +1,15 @@
 #pragma once
 
-#define TIME_STEP 64
-
 /**
  * @brief Number of Pistons
  * 
  */
 #define NUM_PISTONS 6
 
+/**
+ * @brief initial Z coordinate of moving base
+ * 
+ */
 #define BASE_Z 2.733406
 
 /**

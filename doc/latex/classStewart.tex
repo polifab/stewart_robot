@@ -11,7 +11,8 @@
 
 
 
-Inheritance diagram for Stewart\+:\nopagebreak
+Inheritance diagram for Stewart\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,7 +21,8 @@ Inheritance diagram for Stewart\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Stewart\+:\nopagebreak
+Collaboration diagram for Stewart\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -68,41 +70,41 @@ int \mbox{\hyperlink{classStewart_aa384cfb09df511253567783e6743fda4}{get\+\_\+mo
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{classStewart_a6004365dacbcdc8f512c29d9865b020f}{enable\+\_\+devices}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Routine to enable Webots sensors. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a0400050feb79be4bc860bc90a91ccde0}{init\+\_\+vectors}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Routine to initialize Eigen Vectors. \end{DoxyCompactList}\item 
 Vector\+Xd \mbox{\hyperlink{classStewart_afd9b13b93919c935edc4a1dfbf3e25bd}{convert\+\_\+6d\+\_\+to\+\_\+7d}} (Vector\+Xd euler\+\_\+pos)
-\item 
+\begin{DoxyCompactList}\small\item\em Method to convert a 6D position + euler orientation vector into a 7D position + quaternion orientation vector. \end{DoxyCompactList}\item 
 Vector\+Xd \mbox{\hyperlink{classStewart_a0736cbca03ea80ddd4dad6cf1a53976e}{convert\+\_\+7d\+\_\+to\+\_\+6d}} (Vector\+Xd quat\+\_\+pos)
-\item 
+\begin{DoxyCompactList}\small\item\em Method to convert a 7D position + quaternion orientation vector into a 6D position + euler orientation vector. \end{DoxyCompactList}\item 
 Matrix\+Xd \mbox{\hyperlink{classStewart_a6e29fe31f5205a11c206ac495a83800b}{inv\+\_\+\+J\+\_\+1}} (Matrix\+Xd n, Quaterniond q)
-\item 
+\begin{DoxyCompactList}\small\item\em method to compute J\+\_\+1$^\wedge$\{-\/1\} according to \mbox{[}1\mbox{]} \end{DoxyCompactList}\item 
 Matrix\+Xd \mbox{\hyperlink{classStewart_a848343d50fb888b22c3a3fde36c08564}{inv\+\_\+\+J\+\_\+2}} (Quaterniond q)
-\item 
+\begin{DoxyCompactList}\small\item\em method to compute J\+\_\+2$^\wedge$\{-\/1\} according to \mbox{[}1\mbox{]} \end{DoxyCompactList}\item 
 double \mbox{\hyperlink{classStewart_a152cca0dfb28707fe54122a9fee4f351}{trapezoidal\+\_\+target}} (double qi, double qf, double time, bool angular)
-\item 
+\begin{DoxyCompactList}\small\item\em Method to compute geometrically the trapezoidal velocity trajectory. \end{DoxyCompactList}\item 
 Eigen\+::\+Matrix4d \mbox{\hyperlink{classStewart_aa46ebbe45b7b5c0be3df43e3e91fc109}{skew\+\_\+matrix}} (Vector3d v)
-\item 
+\begin{DoxyCompactList}\small\item\em Method to compute the skew matrix from a 3D vector. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classStewart_acb43116801ac93bc79a18153d3251919}{trapezoidal\+\_\+trajectory}} (Vector\+Xd qi, Vector\+Xd qf, double time)
-\item 
+\begin{DoxyCompactList}\small\item\em Method that takes care of integrating the desired velocities and set target position in trapezoidal velocity trajectory control. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a92b02527704958199ff327a15cbd8f63}{retrieve\+\_\+params}} (ros\+::\+Node\+Handle \&node\+Handle\+\_\+)
-\item 
+\begin{DoxyCompactList}\small\item\em Routine to retrieve roslaunch params. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a2f917b73ba3abb2e956f99d74bb85c09}{init\+\_\+pubs\+\_\+subs}} (ros\+::\+Node\+Handle \&node\+Handle\+\_\+)
-\item 
+\begin{DoxyCompactList}\small\item\em routine to initialise R\+OS publisher and subcribers \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a4ea87229475474367f22f1c9823d475c}{joy\+\_\+callback}} (const sensor\+\_\+msgs\+::\+Joy \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Joystick callback. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a9db55d259272d0db0150ca14256f8555}{setpoint\+\_\+callback}} (const geometry\+\_\+msgs\+::\+Pose \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Pose setpoint callback (for IK pose control) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_ab9872647fff36dd4445ec37f03112bcc}{setpoint\+\_\+trapz\+\_\+callback}} (const geometry\+\_\+msgs\+::\+Pose \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Pose setpoint callback (for trapezoidal velocity pose control) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_acae2673c278cfa51851a16f14de326d0}{setpoint\+\_\+vel\+\_\+callback}} (const geometry\+\_\+msgs\+::\+Twist \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Twist setpoint callback (for twist control) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a7a53e1bd763df997d4d4a008d9739e7b}{change\+\_\+acc\+\_\+callback}} (const std\+\_\+msgs\+::\+Float32 \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Callback to change acc value in trapezoidal control. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_abc6c2747647d58fd871fac6dd6c5c43e}{change\+\_\+vel\+\_\+callback}} (const std\+\_\+msgs\+::\+Float32 \&msg)
-\item 
+\begin{DoxyCompactList}\small\item\em Callback to change vel value in trapezoidal control. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classStewart_a3a217de2215098164cc0153df540b6e6}{change\+\_\+mod\+\_\+callback}} (const std\+\_\+msgs\+::\+Int32 \&msg)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Callback to change mode value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -183,7 +185,12 @@ ros\+::\+Subscriber \mbox{\hyperlink{classStewart_a75da63241e21e4fe14e4c37b56bba
 \doxysubsection{Detailed Description}
 \mbox{\hyperlink{classStewart}{Stewart}} Controller Class This class takes care of interfacing with Webots control A\+PI and implementing kinematics and trajectory plan for the \mbox{\hyperlink{classStewart}{Stewart}} Platform. 
 
-Definition at line 33 of file stewart\+\_\+controller.\+hpp.
+Kinematics are implemented according to \char`\"{}\+Kinematic and dynamic analysis of Stewart platform-\/based machine tool structures\char`\"{} by Khalifa Harib and Krishnaswamy Srinivasan \mbox{[}1\mbox{]} \begin{DoxyAuthor}{Author}
+Fabio Polisano 
+\end{DoxyAuthor}
+
+
+Definition at line 36 of file stewart\+\_\+controller.\+hpp.
 
 
 
@@ -216,35 +223,90 @@ Construct a new \mbox{\hyperlink{classStewart}{Stewart}} object It initializes t
 \doxysubsubsection{\texorpdfstring{change\_acc\_callback()}{change\_acc\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::change\+\_\+acc\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::\+Float32 \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Callback to change acc value in trapezoidal control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_a3a217de2215098164cc0153df540b6e6}\label{classStewart_a3a217de2215098164cc0153df540b6e6}} 
 \index{Stewart@{Stewart}!change\_mod\_callback@{change\_mod\_callback}}
 \index{change\_mod\_callback@{change\_mod\_callback}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{change\_mod\_callback()}{change\_mod\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::change\+\_\+mod\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::\+Int32 \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Callback to change mode value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_abc6c2747647d58fd871fac6dd6c5c43e}\label{classStewart_abc6c2747647d58fd871fac6dd6c5c43e}} 
 \index{Stewart@{Stewart}!change\_vel\_callback@{change\_vel\_callback}}
 \index{change\_vel\_callback@{change\_vel\_callback}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{change\_vel\_callback()}{change\_vel\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::change\+\_\+vel\+\_\+callback (\begin{DoxyParamCaption}\item[{const std\+\_\+msgs\+::\+Float32 \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Callback to change vel value in trapezoidal control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_afd9b13b93919c935edc4a1dfbf3e25bd}\label{classStewart_afd9b13b93919c935edc4a1dfbf3e25bd}} 
 \index{Stewart@{Stewart}!convert\_6d\_to\_7d@{convert\_6d\_to\_7d}}
 \index{convert\_6d\_to\_7d@{convert\_6d\_to\_7d}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{convert\_6d\_to\_7d()}{convert\_6d\_to\_7d()}}
 {\footnotesize\ttfamily Vector\+Xd Stewart\+::convert\+\_\+6d\+\_\+to\+\_\+7d (\begin{DoxyParamCaption}\item[{Vector\+Xd}]{euler\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Method to convert a 6D position + euler orientation vector into a 7D position + quaternion orientation vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em euler\+\_\+pos} & 6D position + euler orientation vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector\+Xd 7D position + quaternion orientation vector 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classStewart_a0736cbca03ea80ddd4dad6cf1a53976e}\label{classStewart_a0736cbca03ea80ddd4dad6cf1a53976e}} 
 \index{Stewart@{Stewart}!convert\_7d\_to\_6d@{convert\_7d\_to\_6d}}
 \index{convert\_7d\_to\_6d@{convert\_7d\_to\_6d}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{convert\_7d\_to\_6d()}{convert\_7d\_to\_6d()}}
 {\footnotesize\ttfamily Vector\+Xd Stewart\+::convert\+\_\+7d\+\_\+to\+\_\+6d (\begin{DoxyParamCaption}\item[{Vector\+Xd}]{quat\+\_\+pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Method to convert a 7D position + quaternion orientation vector into a 6D position + euler orientation vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em quat\+\_\+pos} & 7D position + quaternion orientation vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector\+Xd 6D position + euler orientation vector 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classStewart_a6004365dacbcdc8f512c29d9865b020f}\label{classStewart_a6004365dacbcdc8f512c29d9865b020f}} 
 \index{Stewart@{Stewart}!enable\_devices@{enable\_devices}}
 \index{enable\_devices@{enable\_devices}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{enable\_devices()}{enable\_devices()}}
 {\footnotesize\ttfamily void Stewart\+::enable\+\_\+devices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Routine to enable Webots sensors. 
 
 \mbox{\Hypertarget{classStewart_a5f7c432ea640026fb5bd8c435f2979da}\label{classStewart_a5f7c432ea640026fb5bd8c435f2979da}} 
 \index{Stewart@{Stewart}!estimate\_base\_pose@{estimate\_base\_pose}}
@@ -352,11 +414,24 @@ int 1 Trapezoidal 2 Twist 3 Position using IK 4 FK estimation
 \doxysubsubsection{\texorpdfstring{init\_pubs\_subs()}{init\_pubs\_subs()}}
 {\footnotesize\ttfamily void Stewart\+::init\+\_\+pubs\+\_\+subs (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle \&}]{node\+Handle\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+routine to initialise R\+OS publisher and subcribers 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+Handle\+\_\+} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_a0400050feb79be4bc860bc90a91ccde0}\label{classStewart_a0400050feb79be4bc860bc90a91ccde0}} 
 \index{Stewart@{Stewart}!init\_vectors@{init\_vectors}}
 \index{init\_vectors@{init\_vectors}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{init\_vectors()}{init\_vectors()}}
 {\footnotesize\ttfamily void Stewart\+::init\+\_\+vectors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Routine to initialize Eigen Vectors. 
 
 \mbox{\Hypertarget{classStewart_a6e29fe31f5205a11c206ac495a83800b}\label{classStewart_a6e29fe31f5205a11c206ac495a83800b}} 
 \index{Stewart@{Stewart}!inv\_J\_1@{inv\_J\_1}}
@@ -364,12 +439,38 @@ int 1 Trapezoidal 2 Twist 3 Position using IK 4 FK estimation
 \doxysubsubsection{\texorpdfstring{inv\_J\_1()}{inv\_J\_1()}}
 {\footnotesize\ttfamily Matrix\+Xd Stewart\+::inv\+\_\+\+J\+\_\+1 (\begin{DoxyParamCaption}\item[{Matrix\+Xd}]{n,  }\item[{Quaterniond}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+method to compute J\+\_\+1$^\wedge$\{-\/1\} according to \mbox{[}1\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & 6x3 Matrix containing the direction vectors of tje joints \\
+\hline
+{\em q} & quaternion containing actual orientation of the moving base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix\+Xd J\+\_\+1$^\wedge$-\/\{1\} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classStewart_a848343d50fb888b22c3a3fde36c08564}\label{classStewart_a848343d50fb888b22c3a3fde36c08564}} 
 \index{Stewart@{Stewart}!inv\_J\_2@{inv\_J\_2}}
 \index{inv\_J\_2@{inv\_J\_2}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{inv\_J\_2()}{inv\_J\_2()}}
 {\footnotesize\ttfamily Matrix\+Xd Stewart\+::inv\+\_\+\+J\+\_\+2 (\begin{DoxyParamCaption}\item[{Quaterniond}]{q }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+method to compute J\+\_\+2$^\wedge$\{-\/1\} according to \mbox{[}1\mbox{]} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em q} & quaternion containing actual orientation of the moving base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix\+Xd J\+\_\+2$^\wedge$-\/\{1\} 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classStewart_af41d6f8f650cc9886d9276a21de7f998}\label{classStewart_af41d6f8f650cc9886d9276a21de7f998}} 
 \index{Stewart@{Stewart}!inverse\_jacobian@{inverse\_jacobian}}
 \index{inverse\_jacobian@{inverse\_jacobian}!Stewart@{Stewart}}
@@ -412,6 +513,15 @@ std\+::tuple$<$\+Vector\+Xd, Matrix\+Xd$>$ a tuple containing a ({\ttfamily \#N\
 \doxysubsubsection{\texorpdfstring{joy\_callback()}{joy\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::joy\+\_\+callback (\begin{DoxyParamCaption}\item[{const sensor\+\_\+msgs\+::\+Joy \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Joystick callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_aa6b63ad23abd22a368229b627d195845}\label{classStewart_aa6b63ad23abd22a368229b627d195845}} 
 \index{Stewart@{Stewart}!reach\_setpoint@{reach\_setpoint}}
 \index{reach\_setpoint@{reach\_setpoint}!Stewart@{Stewart}}
@@ -453,6 +563,15 @@ routine to reach a desired setpoint using a trapezoidal velocity trajectory
 \doxysubsubsection{\texorpdfstring{retrieve\_params()}{retrieve\_params()}}
 {\footnotesize\ttfamily void Stewart\+::retrieve\+\_\+params (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle \&}]{node\+Handle\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Routine to retrieve roslaunch params. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+Handle\+\_\+} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_a97b0e95405b2fb2f62bef0a4297bea1e}\label{classStewart_a97b0e95405b2fb2f62bef0a4297bea1e}} 
 \index{Stewart@{Stewart}!set\_piston\_pos@{set\_piston\_pos}}
 \index{set\_piston\_pos@{set\_piston\_pos}!Stewart@{Stewart}}
@@ -518,36 +637,111 @@ Routine to set the velocity of the moving base to the desired setpoint velocity 
 \doxysubsubsection{\texorpdfstring{setpoint\_callback()}{setpoint\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::setpoint\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Pose \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Pose setpoint callback (for IK pose control) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_ab9872647fff36dd4445ec37f03112bcc}\label{classStewart_ab9872647fff36dd4445ec37f03112bcc}} 
 \index{Stewart@{Stewart}!setpoint\_trapz\_callback@{setpoint\_trapz\_callback}}
 \index{setpoint\_trapz\_callback@{setpoint\_trapz\_callback}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{setpoint\_trapz\_callback()}{setpoint\_trapz\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::setpoint\+\_\+trapz\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Pose \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Pose setpoint callback (for trapezoidal velocity pose control) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_acae2673c278cfa51851a16f14de326d0}\label{classStewart_acae2673c278cfa51851a16f14de326d0}} 
 \index{Stewart@{Stewart}!setpoint\_vel\_callback@{setpoint\_vel\_callback}}
 \index{setpoint\_vel\_callback@{setpoint\_vel\_callback}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{setpoint\_vel\_callback()}{setpoint\_vel\_callback()}}
 {\footnotesize\ttfamily void Stewart\+::setpoint\+\_\+vel\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Twist \&}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Twist setpoint callback (for twist control) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em msg} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classStewart_aa46ebbe45b7b5c0be3df43e3e91fc109}\label{classStewart_aa46ebbe45b7b5c0be3df43e3e91fc109}} 
 \index{Stewart@{Stewart}!skew\_matrix@{skew\_matrix}}
 \index{skew\_matrix@{skew\_matrix}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{skew\_matrix()}{skew\_matrix()}}
 {\footnotesize\ttfamily Eigen\+::\+Matrix4d Stewart\+::skew\+\_\+matrix (\begin{DoxyParamCaption}\item[{Vector3d}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Method to compute the skew matrix from a 3D vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & 3D Vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Eigen\+::\+Matrix4d Skew Matrix of v 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classStewart_a152cca0dfb28707fe54122a9fee4f351}\label{classStewart_a152cca0dfb28707fe54122a9fee4f351}} 
 \index{Stewart@{Stewart}!trapezoidal\_target@{trapezoidal\_target}}
 \index{trapezoidal\_target@{trapezoidal\_target}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{trapezoidal\_target()}{trapezoidal\_target()}}
 {\footnotesize\ttfamily double Stewart\+::trapezoidal\+\_\+target (\begin{DoxyParamCaption}\item[{double}]{qi,  }\item[{double}]{qf,  }\item[{double}]{time,  }\item[{bool}]{angular }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Method to compute geometrically the trapezoidal velocity trajectory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em qi} & initial pose of the moving base \\
+\hline
+{\em qf} & desired final pose of the moving base \\
+\hline
+{\em time} & time since the movement started \\
+\hline
+{\em angular} & if the function is computing the trajectory for angular variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double target velocity 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classStewart_acb43116801ac93bc79a18153d3251919}\label{classStewart_acb43116801ac93bc79a18153d3251919}} 
 \index{Stewart@{Stewart}!trapezoidal\_trajectory@{trapezoidal\_trajectory}}
 \index{trapezoidal\_trajectory@{trapezoidal\_trajectory}!Stewart@{Stewart}}
 \doxysubsubsection{\texorpdfstring{trapezoidal\_trajectory()}{trapezoidal\_trajectory()}}
 {\footnotesize\ttfamily bool Stewart\+::trapezoidal\+\_\+trajectory (\begin{DoxyParamCaption}\item[{Vector\+Xd}]{qi,  }\item[{Vector\+Xd}]{qf,  }\item[{double}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+Method that takes care of integrating the desired velocities and set target position in trapezoidal velocity trajectory control. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em qi} & initial pose \\
+\hline
+{\em qf} & final pose \\
+\hline
+{\em time} & time since the operation started \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
 
 
 \doxysubsection{Member Data Documentation}
@@ -559,7 +753,7 @@ Routine to set the velocity of the moving base to the desired setpoint velocity 
 
 
 
-Definition at line 199 of file stewart\+\_\+controller.\+hpp.
+Definition at line 202 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ae8503bd1b5615d25f6ba5700c124efea}\label{classStewart_ae8503bd1b5615d25f6ba5700c124efea}} 
 \index{Stewart@{Stewart}!acc\_upp\_plat@{acc\_upp\_plat}}
@@ -569,7 +763,7 @@ Definition at line 199 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 191 of file stewart\+\_\+controller.\+hpp.
+Definition at line 194 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_aa40e5a558546c9b76888e425650ddb92}\label{classStewart_aa40e5a558546c9b76888e425650ddb92}} 
 \index{Stewart@{Stewart}!ang\_vel\_upp\_plat@{ang\_vel\_upp\_plat}}
@@ -579,7 +773,7 @@ Definition at line 191 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 190 of file stewart\+\_\+controller.\+hpp.
+Definition at line 193 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a4d8c48fd0f6ce74417fbf6d7c0d360ab}\label{classStewart_a4d8c48fd0f6ce74417fbf6d7c0d360ab}} 
 \index{Stewart@{Stewart}!att\_upp\_plat@{att\_upp\_plat}}
@@ -589,7 +783,7 @@ Definition at line 190 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 189 of file stewart\+\_\+controller.\+hpp.
+Definition at line 192 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_acf4bbe001aabcd47024e7d5363f95bfb}\label{classStewart_acf4bbe001aabcd47024e7d5363f95bfb}} 
 \index{Stewart@{Stewart}!B@{B}}
@@ -599,7 +793,7 @@ Definition at line 189 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 198 of file stewart\+\_\+controller.\+hpp.
+Definition at line 201 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_afbfef6234d01bde658c156437f40dcca}\label{classStewart_afbfef6234d01bde658c156437f40dcca}} 
 \index{Stewart@{Stewart}!base\_pose\_@{base\_pose\_}}
@@ -609,7 +803,7 @@ Definition at line 198 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 203 of file stewart\+\_\+controller.\+hpp.
+Definition at line 206 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a37db52ad11e01923b3e4f4528e70ad6e}\label{classStewart_a37db52ad11e01923b3e4f4528e70ad6e}} 
 \index{Stewart@{Stewart}!base\_pose\_gt\_@{base\_pose\_gt\_}}
@@ -619,7 +813,7 @@ Definition at line 203 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 204 of file stewart\+\_\+controller.\+hpp.
+Definition at line 207 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ad54473ad7b0f4de22d8a0eaa9d861f28}\label{classStewart_ad54473ad7b0f4de22d8a0eaa9d861f28}} 
 \index{Stewart@{Stewart}!base\_vel\_@{base\_vel\_}}
@@ -629,7 +823,7 @@ Definition at line 204 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 207 of file stewart\+\_\+controller.\+hpp.
+Definition at line 210 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_afff96ff72404ed9546bcdad20bec4ae8}\label{classStewart_afff96ff72404ed9546bcdad20bec4ae8}} 
 \index{Stewart@{Stewart}!change\_acc\_sub\_@{change\_acc\_sub\_}}
@@ -639,7 +833,7 @@ Definition at line 207 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 229 of file stewart\+\_\+controller.\+hpp.
+Definition at line 232 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a75da63241e21e4fe14e4c37b56bbac4e}\label{classStewart_a75da63241e21e4fe14e4c37b56bbac4e}} 
 \index{Stewart@{Stewart}!change\_mod\_sub\_@{change\_mod\_sub\_}}
@@ -649,7 +843,7 @@ Definition at line 229 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 231 of file stewart\+\_\+controller.\+hpp.
+Definition at line 234 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ad1bff1a34d60c17e30b3a45aa23267b0}\label{classStewart_ad1bff1a34d60c17e30b3a45aa23267b0}} 
 \index{Stewart@{Stewart}!change\_vel\_sub\_@{change\_vel\_sub\_}}
@@ -659,7 +853,7 @@ Definition at line 231 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 230 of file stewart\+\_\+controller.\+hpp.
+Definition at line 233 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a2cfac0a3d56846b32428b756efdbff33}\label{classStewart_a2cfac0a3d56846b32428b756efdbff33}} 
 \index{Stewart@{Stewart}!config\_file\_@{config\_file\_}}
@@ -669,7 +863,7 @@ Definition at line 230 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 183 of file stewart\+\_\+controller.\+hpp.
+Definition at line 186 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a2c345a6766aaaf7f3ad1a6cbf1566e11}\label{classStewart_a2c345a6766aaaf7f3ad1a6cbf1566e11}} 
 \index{Stewart@{Stewart}!config\_stewart@{config\_stewart}}
@@ -679,7 +873,7 @@ Definition at line 183 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 196 of file stewart\+\_\+controller.\+hpp.
+Definition at line 199 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a6b56ce4365e1ac03f7dad73658298277}\label{classStewart_a6b56ce4365e1ac03f7dad73658298277}} 
 \index{Stewart@{Stewart}!gps\_upp\_plat@{gps\_upp\_plat}}
@@ -689,7 +883,7 @@ Definition at line 196 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 188 of file stewart\+\_\+controller.\+hpp.
+Definition at line 191 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ae21f60320a7d8c6c4c49a92d9b3f420d}\label{classStewart_ae21f60320a7d8c6c4c49a92d9b3f420d}} 
 \index{Stewart@{Stewart}!init\_trapz\_@{init\_trapz\_}}
@@ -699,7 +893,7 @@ Definition at line 188 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 214 of file stewart\+\_\+controller.\+hpp.
+Definition at line 217 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ad41bcd12a61919a841f429c0a3fcc8a3}\label{classStewart_ad41bcd12a61919a841f429c0a3fcc8a3}} 
 \index{Stewart@{Stewart}!joy\_sub\_@{joy\_sub\_}}
@@ -709,7 +903,7 @@ Definition at line 214 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 226 of file stewart\+\_\+controller.\+hpp.
+Definition at line 229 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ad9c843453c6397f3dc74e0141adc0bcb}\label{classStewart_ad9c843453c6397f3dc74e0141adc0bcb}} 
 \index{Stewart@{Stewart}!mode\_@{mode\_}}
@@ -719,7 +913,7 @@ Definition at line 226 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 194 of file stewart\+\_\+controller.\+hpp.
+Definition at line 197 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a8727b3b1de42b0069647b05e1e2c4d14}\label{classStewart_a8727b3b1de42b0069647b05e1e2c4d14}} 
 \index{Stewart@{Stewart}!old\_time\_@{old\_time\_}}
@@ -729,7 +923,7 @@ Definition at line 194 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 211 of file stewart\+\_\+controller.\+hpp.
+Definition at line 214 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a822a28d84ed304a72f01369fb4e94e0e}\label{classStewart_a822a28d84ed304a72f01369fb4e94e0e}} 
 \index{Stewart@{Stewart}!pistons\_@{pistons\_}}
@@ -739,7 +933,7 @@ Definition at line 211 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 185 of file stewart\+\_\+controller.\+hpp.
+Definition at line 188 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_aac53507ab2e6efe5e9236131ad36bb4c}\label{classStewart_aac53507ab2e6efe5e9236131ad36bb4c}} 
 \index{Stewart@{Stewart}!pistons\_pos\_@{pistons\_pos\_}}
@@ -749,7 +943,7 @@ Definition at line 185 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 186 of file stewart\+\_\+controller.\+hpp.
+Definition at line 189 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ac1116be8978c11270f45cda8a0008a79}\label{classStewart_ac1116be8978c11270f45cda8a0008a79}} 
 \index{Stewart@{Stewart}!pose\_cmd\_pub\_@{pose\_cmd\_pub\_}}
@@ -759,7 +953,7 @@ Definition at line 186 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 221 of file stewart\+\_\+controller.\+hpp.
+Definition at line 224 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a9e935ba4731a8438706674ab074d2edb}\label{classStewart_a9e935ba4731a8438706674ab074d2edb}} 
 \index{Stewart@{Stewart}!pose\_pub\_@{pose\_pub\_}}
@@ -769,7 +963,7 @@ Definition at line 221 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 222 of file stewart\+\_\+controller.\+hpp.
+Definition at line 225 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a081b0c4359e8105d110ef38e9e5e1623}\label{classStewart_a081b0c4359e8105d110ef38e9e5e1623}} 
 \index{Stewart@{Stewart}!pose\_vel\_pub\_@{pose\_vel\_pub\_}}
@@ -779,7 +973,7 @@ Definition at line 222 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 223 of file stewart\+\_\+controller.\+hpp.
+Definition at line 226 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a7484dea52c041a610208a05e69503780}\label{classStewart_a7484dea52c041a610208a05e69503780}} 
 \index{Stewart@{Stewart}!qf\_@{qf\_}}
@@ -789,7 +983,7 @@ Definition at line 223 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 208 of file stewart\+\_\+controller.\+hpp.
+Definition at line 211 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a3c4ad8399505ca7f2472a836f3f5dfaf}\label{classStewart_a3c4ad8399505ca7f2472a836f3f5dfaf}} 
 \index{Stewart@{Stewart}!qi\_@{qi\_}}
@@ -799,7 +993,7 @@ Definition at line 208 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 208 of file stewart\+\_\+controller.\+hpp.
+Definition at line 211 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a0159ca5b0babbee7b16030e24c0d5610}\label{classStewart_a0159ca5b0babbee7b16030e24c0d5610}} 
 \index{Stewart@{Stewart}!setpoint\_@{setpoint\_}}
@@ -809,7 +1003,7 @@ Definition at line 208 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 201 of file stewart\+\_\+controller.\+hpp.
+Definition at line 204 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_adb64c0723646baf56ef82c7c821bebe3}\label{classStewart_adb64c0723646baf56ef82c7c821bebe3}} 
 \index{Stewart@{Stewart}!setpoint\_sub\_@{setpoint\_sub\_}}
@@ -819,7 +1013,7 @@ Definition at line 201 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 225 of file stewart\+\_\+controller.\+hpp.
+Definition at line 228 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a0c197b55c93932a73713eb22769ec842}\label{classStewart_a0c197b55c93932a73713eb22769ec842}} 
 \index{Stewart@{Stewart}!setpoint\_trapz\_@{setpoint\_trapz\_}}
@@ -829,7 +1023,7 @@ Definition at line 225 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 202 of file stewart\+\_\+controller.\+hpp.
+Definition at line 205 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a9f9442392e7477633036a8fc000094d8}\label{classStewart_a9f9442392e7477633036a8fc000094d8}} 
 \index{Stewart@{Stewart}!setpoint\_vel@{setpoint\_vel}}
@@ -839,7 +1033,7 @@ Definition at line 202 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 205 of file stewart\+\_\+controller.\+hpp.
+Definition at line 208 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_ac16b2dd5a6f84fc6620adb7dbf1d9575}\label{classStewart_ac16b2dd5a6f84fc6620adb7dbf1d9575}} 
 \index{Stewart@{Stewart}!setpoint\_vel\_sub\_@{setpoint\_vel\_sub\_}}
@@ -849,7 +1043,7 @@ Definition at line 205 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 228 of file stewart\+\_\+controller.\+hpp.
+Definition at line 231 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a81add46cc8b830f1185552e9c889a10f}\label{classStewart_a81add46cc8b830f1185552e9c889a10f}} 
 \index{Stewart@{Stewart}!target\_@{target\_}}
@@ -859,7 +1053,7 @@ Definition at line 228 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 209 of file stewart\+\_\+controller.\+hpp.
+Definition at line 212 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a3e99227277ed8338185649cf5178cbf0}\label{classStewart_a3e99227277ed8338185649cf5178cbf0}} 
 \index{Stewart@{Stewart}!time\_@{time\_}}
@@ -869,7 +1063,7 @@ Definition at line 209 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 212 of file stewart\+\_\+controller.\+hpp.
+Definition at line 215 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a4a3c291d0f889148af0c196f6871085e}\label{classStewart_a4a3c291d0f889148af0c196f6871085e}} 
 \index{Stewart@{Stewart}!trapz\_acc\_@{trapz\_acc\_}}
@@ -879,7 +1073,7 @@ Definition at line 212 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 217 of file stewart\+\_\+controller.\+hpp.
+Definition at line 220 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_aef7c30378de8167483e6e705cdb22e92}\label{classStewart_aef7c30378de8167483e6e705cdb22e92}} 
 \index{Stewart@{Stewart}!trapz\_initialization@{trapz\_initialization}}
@@ -889,7 +1083,7 @@ Definition at line 217 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 215 of file stewart\+\_\+controller.\+hpp.
+Definition at line 218 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a138be8d8472398198ba649c0ddd1e29d}\label{classStewart_a138be8d8472398198ba649c0ddd1e29d}} 
 \index{Stewart@{Stewart}!trapz\_max\_vel\_@{trapz\_max\_vel\_}}
@@ -899,7 +1093,7 @@ Definition at line 215 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 218 of file stewart\+\_\+controller.\+hpp.
+Definition at line 221 of file stewart\+\_\+controller.\+hpp.
 
 \mbox{\Hypertarget{classStewart_a941eaa6bef195b17079a18f7841f5640}\label{classStewart_a941eaa6bef195b17079a18f7841f5640}} 
 \index{Stewart@{Stewart}!trapz\_setpoint\_sub\_@{trapz\_setpoint\_sub\_}}
@@ -909,7 +1103,7 @@ Definition at line 218 of file stewart\+\_\+controller.\+hpp.
 
 
 
-Definition at line 227 of file stewart\+\_\+controller.\+hpp.
+Definition at line 230 of file stewart\+\_\+controller.\+hpp.
 
 
 

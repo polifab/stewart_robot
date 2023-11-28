@@ -152,40 +152,58 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a6004365dacbcdc8f512c29d9865b020f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a6004365dacbcdc8f512c29d9865b020f">enable_devices</a> ()</td></tr>
+<tr class="memdesc:a6004365dacbcdc8f512c29d9865b020f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routine to enable Webots sensors.  <a href="classStewart.html#a6004365dacbcdc8f512c29d9865b020f">More...</a><br /></td></tr>
 <tr class="separator:a6004365dacbcdc8f512c29d9865b020f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0400050feb79be4bc860bc90a91ccde0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a0400050feb79be4bc860bc90a91ccde0">init_vectors</a> ()</td></tr>
+<tr class="memdesc:a0400050feb79be4bc860bc90a91ccde0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routine to initialize Eigen Vectors.  <a href="classStewart.html#a0400050feb79be4bc860bc90a91ccde0">More...</a><br /></td></tr>
 <tr class="separator:a0400050feb79be4bc860bc90a91ccde0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd9b13b93919c935edc4a1dfbf3e25bd"><td class="memItemLeft" align="right" valign="top">VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#afd9b13b93919c935edc4a1dfbf3e25bd">convert_6d_to_7d</a> (VectorXd euler_pos)</td></tr>
+<tr class="memdesc:afd9b13b93919c935edc4a1dfbf3e25bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to convert a 6D position + euler orientation vector into a 7D position + quaternion orientation vector.  <a href="classStewart.html#afd9b13b93919c935edc4a1dfbf3e25bd">More...</a><br /></td></tr>
 <tr class="separator:afd9b13b93919c935edc4a1dfbf3e25bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0736cbca03ea80ddd4dad6cf1a53976e"><td class="memItemLeft" align="right" valign="top">VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a0736cbca03ea80ddd4dad6cf1a53976e">convert_7d_to_6d</a> (VectorXd quat_pos)</td></tr>
+<tr class="memdesc:a0736cbca03ea80ddd4dad6cf1a53976e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to convert a 7D position + quaternion orientation vector into a 6D position + euler orientation vector.  <a href="classStewart.html#a0736cbca03ea80ddd4dad6cf1a53976e">More...</a><br /></td></tr>
 <tr class="separator:a0736cbca03ea80ddd4dad6cf1a53976e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e29fe31f5205a11c206ac495a83800b"><td class="memItemLeft" align="right" valign="top">MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a6e29fe31f5205a11c206ac495a83800b">inv_J_1</a> (MatrixXd n, Quaterniond q)</td></tr>
+<tr class="memdesc:a6e29fe31f5205a11c206ac495a83800b"><td class="mdescLeft">&#160;</td><td class="mdescRight">method to compute J_1^{-1} according to [1]  <a href="classStewart.html#a6e29fe31f5205a11c206ac495a83800b">More...</a><br /></td></tr>
 <tr class="separator:a6e29fe31f5205a11c206ac495a83800b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a848343d50fb888b22c3a3fde36c08564"><td class="memItemLeft" align="right" valign="top">MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a848343d50fb888b22c3a3fde36c08564">inv_J_2</a> (Quaterniond q)</td></tr>
+<tr class="memdesc:a848343d50fb888b22c3a3fde36c08564"><td class="mdescLeft">&#160;</td><td class="mdescRight">method to compute J_2^{-1} according to [1]  <a href="classStewart.html#a848343d50fb888b22c3a3fde36c08564">More...</a><br /></td></tr>
 <tr class="separator:a848343d50fb888b22c3a3fde36c08564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a152cca0dfb28707fe54122a9fee4f351"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a152cca0dfb28707fe54122a9fee4f351">trapezoidal_target</a> (double qi, double qf, double time, bool angular)</td></tr>
+<tr class="memdesc:a152cca0dfb28707fe54122a9fee4f351"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to compute geometrically the trapezoidal velocity trajectory.  <a href="classStewart.html#a152cca0dfb28707fe54122a9fee4f351">More...</a><br /></td></tr>
 <tr class="separator:a152cca0dfb28707fe54122a9fee4f351"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa46ebbe45b7b5c0be3df43e3e91fc109"><td class="memItemLeft" align="right" valign="top">Eigen::Matrix4d&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#aa46ebbe45b7b5c0be3df43e3e91fc109">skew_matrix</a> (Vector3d v)</td></tr>
+<tr class="memdesc:aa46ebbe45b7b5c0be3df43e3e91fc109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to compute the skew matrix from a 3D vector.  <a href="classStewart.html#aa46ebbe45b7b5c0be3df43e3e91fc109">More...</a><br /></td></tr>
 <tr class="separator:aa46ebbe45b7b5c0be3df43e3e91fc109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb43116801ac93bc79a18153d3251919"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#acb43116801ac93bc79a18153d3251919">trapezoidal_trajectory</a> (VectorXd qi, VectorXd qf, double time)</td></tr>
+<tr class="memdesc:acb43116801ac93bc79a18153d3251919"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method that takes care of integrating the desired velocities and set target position in trapezoidal velocity trajectory control.  <a href="classStewart.html#acb43116801ac93bc79a18153d3251919">More...</a><br /></td></tr>
 <tr class="separator:acb43116801ac93bc79a18153d3251919"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92b02527704958199ff327a15cbd8f63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a92b02527704958199ff327a15cbd8f63">retrieve_params</a> (ros::NodeHandle &amp;nodeHandle_)</td></tr>
+<tr class="memdesc:a92b02527704958199ff327a15cbd8f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routine to retrieve roslaunch params.  <a href="classStewart.html#a92b02527704958199ff327a15cbd8f63">More...</a><br /></td></tr>
 <tr class="separator:a92b02527704958199ff327a15cbd8f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f917b73ba3abb2e956f99d74bb85c09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a2f917b73ba3abb2e956f99d74bb85c09">init_pubs_subs</a> (ros::NodeHandle &amp;nodeHandle_)</td></tr>
+<tr class="memdesc:a2f917b73ba3abb2e956f99d74bb85c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">routine to initialise ROS publisher and subcribers  <a href="classStewart.html#a2f917b73ba3abb2e956f99d74bb85c09">More...</a><br /></td></tr>
 <tr class="separator:a2f917b73ba3abb2e956f99d74bb85c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ea87229475474367f22f1c9823d475c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a4ea87229475474367f22f1c9823d475c">joy_callback</a> (const sensor_msgs::Joy &amp;msg)</td></tr>
+<tr class="memdesc:a4ea87229475474367f22f1c9823d475c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joystick callback.  <a href="classStewart.html#a4ea87229475474367f22f1c9823d475c">More...</a><br /></td></tr>
 <tr class="separator:a4ea87229475474367f22f1c9823d475c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9db55d259272d0db0150ca14256f8555"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a9db55d259272d0db0150ca14256f8555">setpoint_callback</a> (const geometry_msgs::Pose &amp;msg)</td></tr>
+<tr class="memdesc:a9db55d259272d0db0150ca14256f8555"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pose setpoint callback (for IK pose control)  <a href="classStewart.html#a9db55d259272d0db0150ca14256f8555">More...</a><br /></td></tr>
 <tr class="separator:a9db55d259272d0db0150ca14256f8555"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9872647fff36dd4445ec37f03112bcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#ab9872647fff36dd4445ec37f03112bcc">setpoint_trapz_callback</a> (const geometry_msgs::Pose &amp;msg)</td></tr>
+<tr class="memdesc:ab9872647fff36dd4445ec37f03112bcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pose setpoint callback (for trapezoidal velocity pose control)  <a href="classStewart.html#ab9872647fff36dd4445ec37f03112bcc">More...</a><br /></td></tr>
 <tr class="separator:ab9872647fff36dd4445ec37f03112bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acae2673c278cfa51851a16f14de326d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#acae2673c278cfa51851a16f14de326d0">setpoint_vel_callback</a> (const geometry_msgs::Twist &amp;msg)</td></tr>
+<tr class="memdesc:acae2673c278cfa51851a16f14de326d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Twist setpoint callback (for twist control)  <a href="classStewart.html#acae2673c278cfa51851a16f14de326d0">More...</a><br /></td></tr>
 <tr class="separator:acae2673c278cfa51851a16f14de326d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7a53e1bd763df997d4d4a008d9739e7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a7a53e1bd763df997d4d4a008d9739e7b">change_acc_callback</a> (const std_msgs::Float32 &amp;msg)</td></tr>
+<tr class="memdesc:a7a53e1bd763df997d4d4a008d9739e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to change acc value in trapezoidal control.  <a href="classStewart.html#a7a53e1bd763df997d4d4a008d9739e7b">More...</a><br /></td></tr>
 <tr class="separator:a7a53e1bd763df997d4d4a008d9739e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc6c2747647d58fd871fac6dd6c5c43e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#abc6c2747647d58fd871fac6dd6c5c43e">change_vel_callback</a> (const std_msgs::Float32 &amp;msg)</td></tr>
+<tr class="memdesc:abc6c2747647d58fd871fac6dd6c5c43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to change vel value in trapezoidal control.  <a href="classStewart.html#abc6c2747647d58fd871fac6dd6c5c43e">More...</a><br /></td></tr>
 <tr class="separator:abc6c2747647d58fd871fac6dd6c5c43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a217de2215098164cc0153df540b6e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStewart.html#a3a217de2215098164cc0153df540b6e6">change_mod_callback</a> (const std_msgs::Int32 &amp;msg)</td></tr>
+<tr class="memdesc:a3a217de2215098164cc0153df540b6e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback to change mode value.  <a href="classStewart.html#a3a217de2215098164cc0153df540b6e6">More...</a><br /></td></tr>
 <tr class="separator:a3a217de2215098164cc0153df540b6e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
@@ -265,8 +283,9 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classStewart.html" title="Stewart Controller Class This class takes care of interfacing with Webots control API and implementin...">Stewart</a> Controller Class This class takes care of interfacing with Webots control API and implementing kinematics and trajectory plan for the <a class="el" href="classStewart.html" title="Stewart Controller Class This class takes care of interfacing with Webots control API and implementin...">Stewart</a> Platform. </p>
+<p>Kinematics are implemented according to "Kinematic and dynamic analysis of Stewart platform-based machine tool structures" by Khalifa Harib and Krishnaswamy Srinivasan [1] </p><dl class="section author"><dt>Author</dt><dd>Fabio Polisano </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00033">33</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00036">36</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a27e6d963c9abe36f42cb5a1714664475"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27e6d963c9abe36f42cb5a1714664475">&#9670;&nbsp;</a></span>Stewart()</h2>
@@ -337,6 +356,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Callback to change acc value in trapezoidal control. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a3a217de2215098164cc0153df540b6e6"></a>
@@ -362,6 +389,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Callback to change mode value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -389,6 +424,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Callback to change vel value in trapezoidal control. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="afd9b13b93919c935edc4a1dfbf3e25bd"></a>
@@ -414,6 +457,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Method to convert a 6D position + euler orientation vector into a 7D position + quaternion orientation vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">euler_pos</td><td>6D position + euler orientation vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VectorXd 7D position + quaternion orientation vector </dd></dl>
 
 </div>
 </div>
@@ -441,6 +493,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Method to convert a 7D position + quaternion orientation vector into a 6D position + euler orientation vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">quat_pos</td><td>7D position + quaternion orientation vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>VectorXd 6D position + euler orientation vector </dd></dl>
+
 </div>
 </div>
 <a id="a6004365dacbcdc8f512c29d9865b020f"></a>
@@ -465,6 +526,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Routine to enable Webots sensors. </p>
 
 </div>
 </div>
@@ -656,6 +719,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>routine to initialise ROS publisher and subcribers </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodeHandle_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0400050feb79be4bc860bc90a91ccde0"></a>
@@ -680,6 +751,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Routine to initialize Eigen Vectors. </p>
 
 </div>
 </div>
@@ -717,6 +790,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>method to compute J_1^{-1} according to [1] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>6x3 Matrix containing the direction vectors of tje joints </td></tr>
+    <tr><td class="paramname">q</td><td>quaternion containing actual orientation of the moving base </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>MatrixXd J_1^-{1} </dd></dl>
+
 </div>
 </div>
 <a id="a848343d50fb888b22c3a3fde36c08564"></a>
@@ -742,6 +825,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>method to compute J_2^{-1} according to [1] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">q</td><td>quaternion containing actual orientation of the moving base </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>MatrixXd J_2^-{1} </dd></dl>
 
 </div>
 </div>
@@ -822,6 +914,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Joystick callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -912,6 +1012,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Routine to retrieve roslaunch params. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodeHandle_</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1058,6 +1166,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Pose setpoint callback (for IK pose control) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ab9872647fff36dd4445ec37f03112bcc"></a>
@@ -1083,6 +1199,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Pose setpoint callback (for trapezoidal velocity pose control) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1110,6 +1234,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Twist setpoint callback (for twist control) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa46ebbe45b7b5c0be3df43e3e91fc109"></a>
@@ -1135,6 +1267,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Method to compute the skew matrix from a 3D vector. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>3D Vector </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Eigen::Matrix4d Skew Matrix of v </dd></dl>
 
 </div>
 </div>
@@ -1184,6 +1325,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Method to compute geometrically the trapezoidal velocity trajectory. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">qi</td><td>initial pose of the moving base </td></tr>
+    <tr><td class="paramname">qf</td><td>desired final pose of the moving base </td></tr>
+    <tr><td class="paramname">time</td><td>time since the movement started </td></tr>
+    <tr><td class="paramname">angular</td><td>if the function is computing the trajectory for angular variable </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double target velocity </dd></dl>
+
 </div>
 </div>
 <a id="acb43116801ac93bc79a18153d3251919"></a>
@@ -1226,6 +1379,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Method that takes care of integrating the desired velocities and set target position in trapezoidal velocity trajectory control. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">qi</td><td>initial pose </td></tr>
+    <tr><td class="paramname">qf</td><td>final pose </td></tr>
+    <tr><td class="paramname">time</td><td>time since the operation started </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true </dd>
+<dd>
+false </dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -1249,7 +1415,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00199">199</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00202">202</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1273,7 +1439,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00191">191</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00194">194</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1297,7 +1463,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00190">190</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00193">193</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1487,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00189">189</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00192">192</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1345,7 +1511,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00198">198</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00201">201</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1369,7 +1535,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00203">203</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00206">206</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1393,7 +1559,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00204">204</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00207">207</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1417,7 +1583,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00207">207</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00210">210</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1441,7 +1607,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00229">229</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00232">232</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1465,7 +1631,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00231">231</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00234">234</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1489,7 +1655,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00230">230</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00233">233</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1513,7 +1679,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00183">183</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00186">186</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1537,7 +1703,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00196">196</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00199">199</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1561,7 +1727,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00188">188</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00191">191</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1585,7 +1751,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00214">214</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00217">217</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1609,7 +1775,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00226">226</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00229">229</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1633,7 +1799,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00194">194</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00197">197</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1657,7 +1823,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00211">211</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00214">214</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1681,7 +1847,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00185">185</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00188">188</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1705,7 +1871,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00186">186</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00189">189</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1729,7 +1895,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00221">221</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00224">224</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1753,7 +1919,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00222">222</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00225">225</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1777,7 +1943,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00223">223</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00226">226</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1801,7 +1967,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00208">208</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00211">211</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1825,7 +1991,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00208">208</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00211">211</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1849,7 +2015,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00201">201</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00204">204</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1873,7 +2039,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00225">225</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00228">228</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1897,7 +2063,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00202">202</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00205">205</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1921,7 +2087,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00205">205</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00208">208</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1945,7 +2111,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00228">228</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00231">231</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1969,7 +2135,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00209">209</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00212">212</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -1993,7 +2159,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00212">212</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00215">215</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -2017,7 +2183,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00217">217</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00220">220</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -2041,7 +2207,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00215">215</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00218">218</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -2065,7 +2231,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00218">218</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00221">221</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>
@@ -2089,7 +2255,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00227">227</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stewart__controller_8hpp_source.html#l00230">230</a> of file <a class="el" href="stewart__controller_8hpp_source.html">stewart_controller.hpp</a>.</p>
 
 </div>
 </div>

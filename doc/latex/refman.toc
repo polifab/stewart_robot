@@ -1,0 +1,93 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Hierarchical Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Class Hierarchy}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Stewart Class Reference}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{10}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Constructor \& Destructor Documentation}{10}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}Stewart()}{10}{subsubsection.4.1.2.1}%
+\contentsline {subsection}{\numberline {4.1.3}Member Function Documentation}{11}{subsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.3.1}change\_acc\_callback()}{11}{subsubsection.4.1.3.1}%
+\contentsline {subsubsection}{\numberline {4.1.3.2}change\_mod\_callback()}{11}{subsubsection.4.1.3.2}%
+\contentsline {subsubsection}{\numberline {4.1.3.3}change\_vel\_callback()}{11}{subsubsection.4.1.3.3}%
+\contentsline {subsubsection}{\numberline {4.1.3.4}convert\_6d\_to\_7d()}{11}{subsubsection.4.1.3.4}%
+\contentsline {subsubsection}{\numberline {4.1.3.5}convert\_7d\_to\_6d()}{12}{subsubsection.4.1.3.5}%
+\contentsline {subsubsection}{\numberline {4.1.3.6}enable\_devices()}{12}{subsubsection.4.1.3.6}%
+\contentsline {subsubsection}{\numberline {4.1.3.7}estimate\_base\_pose()}{12}{subsubsection.4.1.3.7}%
+\contentsline {subsubsection}{\numberline {4.1.3.8}forward\_kinematics()}{12}{subsubsection.4.1.3.8}%
+\contentsline {subsubsection}{\numberline {4.1.3.9}get\_base\_pose()}{13}{subsubsection.4.1.3.9}%
+\contentsline {subsubsection}{\numberline {4.1.3.10}get\_base\_vel()}{13}{subsubsection.4.1.3.10}%
+\contentsline {subsubsection}{\numberline {4.1.3.11}get\_force\_feedback()}{13}{subsubsection.4.1.3.11}%
+\contentsline {subsubsection}{\numberline {4.1.3.12}get\_joints\_pos()}{14}{subsubsection.4.1.3.12}%
+\contentsline {subsubsection}{\numberline {4.1.3.13}get\_mode()}{14}{subsubsection.4.1.3.13}%
+\contentsline {subsubsection}{\numberline {4.1.3.14}init\_pubs\_subs()}{14}{subsubsection.4.1.3.14}%
+\contentsline {subsubsection}{\numberline {4.1.3.15}init\_vectors()}{14}{subsubsection.4.1.3.15}%
+\contentsline {subsubsection}{\numberline {4.1.3.16}inv\_J\_1()}{15}{subsubsection.4.1.3.16}%
+\contentsline {subsubsection}{\numberline {4.1.3.17}inv\_J\_2()}{15}{subsubsection.4.1.3.17}%
+\contentsline {subsubsection}{\numberline {4.1.3.18}inverse\_jacobian()}{15}{subsubsection.4.1.3.18}%
+\contentsline {subsubsection}{\numberline {4.1.3.19}inverse\_kinematics()}{16}{subsubsection.4.1.3.19}%
+\contentsline {subsubsection}{\numberline {4.1.3.20}joy\_callback()}{16}{subsubsection.4.1.3.20}%
+\contentsline {subsubsection}{\numberline {4.1.3.21}reach\_setpoint()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{16}{subsubsection.4.1.3.21}%
+\contentsline {subsubsection}{\numberline {4.1.3.22}reach\_setpoint()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{17}{subsubsection.4.1.3.22}%
+\contentsline {subsubsection}{\numberline {4.1.3.23}reach\_setpoint\_trapz()}{17}{subsubsection.4.1.3.23}%
+\contentsline {subsubsection}{\numberline {4.1.3.24}retrieve\_params()}{17}{subsubsection.4.1.3.24}%
+\contentsline {subsubsection}{\numberline {4.1.3.25}set\_piston\_pos()}{17}{subsubsection.4.1.3.25}%
+\contentsline {subsubsection}{\numberline {4.1.3.26}set\_piston\_vel()}{18}{subsubsection.4.1.3.26}%
+\contentsline {subsubsection}{\numberline {4.1.3.27}set\_target\_vel()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{18}{subsubsection.4.1.3.27}%
+\contentsline {subsubsection}{\numberline {4.1.3.28}set\_target\_vel()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{18}{subsubsection.4.1.3.28}%
+\contentsline {subsubsection}{\numberline {4.1.3.29}setpoint\_callback()}{18}{subsubsection.4.1.3.29}%
+\contentsline {subsubsection}{\numberline {4.1.3.30}setpoint\_trapz\_callback()}{19}{subsubsection.4.1.3.30}%
+\contentsline {subsubsection}{\numberline {4.1.3.31}setpoint\_vel\_callback()}{19}{subsubsection.4.1.3.31}%
+\contentsline {subsubsection}{\numberline {4.1.3.32}skew\_matrix()}{19}{subsubsection.4.1.3.32}%
+\contentsline {subsubsection}{\numberline {4.1.3.33}trapezoidal\_target()}{19}{subsubsection.4.1.3.33}%
+\contentsline {subsubsection}{\numberline {4.1.3.34}trapezoidal\_trajectory()}{20}{subsubsection.4.1.3.34}%
+\contentsline {subsection}{\numberline {4.1.4}Member Data Documentation}{20}{subsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.4.1}A}{20}{subsubsection.4.1.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.4.2}acc\_upp\_plat}{21}{subsubsection.4.1.4.2}%
+\contentsline {subsubsection}{\numberline {4.1.4.3}ang\_vel\_upp\_plat}{21}{subsubsection.4.1.4.3}%
+\contentsline {subsubsection}{\numberline {4.1.4.4}att\_upp\_plat}{21}{subsubsection.4.1.4.4}%
+\contentsline {subsubsection}{\numberline {4.1.4.5}B}{21}{subsubsection.4.1.4.5}%
+\contentsline {subsubsection}{\numberline {4.1.4.6}base\_pose\_}{21}{subsubsection.4.1.4.6}%
+\contentsline {subsubsection}{\numberline {4.1.4.7}base\_pose\_gt\_}{21}{subsubsection.4.1.4.7}%
+\contentsline {subsubsection}{\numberline {4.1.4.8}base\_vel\_}{22}{subsubsection.4.1.4.8}%
+\contentsline {subsubsection}{\numberline {4.1.4.9}change\_acc\_sub\_}{22}{subsubsection.4.1.4.9}%
+\contentsline {subsubsection}{\numberline {4.1.4.10}change\_mod\_sub\_}{22}{subsubsection.4.1.4.10}%
+\contentsline {subsubsection}{\numberline {4.1.4.11}change\_vel\_sub\_}{22}{subsubsection.4.1.4.11}%
+\contentsline {subsubsection}{\numberline {4.1.4.12}config\_file\_}{22}{subsubsection.4.1.4.12}%
+\contentsline {subsubsection}{\numberline {4.1.4.13}config\_stewart}{22}{subsubsection.4.1.4.13}%
+\contentsline {subsubsection}{\numberline {4.1.4.14}gps\_upp\_plat}{23}{subsubsection.4.1.4.14}%
+\contentsline {subsubsection}{\numberline {4.1.4.15}init\_trapz\_}{23}{subsubsection.4.1.4.15}%
+\contentsline {subsubsection}{\numberline {4.1.4.16}joy\_sub\_}{23}{subsubsection.4.1.4.16}%
+\contentsline {subsubsection}{\numberline {4.1.4.17}mode\_}{23}{subsubsection.4.1.4.17}%
+\contentsline {subsubsection}{\numberline {4.1.4.18}old\_time\_}{23}{subsubsection.4.1.4.18}%
+\contentsline {subsubsection}{\numberline {4.1.4.19}pistons\_}{23}{subsubsection.4.1.4.19}%
+\contentsline {subsubsection}{\numberline {4.1.4.20}pistons\_pos\_}{24}{subsubsection.4.1.4.20}%
+\contentsline {subsubsection}{\numberline {4.1.4.21}pose\_cmd\_pub\_}{24}{subsubsection.4.1.4.21}%
+\contentsline {subsubsection}{\numberline {4.1.4.22}pose\_pub\_}{24}{subsubsection.4.1.4.22}%
+\contentsline {subsubsection}{\numberline {4.1.4.23}pose\_vel\_pub\_}{24}{subsubsection.4.1.4.23}%
+\contentsline {subsubsection}{\numberline {4.1.4.24}qf\_}{24}{subsubsection.4.1.4.24}%
+\contentsline {subsubsection}{\numberline {4.1.4.25}qi\_}{24}{subsubsection.4.1.4.25}%
+\contentsline {subsubsection}{\numberline {4.1.4.26}setpoint\_}{25}{subsubsection.4.1.4.26}%
+\contentsline {subsubsection}{\numberline {4.1.4.27}setpoint\_sub\_}{25}{subsubsection.4.1.4.27}%
+\contentsline {subsubsection}{\numberline {4.1.4.28}setpoint\_trapz\_}{25}{subsubsection.4.1.4.28}%
+\contentsline {subsubsection}{\numberline {4.1.4.29}setpoint\_vel}{25}{subsubsection.4.1.4.29}%
+\contentsline {subsubsection}{\numberline {4.1.4.30}setpoint\_vel\_sub\_}{25}{subsubsection.4.1.4.30}%
+\contentsline {subsubsection}{\numberline {4.1.4.31}target\_}{25}{subsubsection.4.1.4.31}%
+\contentsline {subsubsection}{\numberline {4.1.4.32}time\_}{26}{subsubsection.4.1.4.32}%
+\contentsline {subsubsection}{\numberline {4.1.4.33}trapz\_acc\_}{26}{subsubsection.4.1.4.33}%
+\contentsline {subsubsection}{\numberline {4.1.4.34}trapz\_initialization}{26}{subsubsection.4.1.4.34}%
+\contentsline {subsubsection}{\numberline {4.1.4.35}trapz\_max\_vel\_}{26}{subsubsection.4.1.4.35}%
+\contentsline {subsubsection}{\numberline {4.1.4.36}trapz\_setpoint\_sub\_}{26}{subsubsection.4.1.4.36}%
+\contentsline {chapter}{\numberline {5}File Documentation}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}/home/fpo/side\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}projects/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stewart/controller\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ws/src/stewart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller/include/macros.hpp File Reference}{27}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Macro Definition Documentation}{27}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}BASE\_Z}{28}{subsubsection.5.1.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}NUM\_PISTONS}{28}{subsubsection.5.1.1.2}%
+\contentsline {section}{\numberline {5.2}/home/fpo/side\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}projects/\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stewart/controller\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}ws/src/stewart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller/include/stewart\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}controller.hpp File Reference}{28}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Macro Definition Documentation}{29}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}N\_ITERATIONS}{29}{subsubsection.5.2.1.1}%
+\contentsline {chapter}{Index}{31}{section*.11}%

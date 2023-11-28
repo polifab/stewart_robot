@@ -12,7 +12,7 @@ using namespace Eigen;
 
 std::tuple<VectorXd, MatrixXd> Stewart::inverse_kinematics(VectorXd setpoint)
 {
-// ai = x + WR_p * B
+    // It implements: ai = x + WR_p * a; L_i = a_i - b_i; l_i = norm(L_i)
 
     VectorXd l = VectorXd(6);
     MatrixXd n = MatrixXd(6,3);
