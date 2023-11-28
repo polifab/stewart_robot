@@ -14,4 +14,4 @@
  * @brief Number of iterations for FK
  * 
  */
-#define N_ITERATIONS 20
+#define N_ITERATIONS 3
